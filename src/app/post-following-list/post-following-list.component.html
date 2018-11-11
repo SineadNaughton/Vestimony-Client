@@ -1,0 +1,6 @@
+<!--passing in value tips - better to pass object(instnace of a model, have object in component.ts with :Input ann-->
+<app-post-tile 
+  *ngFor="let post of followingPosts"
+  [post]="post">
+</app-post-tile>
+

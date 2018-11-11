@@ -1,0 +1,30 @@
+<!--page holder-->
+<div class="container">
+
+  <!--trending/following selection holder-->
+  <div class="row">
+    <div class="col-sm" align="center">
+      <button class="btn btn-primary" (click)="showHomeView('following')">Following</button>
+      <button class="btn btn-primary" (click)="showHomeView('trending')">Trending</button>
+    </div>
+  </div>
+
+  <p>{{email}}</p>
+
+  <!--following - show posts-->
+  <div class="row" *ngIf="following">
+    <div class="col-sm" align="center">
+      <p> some following content</p>
+      <app-post-following-list></app-post-following-list>
+    </div>
+  </div>
+
+  <!--trending - show items-->
+  <div class="row" *ngIf="trending">
+    <div class="col-sm" align="center">
+      <p> some trending content</p>
+    </div>
+  </div>
+
+<!--end of page holder-->
+</div>
