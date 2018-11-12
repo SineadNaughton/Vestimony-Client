@@ -14,9 +14,9 @@ export class PostFollowingListComponent implements OnInit {
   followingPosts: Post[] = [];
   constructor(private postDataService: PostDataService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     
-    this.followingPosts = this.postDataService.getData();
+    this.followingPosts =  await this.postDataService.getPostData();
 
 
   }

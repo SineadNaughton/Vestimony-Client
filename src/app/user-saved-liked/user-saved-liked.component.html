@@ -1,0 +1,29 @@
+<!--page holder-->
+<div class="container">
+
+  <!--trending/following selection holder-->
+  <div class="row">
+    <div class="col-sm" align="center">
+      <button class="btn btn-primary" (click)="showView('saved')">Saved Items</button>
+      <button class="btn btn-primary" (click)="showView('liked')">Liked Posts</button>
+    </div>
+  </div>
+
+  <!--following - show posts-->
+  <div class="row" *ngIf="saved">
+    <div class="col-sm" align="center">
+      <p> some saved content</p>
+      
+    </div>
+  </div>
+
+  <!--trending - show items-->
+  <div class="row" *ngIf="liked">
+    <div class="col-sm" align="center">
+      <p> some liked content</p>
+      <app-user-liked-post-list></app-user-liked-post-list>
+    </div>
+  </div>
+
+<!--end of page holder-->
+</div>

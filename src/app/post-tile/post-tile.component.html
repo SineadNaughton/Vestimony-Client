@@ -1,7 +1,12 @@
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">{{post.title}}</h5>
-    <p class="card-text" (click)="showFullSummary()">{{post.summary}}</p>
-    <a href="#" class = "btn btn-primary">Read</a>
+    <img src="https://riverisland.scene7.com/is/image/RiverIsland/726374_main?$ProductPageZoom$" height="200">
+    <h5 class="card-title">{{post.postCreatedUsername}}</h5>
+    <a href="#" ><p class="card-text" (click)="showFullSummary()">{{post.postInfo}}</p></a>
+    <p>{{post.numLikes}}</p>
+    <pre>liked:{{liked}}</pre>
+    <button *ngIf="liked === false" (click)="likePost(post.postId)">Like</button>
+    <button *ngIf="liked === true" (click)="unlikePost(post.postId)">Unlike</button>
+ 
   </div>
 </div>

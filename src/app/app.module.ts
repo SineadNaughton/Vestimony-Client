@@ -21,6 +21,14 @@ import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { AuthUserService } from './services/auth/auth-user.service';
 import { AuthTokenService } from './services/auth/auth-token.service';
 import { CurrentUserDataService } from './services/vestimony-api/current-user-data.service';
+import { ItemDataService } from './services/vestimony-api/item-data.service';
+
+import { SearchComponent } from './search/search.component';
+import { ItemTileComponent } from './item-tile/item-tile.component';
+import { ItemTileListComponent } from './item-tile-list/item-tile-list.component';
+import { UserSavedLikedComponent } from './user-saved-liked/user-saved-liked.component';
+import { UserLikedPostListComponent } from './user-liked-post-list/user-liked-post-list.component';
+
 
 
 
@@ -39,6 +47,12 @@ export function tokenGetter() {
     PostTileComponent,
     PostFollowingListComponent,
     TruncatePipe,
+    ItemTileComponent,
+    ItemTileListComponent,
+    SearchComponent,
+    UserSavedLikedComponent,
+    UserLikedPostListComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -59,7 +73,8 @@ export function tokenGetter() {
     AuthUserService,
     AuthTokenService,
     JwtHelperService,
-    CurrentUserDataService
+    CurrentUserDataService,
+    ItemDataService
 
   ],
   bootstrap: [AppComponent]

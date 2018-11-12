@@ -9,7 +9,9 @@ export class NavMenuComponent implements OnInit {
   routes = [
     {linkName: 'Home', url: 'home'},
     {linkName: 'Login', url: 'login'},
-    {linkName: 'Register', url: 'register'}
+    {linkName: 'Register', url: 'register'},
+    {linkName: 'Search', url: 'search'},
+    {linkName: 'Saved', url: 'saved'}
   ]
 
   constructor() { }

@@ -1,13 +1,18 @@
-export class Post {
+import { ApplicationUser } from "./application-user";
 
+export class Post {
+    postId: number;
+    postCreatedUsername: string;
+    postInfo: string;
+    numLikes: number;
+    createDate: Date;
+    imageUrl: string;
  
 
-    constructor(public title:  string, public summary: string){
-        this.summary=summary;
-        this.title=title;
+  
 
     }
 
 
 
-}
+
