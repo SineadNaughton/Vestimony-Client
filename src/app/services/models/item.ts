@@ -5,9 +5,14 @@ export class Item {
     price: number;
     brand: string;
     url: string;
-    imageUrl: string;
     category: string;
     rating: number;
+    numSaved: number;
+    sizeAdjustment: number;
+    numReviews: number;
+    createdDateTime: Date;
+
+
 
     //need to add size adj, num review, num saved
 

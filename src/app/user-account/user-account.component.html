@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col">
+        <a routerLink='/account/edit'>Update Profile Details</a>
+       <img src="{{profileImageUrl}}" onerror="this.style.display='none'">
+      <input  type="file" (change)="onFileSelected($event)">
+    </div>
+    <div class="col">
+      <p>{{user.username}}</p>
+      <p>Bio: {{user.bio}}</p>
+      <p>Height: {{user.height}}</p>
+      <p>Size on top: {{user.sizeTop}}</p>
+      <p>Size on bottom: {{user.sizeBottom}}</p>
+      <p>{{user.numFollowers}} followers</p>
+      
+     
+  </div>
+  
+  

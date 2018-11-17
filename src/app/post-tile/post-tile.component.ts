@@ -4,6 +4,7 @@ import { TruncatePipe } from '../pipes/truncate.pipe';
 import { Post } from '../services/models/post';
 import { PostDataService } from '../services/vestimony-api/post-data.service';
 import { post } from 'selenium-webdriver/http';
+import { ApplicationUser } from '../services/models/application-user';
 
 @Component({
   selector: 'app-post-tile',
@@ -16,6 +17,9 @@ export class PostTileComponent implements OnInit {
   liked: boolean;
   likedResponse: any;
   numLikes: number;
+  user: ApplicationUser = new ApplicationUser();
+  profileImageUrl: string;
+  postImageUrl: string;
 
 
 
@@ -32,8 +36,14 @@ export class PostTileComponent implements OnInit {
       this.fullSummary = "";
     }
 
+    
+
     this.liked = await this.postDataService.isLiked(this.post.postId);
     this.numLikes = this.post.numLikes;
+    this.user = this.post.applicationUser;
+    this.profileImageUrl = "http://localhost:8080/vestimony/users/image/"+this.user.userId;
+    this.postImageUrl= "http://localhost:8080/vestimony/posts/image/"+this.post.postId;
+
 
 
 

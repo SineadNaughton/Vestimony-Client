@@ -1,0 +1,11 @@
+<div class="row">
+    <img src="{{imageUrl}}" height="300" />
+</div>
+<div class="row">
+  <p>{{post.postInfo}}</p>
+  <p>{{user.username}}</p>
+</div>
+<app-vestimonial-tile   *ngFor="let vestimonial of vestimonials"
+[vestimonial]="vestimonial">
+</app-vestimonial-tile>
+

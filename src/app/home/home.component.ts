@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentUserDataService } from '../services/vestimony-api/current-user-data.service';
 import { ApplicationUser } from '../services/models/application-user';
+import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   following: boolean;
   trending: boolean;
+  topItems: boolean;
   currentUser: ApplicationUser;
   public email: string;
 
@@ -28,10 +30,17 @@ export class HomeComponent implements OnInit {
     if (viewType==="following"){
       this.following = true;
       this.trending = false;
+      this.topItems= false;
     }
     else if (viewType==="trending"){
       this.following = false;
       this.trending = true;
+      this.topItems= false;
+    }
+    else if (viewType==="topItems"){
+      this.topItems= true;
+      this.following = false;
+      this.trending = false;
     }
 
 

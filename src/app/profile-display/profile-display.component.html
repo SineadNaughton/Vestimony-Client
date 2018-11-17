@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col">
+    <img src="{{profileImageUrl}}">
+  </div>
+  <div class="col">
+    <p>{{user.username}}</p>
+    <p>Bio: {{user.bio}}</p>
+    <p>Height: {{user.height}}</p>
+    <p>Size on top: {{user.sizeTop}}</p>
+    <p>Size on bottom: {{user.sizeBottom}}</p>
+    <p>{{user.numFollowers}} followers</p>
+    <button *ngIf="following === false" (click)="follow()">Follow</button>
+    <button *ngIf="following === true" (click)="unfollow()">Unfollow</button>
+   
+</div>
+
+<app-post-for-profile-list class="row" [userId]="userId"></app-post-for-profile-list>

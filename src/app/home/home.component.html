@@ -6,6 +6,7 @@
     <div class="col-sm" align="center">
       <button class="btn btn-primary" (click)="showHomeView('following')">Following</button>
       <button class="btn btn-primary" (click)="showHomeView('trending')">Trending</button>
+      <button class="btn btn-primary" (click)="showHomeView('topItems')">Top Rated</button>
     </div>
   </div>
 
@@ -23,8 +24,17 @@
   <div class="row" *ngIf="trending">
     <div class="col-sm" align="center">
       <p> some trending content</p>
+      <app-post-trending-list></app-post-trending-list>
     </div>
   </div>
+
+    <!--trending - show items-->
+    <div class="row" *ngIf="topItems">
+        <div class="col-sm" align="center">
+          <p> some top rated items</p>
+          <app-item-top-rated-list></app-item-top-rated-list>
+        </div>
+      </div>
 
 <!--end of page holder-->
 </div>

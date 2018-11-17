@@ -1,12 +1,14 @@
 import { ApplicationUser } from "./application-user";
+import { Vestimonial } from "./vestimonial";
 
 export class Post {
     postId: number;
-    postCreatedUsername: string;
+    applicationUser: ApplicationUser;
     postInfo: string;
     numLikes: number;
-    createDate: Date;
-    imageUrl: string;
+    createdDateTime: Date;
+    vestimonials: Vestimonial[];
+
  
 
   

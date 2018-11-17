@@ -1,0 +1,112 @@
+<!--page holder-->
+<div class="container">
+
+  <!--registration card holder-->
+  <div class="row">
+    <div class="col-sm" align="center">
+      <div class="card">
+        <div class="card-body">
+          <a routerLink='/login'>Have an account? Sign in</a>
+          <h5 class="card-title">Sign in</h5>
+          <form class="form">
+
+            <div class="form-group">
+              <label for="">Username</label>
+              <input [(ngModel)]="user.username" name="username" type="text" class="form-control required">
+            </div>
+
+            <div class="form-group">
+              <label for="">Password</label>
+              <input [(ngModel)]="user.password" name="password" type="password" class="form-control required">
+            </div>
+
+            <div class="form-group">
+              <label for="">Email</label>
+              <input [(ngModel)]="user.email" name="email" type="email" class="form-control required">
+            </div>
+
+            <button (click)="showRegForm()">Continue to Registration</button>
+            <div *ngIf="!isCollapsed">
+
+              <div class="form-group">
+                <label for="">Bio</label>
+                <input [(ngModel)]="user.bio" name="bio" type="text" class="form-control required">
+              </div>
+
+              <div class="form-group">
+                <label for="">Height Feet</label>
+                <select name="heightFeet" [(ngModel)]="user.heightFeet">
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                </select>
+              </div>
+
+
+              <div class="form-group">
+                <label for="">Height Inches</label>
+                <select name="heightInches" [(ngModel)]="user.heightInches">
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                  <option value=11>11</option>
+                  <option value=12>12</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="">Size Top</label>
+                <select name="sizeTop" [(ngModel)]="user.sizeTop">
+                  <option value=4>4 uk</option>
+                  <option value=6>6 uk</option>
+                  <option value=8>8 uk</option>
+                  <option value=10>10 uk</option>
+                  <option value=12>12 uk</option>
+                  <option value=14>14 uk</option>
+                  <option value=16>16 uk</option>
+                  <option value=18>18 uk</option>
+                  <option value=20>20 uk</option>
+                  <option value=22>22 uk</option>
+                  <option value=24>24 uk</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="">Size Bottom </label>
+                <select name="sizeBottom" [(ngModel)]="user.sizeBottom">
+                  <option value=4>4 uk</option>
+                  <option value=6>6 uk</option>
+                  <option value=8>8 uk</option>
+                  <option value=10>10 uk</option>
+                  <option value=12>12 uk</option>
+                  <option value=14>14 uk</option>
+                  <option value=16>16 uk</option>
+                  <option value=18>18 uk</option>
+                  <option value=20>20 uk</option>
+                  <option value=22>22 uk</option>
+                  <option value=24>24 uk</option>
+                </select>
+              </div>
+              <a (click)="register()" class="btn btn-primary">Register</a>
+              <p>{{resp}}</p>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end of page holder-->
+</div>
+
+<!--end of page holder-->
