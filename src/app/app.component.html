@@ -1,11 +1,12 @@
-<div style="text-align: center">
-<img src="/assets/img/logo1.png" width="70%"/>
-</div>
+<div class="container">
+  <div style="text-align: center">
+    <img src="/assets/img/logo1.png" width="70%" />
+  </div>
 
 
 
 
-  
+
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
@@ -13,7 +14,7 @@
         <li routerLinkActive="active"><a routerLink="/user">User</a></li>
         <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
       </ul>
-  
+
       <ul class="nav navbar-nav navbar-right">
         <p class="navbar-text" *ngIf="isAdminUser">You are admin!</p>
         <p class="navbar-text" *ngIf="isUser">You are user!</p>
@@ -21,9 +22,10 @@
       </ul>
     </div>
   </nav>
+
   
-  <div class="container">
 
 
-<router-outlet></router-outlet>
-<app-nav-menu></app-nav-menu>
+    <router-outlet></router-outlet>
+    <app-nav-menu></app-nav-menu>
+  </div>

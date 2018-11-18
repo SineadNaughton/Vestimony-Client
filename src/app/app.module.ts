@@ -42,6 +42,9 @@ import { ItemTopRatedListComponent } from './item-top-rated-list/item-top-rated-
 import { RegisterComponent } from './register/register.component';
 import { UserAccountComponent } from './user-account/user-account.component';
 import { UserAccountEditComponent } from './user-account-edit/user-account-edit.component';
+import { NgInviewModule } from 'angular-inport';
+import { ItemFilterComponent } from './item-filter/item-filter.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -79,6 +82,8 @@ export function tokenGetter() {
     RegisterComponent,
     UserAccountComponent,
     UserAccountEditComponent,
+    ItemFilterComponent,
+    
    
   ],
   imports: [
@@ -92,7 +97,9 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:8080']
       }
-    })    
+    }),
+    NgInviewModule,
+    BrowserAnimationsModule    
   ],
   providers: [
     TruncatePipe,

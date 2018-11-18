@@ -11,7 +11,7 @@ export class AuthUserService {
     private _jwtHelper: JwtHelperService
   ) { }
 
-  login(accessToken: string) {    
+  storeToken(accessToken: string) {    
     const decodedToken = this._jwtHelper.decodeToken(accessToken);
 
     this._isAdmin = false; //decodedToken.authorities.some(el => el === 'ADMIN_USER');
@@ -20,7 +20,7 @@ export class AuthUserService {
     localStorage.setItem(AuthConstant.TOKEN_NAME, accessToken);
   }
 
-  logout() {
+  destroyAcessToken() {
     this._accessToken = null;
     this._isAdmin = false;
     localStorage.removeItem(AuthConstant.TOKEN_NAME);

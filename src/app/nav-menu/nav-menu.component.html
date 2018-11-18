@@ -1,1 +1,23 @@
-<a *ngFor="let route of routes" [routerLink]="route.url">{{route.linkName}}</a>
+<nav class="navbar navbar-inverse navbar-fixed-bottom ">
+    <div class="container">
+
+        <ul>
+
+        </ul>
+        <a *ngFor="let route of routes" [routerLink]="route.url">{{route.linkName}}</a>
+    </div>
+</nav>
+
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+    
+
+    <!-- Links -->
+    
+        <ul class="navbar-nav list-inline">
+            <li class="nav-item" *ngFor="let route of routes" >
+                <a class="nav-link" [routerLink]="route.url">{{route.linkName}}</a>
+            </li>
+
+        </ul>
+   
+</nav>

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   async loginUser() {
     const authToken = await this.authTokenService.getAuthToken(this.authRequestBody.username, this.authRequestBody.password);
-    this.authUserService.login(authToken);
+    this.authUserService.storeToken(authToken);
     this.router.navigate(['/home']);
   }
 

@@ -16,7 +16,7 @@ export class AppComponent {
   ) { }
 
   logout() {
-    this.userService.logout();
+    this.userService.destroyAcessToken();
     this.router.navigate(['/']);
   }
 

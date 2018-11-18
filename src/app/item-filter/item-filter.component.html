@@ -1,0 +1,36 @@
+<div class="row">
+  <form>
+  
+      <div class="form-group">
+          <label for="brands">Options:</label>
+          <div *ngFor="let brand of brands; ">
+              <label>
+                  <input type="checkbox"
+                         name="{{brand.name}}"
+                         checked="{{brand.checked}}"
+                         [(ngModel)]="brand.checked"/>
+                  {{brand.name}} 
+              </label>
+          </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="categories">Options:</label>
+        <div *ngFor="let category of categories; let i = index ; ">
+            <label>
+                <input type="checkbox"
+               
+                (change)='onSelect($event)'
+                       name="{{category.name}}"
+                       checked="{{category.checked}}"
+                       [(ngModel)]="category.checked"/>
+                {{category.name}} 
+            </label>
+        </div>
+    </div>
+
+    <button (click)="submitFilter()">Get My Items</button>
+
+  </form>
+</div>
