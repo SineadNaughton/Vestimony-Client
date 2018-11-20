@@ -45,6 +45,9 @@ import { UserAccountEditComponent } from './user-account-edit/user-account-edit.
 import { NgInviewModule } from 'angular-inport';
 import { ItemFilterComponent } from './item-filter/item-filter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PostCreationComponent } from './post-creation/post-creation.component';
+import { VestimonialAddComponent } from './vestimonial-add/vestimonial-add.component';
+import { VestimonialAddItemListComponent } from './vestimonial-add-item-list/vestimonial-add-item-list.component';
 
 
 
@@ -83,6 +86,9 @@ export function tokenGetter() {
     UserAccountComponent,
     UserAccountEditComponent,
     ItemFilterComponent,
+    PostCreationComponent,
+    VestimonialAddComponent,
+    VestimonialAddItemListComponent,
     
    
   ],

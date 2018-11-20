@@ -1,21 +1,19 @@
 <div in-view (inview)="inview($event)">
-  <a [routerLink]="['/items', item.itemId]">
+ <!-- <a [routerLink]="['/items', item.itemId]"> -->
    
-  <div class="row" *ngIf="isInView">
+  <div class="row" *ngIf="item.isInView">
     <img src={{imageUrl}} width="90%" height= "50%">
     <p>{{item.name}}</p>
     <p>{{item.brand}}</p>
     <p>€{{item.price}}</p>
 
-    
+   <!-- 
     <button *ngIf="saved === false" (click)="saveItem(item.itemId)">Save Item</button>
     <button *ngIf="saved === true" (click)="unsaveItem(item.itemId)">Unsave Item</button>
+   -->
 
-
-    <!--<button *ngIf="saved" (click)="unsaveItem(item.itemId)">Unsave</button>
-    <button *ngIf="!saved" (click)="saveItem(item.itemId)">Save</button>-->
-
+    
   </div>
-  </a>
+ 
 </div>
 

@@ -1,0 +1,14 @@
+<div class="row">
+  <form>
+    <input type="file" (change)="onFileSelected($event)">
+
+    <input [(ngModel)]="post.postInfo" name="postInfo" type=text placeholder="Enter post caption" /><br>
+
+    <button (click)="submit()">Submit</button>
+  </form>
+
+  <div *ngIf="resp!=null">
+      <a [routerLink]="['/vestimonial/add', returnedPost.postId]">Add new vestimonial</a>
+     <!-- <a [routerLink]="['/vestimonial/add', returnedPost.postId]"></a>-->
+  </div>
+</div>

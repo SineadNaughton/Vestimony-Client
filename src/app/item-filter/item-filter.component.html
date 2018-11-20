@@ -1,36 +1,78 @@
 <div class="row">
-  <form>
-  
-      <div class="form-group">
-          <label for="brands">Options:</label>
-          <div *ngFor="let brand of brands; ">
-              <label>
-                  <input type="checkbox"
-                         name="{{brand.name}}"
-                         checked="{{brand.checked}}"
-                         [(ngModel)]="brand.checked"/>
-                  {{brand.name}} 
-              </label>
-          </div>
-      </div>
+    <form>
+            <div class="form-group">
+                    <div >
+                        <label>Search
+                        <input [(ngModel)]="searchName" name="search" placeholder="Enter product name" type=text >
+                        </label>
+                    </div>
+                </div>
+
+                {{brands1 | json}}
+
+        <div class="form-group">
+            <div *ngFor="let brand of brands1; let i = index ; ">
+                <img src="/assets/img/{{brand.logo}}" width="15%" (click)="onSelectBrand(brand)" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div *ngFor="let category of categories1; let i = index ; ">
+                <img src="/assets/img/{{category.logo}}" width="15%" (click)="onSelectCat(category)" />
+            </div>
+        </div>
 
 
+        <!--  {{brands | json}}
+        <div class="form-group">
+            <div *ngFor="let brand of brands; ">
+                <label>
+                    <input type="checkbox" name="{{brand.name}}" checked="{{brand.checked}}" [(ngModel)]="brand.checked" />
+                    {{brand.name}}
+                </label>
+            </div>
+        </div> -->
+
+        <!--   {{categories | json}}
       <div class="form-group">
         <label for="categories">Options:</label>
         <div *ngFor="let category of categories; let i = index ; ">
             <label>
                 <input type="checkbox"
-               
-                (change)='onSelect($event)'
+                
                        name="{{category.name}}"
                        checked="{{category.checked}}"
                        [(ngModel)]="category.checked"/>
                 {{category.name}} 
+                {{index}}
             </label>
         </div>
-    </div>
+    </div> -->
 
-    <button (click)="submitFilter()">Get My Items</button>
+        <button (click)="submitFilter()">Get My Items</button>
 
-  </form>
+    </form>
+
+    <!--<form>
+        <form-group>
+                <select *ngFor="let colour of colours;">
+                        <option [value]={{colour}}>{{colour}}}</option>
+                      </select>
+        </form-group>
+    </form>-->
+
+    <form>
+        <select>
+            <option (click)="sortNewest()">Newest</option>
+            <option (click)="sortPriceDesc()">Price high-low</option>
+            <option (click)="sortPriceAsc()">Price low-high</option>
+        </select>
+    </form>
+
+
+   
+
+
+
+    <app-item-tile-list [items]="items"></app-item-tile-list>
 </div>

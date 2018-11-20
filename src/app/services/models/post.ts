@@ -8,6 +8,8 @@ export class Post {
     numLikes: number;
     createdDateTime: Date;
     vestimonials: Vestimonial[];
+    likes: ApplicationUser[];
+    
 
  
 

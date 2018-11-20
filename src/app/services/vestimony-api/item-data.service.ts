@@ -15,6 +15,18 @@ export class ItemDataService {
 
   constructor(private http: HttpClient) { }
 
+  async getFilteredItemData(brand: string, category:string, name: string){
+    const itemRequest = this.http.get<Item[]>("http://localhost:8080/vestimony/items/filter?brand="+brand+"&category="+category+"&name="+name, { headers : this.headers });
+    const itemResponse = await itemRequest.toPromise();
+    return itemResponse;
+  }
+
+  async getNewest() {
+    const itemRequest = this.http.get<Item[]>("http://localhost:8080/vestimony/items/new", { headers : this.headers });
+    const itemResponse = await itemRequest.toPromise();
+    return itemResponse;
+  }
+
   async getItemData() {
     const itemRequest = this.http.get<Item[]>("http://localhost:8080/vestimony/items", { headers : this.headers });
     const itemResponse = await itemRequest.toPromise();

@@ -11,6 +11,8 @@ import { ProfileDisplayComponent } from './profile-display/profile-display.compo
 import { RegisterComponent } from './register/register.component';
 import { UserAccountComponent } from './user-account/user-account.component';
 import { UserAccountEditComponent } from './user-account-edit/user-account-edit.component';
+import { PostCreationComponent } from './post-creation/post-creation.component';
+import { VestimonialAddComponent } from './vestimonial-add/vestimonial-add.component';
 
 const routes: Route[] = [
   //this will redirect to home if there is nothing after the - not sure what pathmathch does
@@ -25,6 +27,9 @@ const routes: Route[] = [
   { path: 'register', component: RegisterComponent },
   { path: 'account', component: UserAccountComponent },
   { path: 'account/edit', component: UserAccountEditComponent },
+  { path: 'createpost', component: PostCreationComponent },
+  { path: 'vestimonial/add/:id', component: VestimonialAddComponent },
+  
 
   //wildcardpath
   { path: '**', component: PageNotFoundComponent }

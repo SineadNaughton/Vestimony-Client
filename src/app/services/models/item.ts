@@ -11,6 +11,8 @@ export class Item {
     sizeAdjustment: number;
     numReviews: number;
     createdDateTime: Date;
+    isSaved: boolean;
+    isInView: boolean;
 
 
 

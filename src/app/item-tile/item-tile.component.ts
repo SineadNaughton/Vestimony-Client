@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../services/models/item';
 import { ItemDataService } from '../services/vestimony-api/item-data.service';
 
@@ -11,11 +11,13 @@ import { ItemDataService } from '../services/vestimony-api/item-data.service';
 export class ItemTileComponent implements OnInit {
 
   @Input() item: Item;
+  @Output() itemChange = new EventEmitter<Item>();
   @Input() index: number;
-  saved: boolean;
+  
+
   imageUrl: string;
   savedResponse: any;
-  isInView: boolean = false;
+  
   
 
 
@@ -26,27 +28,31 @@ export class ItemTileComponent implements OnInit {
   async ngOnInit() {
 
     if(this.index < 4){
-      this.isInView=true;
+      this.item.isInView=true;
+    }
+    else{
+      this.item.isInView = false;
     }
     
     this.imageUrl = "http://localhost:8080/vestimony/items/image/" + this.item.itemId;
-    this.saved = await this.itemDataService.isSaved(this.item.itemId);
+    this.item.isSaved = await this.itemDataService.isSaved(this.item.itemId);
+    //this.itemChange.emit(this.item);
   }
 
   async saveItem(itemId: number) {
     this.savedResponse = await this.itemDataService.saveItem(this.item.itemId);
-    this.saved = true;
+    this.item.isSaved = true;
+    this.itemChange.emit(this.item);
   }
 
   async unsaveItem(itemId: number) {
     this.savedResponse = await this.itemDataService.unsaveItem(this.item.itemId);
-    this.saved = false;
+    this.item.isSaved = false;
+    this.itemChange.emit(this.item);
   }
 
   inview(event){
-    console.log(event);
-    //
-    this.isInView = this.isInView || !event.isOutsideView;
+    this.item.isInView = this.item.isInView || !event.isOutsideView;
   }
 
 }

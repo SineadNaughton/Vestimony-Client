@@ -15,6 +15,26 @@ export class PostDataService {
 
   constructor(private http: HttpClient) { }
 
+  //CREATE 
+  async createPost(post:Post) {
+    const postRequest = this.http.post<Post>("http://localhost:8080/vestimony/posts", post, { headers: this.headers });
+    const postResponse = await postRequest.toPromise();
+    return postResponse;
+  }
+
+  //CREATE POST IMAGE
+  async createPostImage(file: File, postId: number) {
+
+    let fd: FormData = new FormData();
+    fd.append('file', file);
+
+    const imgheaders = new HttpHeaders()
+      .set('Authorization', localStorage.getItem('access_token'));
+    const postRequest = this.http.post("http://localhost:8080/vestimony/posts/image/"+postId, fd, { headers: imgheaders, responseType:'text' });
+    const postResponse = await postRequest.toPromise();
+    return postResponse;
+  }
+
   //GET POSTS FOLLOWING
   async getPostData() {
     const followingPostsRequest = this.http.get<Post[]>("http://localhost:8080/vestimony/follow", { headers: this.headers });

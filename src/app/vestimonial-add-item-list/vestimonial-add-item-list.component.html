@@ -1,0 +1,17 @@
+<div class="container">
+
+    <div class="row">
+      <div class="col-6" *ngFor="let item of items; let i = index;">
+        <a [routerLink]="['/items', item.itemId]">
+          <app-item-tile [index]="i" [item]="item">
+          </app-item-tile>
+        </a>
+        <div *ngIf="item.isInView === true">
+          <button *ngIf="item.isSaved === false" (click)="saveItem(item)">Save Item</button>
+          <button *ngIf="item.isSaved === true" (click)="unsaveItem(item)">Unsave Item</button>
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>

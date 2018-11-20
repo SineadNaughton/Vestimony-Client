@@ -12,7 +12,8 @@ export class NavMenuComponent implements OnInit {
     {linkName: 'Register', url: 'register'},
     {linkName: 'Search', url: 'search'},
     {linkName: 'Saved', url: 'saved'},
-    {linkName: 'Account', url: 'account'}
+    {linkName: 'Account', url: 'account'},
+    {linkName: 'AddPost', url: 'createpost'}
     
   ]
 
