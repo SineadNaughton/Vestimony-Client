@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VestimonialAddItemListComponent } from './vestimonial-add-item-list.component';
+import { ItemAddVestimonialListComponent } from './item-add-vestimonial-list.component';
 
 describe('VestimonialAddItemListComponent', () => {
-  let component: VestimonialAddItemListComponent;
-  let fixture: ComponentFixture<VestimonialAddItemListComponent>;
+  let component: ItemAddVestimonialListComponent;
+  let fixture: ComponentFixture<ItemAddVestimonialListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VestimonialAddItemListComponent ]
+      declarations: [ ItemAddVestimonialListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VestimonialAddItemListComponent);
+    fixture = TestBed.createComponent(ItemAddVestimonialListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

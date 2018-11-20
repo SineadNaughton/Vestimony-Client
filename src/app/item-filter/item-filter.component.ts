@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ItemDataService } from '../services/vestimony-api/item-data.service';
 import { Item } from '../services/models/item';
 import { ItemBrand } from '../services/models/ItemBrand';
@@ -17,6 +17,8 @@ export class ItemFilterComponent implements OnInit {
   index: number;
   topshop: ItemBrand = new ItemBrand('Topshop', 'topshop', "topshop-1-logo-png-transparent.png", false);
   asos: ItemBrand = new ItemBrand('asos', 'asos', "asos-png-10-student-discount-480.png", false);
+  @Input() addVestimonial: boolean;
+  @Input() postId: number;
 
   jeans: ItemCategory = new ItemCategory('Jeans', 'jeans', "jeans.jpg", false);
   outerwear: ItemCategory = new ItemCategory('Outerwear', 'coat', "Coat.png", false);
@@ -31,25 +33,8 @@ export class ItemFilterComponent implements OnInit {
     this.outerwear,
     this.top
   ]
-  brands = [
-    { name: 'Topshop', value: 'Topshop', checked: false },
-    { name: 'ASOS', value: 'ASOS', checked: false },
-    { name: 'NewLook', value: 'NewLook', checked: false }
-  ]
 
-  categories = [
-    { name: 'Top', value: 'top', checked: false },
-    { name: 'Coat', value: 'coat', checked: false },
-    { name: 'Trouser', value: 'trouser', checked: false }
-  ]
-
-
-
-  constructor(private itemDataService: ItemDataService) {
-
-
-
-  }
+  constructor(private itemDataService: ItemDataService) {}
 
   async ngOnInit() {
     this.items = await this.itemDataService.getNewest();

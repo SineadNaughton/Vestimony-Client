@@ -8,7 +8,7 @@
   </form>
 
   <div *ngIf="resp!=null">
-      <a [routerLink]="['/vestimonial/add', returnedPost.postId]">Add new vestimonial</a>
-     <!-- <a [routerLink]="['/vestimonial/add', returnedPost.postId]"></a>-->
+    <a [routerLink]="['/vestimonial/add', returnedPost.postId]">Add new vestimonial</a>
+    <a [routerLink]="['/vestimonial/link', returnedPost.postId]">Link an existing vestimonial</a>
   </div>
 </div>

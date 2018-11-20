@@ -3,12 +3,15 @@ import { Item } from '../services/models/item';
 import { ItemDataService } from '../services/vestimony-api/item-data.service';
 
 @Component({
-  selector: 'app-vestimonial-add-item-list',
-  templateUrl: './vestimonial-add-item-list.component.html',
-  styleUrls: ['./vestimonial-add-item-list.component.scss']
+  selector: 'app-item-add-vestimonial-list',
+  templateUrl: './item-add-vestimonial-list.component.html',
+  styleUrls: ['./item-add-vestimonial-list.component.scss']
 })
-export class VestimonialAddItemListComponent implements OnInit {
+export class ItemAddVestimonialListComponent implements OnInit {
   @Input() items: Item[];
+  @Input() postId: number;
+  
+  
   
   constructor(private itemDataService: ItemDataService) { }
 

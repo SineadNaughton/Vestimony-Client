@@ -1,0 +1,58 @@
+<form>
+  <div class="form-group">
+    Comments<input type=text [(ngModel)]="vestimonial.comments" name="comments"/>
+  </div>
+
+  <div class="form-group">
+    <label for="">Size Bought</label>
+    <select name="sizeBought" [(ngModel)]="vestimonial.sizeBought">
+        <option value=4>4 uk</option>
+        <option value=6>6 uk</option>
+        <option value=8>8 uk</option>
+        <option value=10>10 uk</option>
+        <option value=12>12 uk</option>
+        <option value=14>14 uk</option>
+        <option value=16>16 uk</option>
+        <option value=18>18 uk</option>
+        <option value=20>20 uk</option>
+        <option value=22>22 uk</option>
+        <option value=24>24 uk</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+      <label for="">Usual Size</label>
+      <select name="usualSize" [(ngModel)]="vestimonial.usualSize">
+          <option value=4>4 uk</option>
+          <option value=6>6 uk</option>
+          <option value=8>8 uk</option>
+          <option value=10>10 uk</option>
+          <option value=12>12 uk</option>
+          <option value=14>14 uk</option>
+          <option value=16>16 uk</option>
+          <option value=18>18 uk</option>
+          <option value=20>20 uk</option>
+          <option value=22>22 uk</option>
+          <option value=24>24 uk</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+        <label for="">Rating</label>
+        <select name="rating" [(ngModel)]="vestimonial.rating">
+            <option value=1>1 uk</option>
+            <option value=2>2 uk</option>
+            <option value=3>3 uk</option>
+            <option value=4>4 uk</option>
+            <option value=5>5 uk</option>
+        </select>
+      </div>
+
+      <button (click)="submit()" >Submit Vestimonial</button>
+      <button (click)="submitAndLinkAnother()" >Submit and Link Another Vestimonial</button>
+      <button (click)="submitAndCreateAnother()" >Submit and Create Another Vestimonial</button>
+
+      response: {{resp}}
+
+  
+</form>

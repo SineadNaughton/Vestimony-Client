@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-vestimonial-add',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vestimonial-add.component.scss']
 })
 export class VestimonialAddComponent implements OnInit {
+addVestimonial: boolean = true;
+postId: Number;
 
-  constructor() { }
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.postId = this.route.snapshot.params.id;
+
   }
 
 }
