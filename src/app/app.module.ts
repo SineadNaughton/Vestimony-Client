@@ -49,8 +49,12 @@ import { PostCreationComponent } from './post-creation/post-creation.component';
 import { VestimonialAddComponent } from './vestimonial-add/vestimonial-add.component';
 import { ItemAddVestimonialListComponent } from './item-add-vestimonial-list/item-add-vestimonial-list.component';
 import { VestimonialAddReviewComponent } from './vestimonial-add-review/vestimonial-add-review.component';
+import { VestimonialDataService } from './services/vestimony-api/vestimonial-data.service';
 import { VestimonialLinkComponent } from './vestimonial-link/vestimonial-link.component';
 import { VestimonialLinkConfirmComponent } from './vestimonial-link-confirm/vestimonial-link-confirm.component';
+
+
+
 
 
 
@@ -96,7 +100,8 @@ export function tokenGetter() {
     ItemAddVestimonialListComponent,
     VestimonialAddReviewComponent,
     VestimonialLinkComponent,
-    VestimonialLinkConfirmComponent,
+    VestimonialLinkConfirmComponent
+
    
     
    
@@ -114,7 +119,7 @@ export function tokenGetter() {
       }
     }),
     NgInviewModule,
-    BrowserAnimationsModule    
+    BrowserAnimationsModule,  
   ],
   providers: [
     TruncatePipe,
@@ -124,7 +129,8 @@ export function tokenGetter() {
     JwtHelperService,
     CurrentUserDataService,
     ItemDataService,
-    ProfileDataService
+    ProfileDataService,
+    VestimonialDataService
 
   ],
   bootstrap: [AppComponent]

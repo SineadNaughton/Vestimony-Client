@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Vestimonial } from '../services/models/vestimonial';
 import { VestimonialDataService } from '../services/vestimony-api/vestimonial-data.service';
 
+
+
+
+
 @Component({
   selector: 'app-vestimonial-link',
   templateUrl: './vestimonial-link.component.html',

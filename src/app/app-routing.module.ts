@@ -14,8 +14,12 @@ import { UserAccountEditComponent } from './user-account-edit/user-account-edit.
 import { PostCreationComponent } from './post-creation/post-creation.component';
 import { VestimonialAddComponent } from './vestimonial-add/vestimonial-add.component';
 import { VestimonialAddReviewComponent } from './vestimonial-add-review/vestimonial-add-review.component';
+
 import { VestimonialLinkComponent } from './vestimonial-link/vestimonial-link.component';
 import { VestimonialLinkConfirmComponent } from './vestimonial-link-confirm/vestimonial-link-confirm.component';
+
+
+
 
 const routes: Route[] = [
   //this will redirect to home if there is nothing after the - not sure what pathmathch does
@@ -33,11 +37,11 @@ const routes: Route[] = [
   { path: 'createpost', component: PostCreationComponent },
   { path: 'vestimonial/add/:id', component: VestimonialAddComponent},
    { path: 'vestimonial/add/review/:postId/:itemId', component: VestimonialAddReviewComponent },
-   { path: 'vestimonial/link/:id', component: VestimonialLinkComponent, 
-  children[
-    { path: 'confirm/:vestimonialId', component: VestimonialLinkConfirmComponent},
-  ]},
-   //{ path: 'vestimonial/link/confirm/:postId/:vestimonialId', component: VestimonialLinkConfirmComponent},
+   { path: 'vestimonial/link/:id', component: VestimonialLinkComponent}, 
+  //children: [
+   // { path: 'confirm/:vestimonialId', component: VestimonialLinkConfirmComponent, pathMatch:'full'},
+ // ]},
+   { path: 'vestimonial/link/confirm/:postId/:vestimonialId', component: VestimonialLinkConfirmComponent},
  
    
   

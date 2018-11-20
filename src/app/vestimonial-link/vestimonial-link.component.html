@@ -1,6 +1,7 @@
 <div class="row" *ngFor="let vestimonial of vestimonials;">
-  <a [routerLink]="['confirm/', vestimonial.vestimonialId]">
+  <a [routerLink]="['/vestimonial/link/confirm/', postId, vestimonial.vestimonialId]">
     <app-vestimonial-tile [vestimonial]="vestimonial">
     </app-vestimonial-tile>
   </a>
 </div>
+

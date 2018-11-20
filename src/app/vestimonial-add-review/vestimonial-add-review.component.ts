@@ -32,7 +32,7 @@ itemId: number;
   async submitAndLinkAnother(){
     this.resp = await this.vestimonialDataService.createVestimonial(this.vestimonial, this.postId, this.itemId);
     //redirect to list of links
-    this.router.navigate(['/home']);
+    this.router.navigate(['/vestimonial/link', this.postId]);
   }
 
   async submitAndCreateAnother(){

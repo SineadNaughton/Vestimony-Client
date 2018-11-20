@@ -24,4 +24,18 @@ export class VestimonialDataService {
     const vestimonialResponse = await vestimonialRequest.toPromise();
     return vestimonialResponse;
   }
+
+ 
+
+  async linkVestimonial(vestimonialId: number, postId: number){
+    const vestimonialRequest = this.http.get("http://localhost:8080/vestimony/vestimonials/"+vestimonialId+"/link/"+postId, { headers : this.headers, responseType: 'text' });
+    const vestimonialResponse = await vestimonialRequest.toPromise();
+    return vestimonialResponse;
+  }
+
+  async getVestimonial(vestimonialId: number){
+    const vestimonialRequest = this.http.get<Vestimonial>("http://localhost:8080/vestimony/vestimonials/"+vestimonialId, { headers : this.headers });
+    const vestimonialResponse = await vestimonialRequest.toPromise();
+    return vestimonialResponse;
+  }
 }
