@@ -1,5 +1,5 @@
 <div *ngIf="posts!=null">
-  <div class="row" *ngFor="let post of posts; let i = index;">
+  <div class="row postlist" *ngFor="let post of posts; let i = index;">
     <app-post-tile [post]="post" [index]="i" >
     </app-post-tile>
 

@@ -1,0 +1,38 @@
+.post-image-holder{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    background-color: grey;
+    justify-content: center;
+     
+}
+.post-image-holder img{
+    height: 100%;
+    display: flex;   
+}
+
+
+
+
+:host {
+    display: block;
+    width: 100%;
+  }
+
+  hearticon-holder{
+      margin-top: 15%;
+  }
+
+  .numLikes{
+    margin:1%;
+  }
+
+  .profile-icon{
+      float: left;
+      border-radius: 50%;
+      width: 30%;
+      margin: 5%;
+
+
+  }

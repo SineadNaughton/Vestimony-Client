@@ -1,10 +1,22 @@
 <div class="row">
-  <form>
-    <input type="file" (change)="onFileSelected($event)">
 
+  <form>
     <input [(ngModel)]="post.postInfo" name="postInfo" type=text placeholder="Enter post caption" /><br>
 
-    <button (click)="submit()">Submit</button>
+   
+
+
+
+
+    <input type="file" (change)="fileChangeEvent($event)" />
+
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+      [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+      (loadImageFailed)="loadImageFailed()"></image-cropper>
+
+    <img [src]="croppedImage" />
+
+    <button *ngIf="theFile!=null && post.postInfo!=null" (click)="submit()">Submit</button>
   </form>
 
   <div *ngIf="resp!=null">

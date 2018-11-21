@@ -46,7 +46,7 @@ import { VestimonialDataService } from './services/vestimony-api/vestimonial-dat
 import { VestimonialLinkComponent } from './vestimonial-link/vestimonial-link.component';
 import { VestimonialLinkConfirmComponent } from './vestimonial-link-confirm/vestimonial-link-confirm.component';
 import { PostTileListComponent } from './post-tile-list/post-tile-list.component';
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 
@@ -107,7 +107,8 @@ export function tokenGetter() {
       }
     }),
     NgInviewModule,
-    BrowserAnimationsModule,  
+    BrowserAnimationsModule, 
+    ImageCropperModule 
   ],
   providers: [
     TruncatePipe,
