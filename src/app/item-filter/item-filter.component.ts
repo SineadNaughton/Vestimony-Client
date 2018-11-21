@@ -15,6 +15,7 @@ export class ItemFilterComponent implements OnInit {
   category: string;
   items: Item[] = [];
   index: number;
+  
   topshop: ItemBrand = new ItemBrand('Topshop', 'topshop', "topshop-1-logo-png-transparent.png", false);
   asos: ItemBrand = new ItemBrand('asos', 'asos', "asos-png-10-student-discount-480.png", false);
   @Input() addVestimonial: boolean;

@@ -13,8 +13,8 @@
   <div class="row" *ngIf="saved">
     <div class="col-sm" align="center">
       <p> some saved content</p>
-      <app-user-saved-item-list></app-user-saved-item-list>
-      
+      <app-item-tile-list [items]="items"></app-item-tile-list>
+
     </div>
   </div>
 
@@ -22,9 +22,9 @@
   <div class="row" *ngIf="liked">
     <div class="col-sm" align="center">
       <p> some liked content</p>
-      <app-user-liked-post-list></app-user-liked-post-list>
+      <app-post-tile-list [posts]="posts"></app-post-tile-list>
     </div>
   </div>
 
-<!--end of page holder-->
+  <!--end of page holder-->
 </div>

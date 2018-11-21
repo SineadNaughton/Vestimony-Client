@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { TruncatePipe } from '../pipes/truncate.pipe';
 import { Post } from '../services/models/post';
@@ -13,6 +13,8 @@ import { ApplicationUser } from '../services/models/application-user';
 })
 export class PostTileComponent implements OnInit {
   @Input() post: Post;
+  @Input() index: number;
+  @Output() postChange = new EventEmitter<Post>();
   fullSummary: string;
   liked: boolean;
   likedResponse: any;
@@ -27,6 +29,14 @@ export class PostTileComponent implements OnInit {
   constructor(private truncatePipe: TruncatePipe, private postDataService: PostDataService) { }
 
   async ngOnInit() {
+
+    
+    if(this.index < 4){
+      this.post.isInView=true;
+    }
+    else{
+      this.post.isInView = false;
+    }
 
     if (this.post.postInfo != null) {
       this.fullSummary = this.post.postInfo;
@@ -64,6 +74,10 @@ export class PostTileComponent implements OnInit {
     this.likedResponse = await this.postDataService.unlikePost(postId);
     this.liked = false;
     console.log(this.liked);
+  }
+
+  inview(event){
+    this.post.isInView = this.post.isInView || !event.isOutsideView;
   }
 
 

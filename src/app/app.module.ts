@@ -13,7 +13,6 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { PostTileComponent } from './post-tile/post-tile.component';
-import { PostFollowingListComponent } from './post-following-list/post-following-list.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 
 //his
@@ -27,18 +26,12 @@ import { SearchComponent } from './search/search.component';
 import { ItemTileComponent } from './item-tile/item-tile.component';
 import { ItemTileListComponent } from './item-tile-list/item-tile-list.component';
 import { UserSavedLikedComponent } from './user-saved-liked/user-saved-liked.component';
-import { UserLikedPostListComponent } from './user-liked-post-list/user-liked-post-list.component';
-import { UserSavedItemListComponent } from './user-saved-item-list/user-saved-item-list.component';
 import { ItemDisplayComponent } from './item-display/item-display.component';
 import { ItemInfoBlockComponent } from './item-info-block/item-info-block.component';
-import { PostForItemListComponent } from './post-for-item-list/post-for-item-list.component';
 import { PostDisplayComponent } from './post-display/post-display.component';
 import { VestimonialTileComponent } from './vestimonial-tile/vestimonial-tile.component';
 import { ProfileDisplayComponent } from './profile-display/profile-display.component';
 import { ProfileDataService } from './services/vestimony-api/profile-data.service';
-import { PostForProfileListComponent } from './post-for-profile-list/post-for-profile-list.component';
-import { PostTrendingListComponent } from './post-trending-list/post-trending-list.component';
-import { ItemTopRatedListComponent } from './item-top-rated-list/item-top-rated-list.component';
 import { RegisterComponent } from './register/register.component';
 import { UserAccountComponent } from './user-account/user-account.component';
 import { UserAccountEditComponent } from './user-account-edit/user-account-edit.component';
@@ -52,6 +45,7 @@ import { VestimonialAddReviewComponent } from './vestimonial-add-review/vestimon
 import { VestimonialDataService } from './services/vestimony-api/vestimonial-data.service';
 import { VestimonialLinkComponent } from './vestimonial-link/vestimonial-link.component';
 import { VestimonialLinkConfirmComponent } from './vestimonial-link-confirm/vestimonial-link-confirm.component';
+import { PostTileListComponent } from './post-tile-list/post-tile-list.component';
 
 
 
@@ -74,23 +68,16 @@ export function tokenGetter() {
     PageNotFoundComponent,
     NavMenuComponent,
     PostTileComponent,
-    PostFollowingListComponent,
     TruncatePipe,
     ItemTileComponent,
     ItemTileListComponent,
     SearchComponent,
     UserSavedLikedComponent,
-    UserLikedPostListComponent,
-    UserSavedItemListComponent,
     ItemDisplayComponent,
     ItemInfoBlockComponent,
-    PostForItemListComponent,
     PostDisplayComponent,
     VestimonialTileComponent,
     ProfileDisplayComponent,
-    PostForProfileListComponent,
-    PostTrendingListComponent,
-    ItemTopRatedListComponent,
     RegisterComponent,
     UserAccountComponent,
     UserAccountEditComponent,
@@ -100,7 +87,8 @@ export function tokenGetter() {
     ItemAddVestimonialListComponent,
     VestimonialAddReviewComponent,
     VestimonialLinkComponent,
-    VestimonialLinkConfirmComponent
+    VestimonialLinkConfirmComponent,
+    PostTileListComponent
 
    
     

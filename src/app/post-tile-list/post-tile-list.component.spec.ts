@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserSavedItemListComponent } from './user-saved-item-list.component';
+import { PostTileListComponent } from './post-tile-list.component';
 
-describe('UserSavedItemListComponent', () => {
-  let component: UserSavedItemListComponent;
-  let fixture: ComponentFixture<UserSavedItemListComponent>;
+describe('PostTileListComponent', () => {
+  let component: PostTileListComponent;
+  let fixture: ComponentFixture<PostTileListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserSavedItemListComponent ]
+      declarations: [ PostTileListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserSavedItemListComponent);
+    fixture = TestBed.createComponent(PostTileListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

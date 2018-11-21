@@ -72,9 +72,12 @@
 
 
     <div *ngIf="addVestimonial">
-        <app-item-add-vestimonial-list [items]="items" [postId]="postId" ></app-item-add-vestimonial-list>
+        <app-item-add-vestimonial-list [items]="items" [postId]="postId"></app-item-add-vestimonial-list>
     </div>
     <div *ngIf="!addVestimonial">
         <app-item-tile-list [items]="items"></app-item-tile-list>
     </div>
+
+
+
 </div>

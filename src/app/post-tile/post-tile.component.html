@@ -1,19 +1,24 @@
-<div class="card">
-   
-  <div class="card-body">
-      <a [routerLink]="['/posts', post.postId]">
-    <img src="{{postImageUrl}}" height="200">
-    <h5 class="card-title">{{post.postCreatedUsername}}</h5>
-    <a href="#" ><p class="card-text" (click)="showFullSummary()">{{post.postInfo}}</p></a>
-  </a>
-    <p>{{post.numLikes}} likes</p>
-    <button *ngIf="liked === false" (click)="likePost(post.postId)">Like</button>
-    <button *ngIf="liked === true" (click)="unlikePost(post.postId)">Unlike</button>
-  </div>
-  <a [routerLink]="['/profiles', user.userId]">
-    <img src="{{profileImageUrl}}" height="20"/>
-    <h6>{{user.username}}</h6>
-    {{post.id}}
-  </a>
+<div in-view (inview)="inview($event)">
 
+  <div class="card" *ngIf="post.isInView">
+
+    <div class="card-body">
+      <a [routerLink]="['/posts', post.postId]">
+        <img src="{{postImageUrl}}" height="200">
+        <h5 class="card-title">{{post.postCreatedUsername}}</h5>
+        <a href="#">
+          <p class="card-text" (click)="showFullSummary()">{{post.postInfo}}</p>
+        </a>
+      </a>
+      <p>{{post.numLikes}} likes</p>
+      <button *ngIf="liked === false" (click)="likePost(post.postId)">Like</button>
+      <button *ngIf="liked === true" (click)="unlikePost(post.postId)">Unlike</button>
+    </div>
+    <a [routerLink]="['/profiles', user.userId]">
+      <img src="{{profileImageUrl}}" height="20" />
+      <h6>{{user.username}}</h6>
+      {{post.id}}
+    </a>
+
+  </div>
 </div>

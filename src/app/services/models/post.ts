@@ -9,6 +9,7 @@ export class Post {
     createdDateTime: Date;
     vestimonials: Vestimonial[];
     likes: ApplicationUser[];
+    isInView: boolean;
     
 
  

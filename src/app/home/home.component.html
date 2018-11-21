@@ -16,7 +16,7 @@
   <div class="row" *ngIf="following">
     <div class="col-sm" align="center">
       <p> some following content</p>
-      <app-post-following-list></app-post-following-list>
+      <app-post-tile-list [posts]="posts"></app-post-tile-list>
     </div>
   </div>
 
@@ -24,7 +24,7 @@
   <div class="row" *ngIf="trending">
     <div class="col-sm" align="center">
       <p> some trending content</p>
-      <app-post-trending-list></app-post-trending-list>
+      <app-post-tile-list [posts]="posts"></app-post-tile-list>
     </div>
   </div>
 
@@ -32,7 +32,7 @@
     <div class="row" *ngIf="topItems">
         <div class="col-sm" align="center">
           <p> some top rated items</p>
-          <app-item-top-rated-list></app-item-top-rated-list>
+          <app-item-tile-list [items]="items"></app-item-tile-list>
         </div>
       </div>
 

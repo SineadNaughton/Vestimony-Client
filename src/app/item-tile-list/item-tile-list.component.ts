@@ -17,7 +17,7 @@ export class ItemTileListComponent implements OnInit {
   constructor(private itemDataService: ItemDataService) { }
 
   async ngOnInit() {
-    this.items = await this.itemDataService.getItemData();
+  //  this.items = await this.itemDataService.getItemData();
   
   }
 
