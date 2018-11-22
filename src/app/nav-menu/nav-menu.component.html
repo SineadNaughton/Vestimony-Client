@@ -1,15 +1,37 @@
 
-
+<!--
 <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-    
+    <ul class="navbar-nav list-inline">
+        <li class="nav-item" *ngFor="let route of routes">
+            <a class="nav-link" [routerLink]="route.url">{{route.linkName}}</a>
+        </li>
+    </ul>
+</nav>
+-->
+
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark ">
+
 
     <!-- Links -->
-    
-        <ul class="navbar-nav list-inline">
-            <li class="nav-item" *ngFor="let route of routes" >
-                <a class="nav-link" [routerLink]="route.url">{{route.linkName}}</a>
-            </li>
 
-        </ul>
-   
+    <ul class="navbar-nav list-inline nav-fill w-100">
+        <li class="nav-item">
+            <a class="nav-link" routerLink='/home' routerLinkActive="active"><i class="fas fa-home fa-2x"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink='/search' routerLinkActive="active"><i class="fas fa-search fa-2x"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink='/saved' routerLinkActive="active"><i class="fas fa-heart fa-2x"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink='account' routerLinkActive="active" ><i class="fas fa-user fa-2x"></i></a>
+        </li>
+        <li class="nav-item">
+                <a class="nav-link" routerLink='createpost' routerLinkActive="active"><i class="fas fa-plus-square fa-2x"></i></a>
+        </li>
+
+    </ul>
+
 </nav>
+
