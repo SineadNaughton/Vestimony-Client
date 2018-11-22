@@ -18,6 +18,8 @@ export class ProfileDisplayComponent implements OnInit {
   following: boolean;
   response: string;
   posts: Post[] = [];
+  numPosts: number;
+  profileDisplay: boolean = true;
 
 
   constructor(private profileDataService: ProfileDataService, private route: ActivatedRoute, private postDataService: PostDataService) { }
@@ -25,20 +27,22 @@ export class ProfileDisplayComponent implements OnInit {
   async ngOnInit() {
     this.userId = this.route.snapshot.params.id;
     this.user = await this.profileDataService.getProfile(this.userId);
-    this.posts =  await this.postDataService.getPostDataForProfile(this.userId);
-    this.profileImageUrl = "http://localhost:8080/vestimony/users/image/"+this.userId;
+    this.posts = await this.postDataService.getPostDataForProfile(this.userId);
+    this.profileImageUrl = "http://localhost:8080/vestimony/users/image/" + this.userId;
     this.following = await this.profileDataService.isFollowing(this.userId);
-
+    this.numPosts = this.posts.length;
   }
 
-  async follow(){
+  async follow() {
     this.response = await this.profileDataService.follow(this.userId);
     this.following = true;
   }
 
-  async unfollow(){
+  async unfollow() {
     this.response = await this.profileDataService.unfollow(this.userId);
     this.following = false;
   }
+
+  
 
 }

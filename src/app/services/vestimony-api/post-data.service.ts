@@ -51,7 +51,7 @@ export class PostDataService {
 
   //GET POSTS FOR A PROFILE
   async getPostDataForProfile(userId: number) {
-    const postsRequest = this.http.get<Post[]>("http://localhost:8080/vestimony/users/" + userId + "/posts", { headers: this.headers });
+    const postsRequest = this.http.get<Post[]>("http://localhost:8080/vestimony/posts/" + userId + "/posts", { headers: this.headers });
     const postsResponse = await postsRequest.toPromise();
     return postsResponse;
   }

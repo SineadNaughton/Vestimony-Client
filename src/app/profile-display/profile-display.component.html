@@ -1,17 +1,43 @@
 <div class="row">
-  <div class="col">
-    <img src="{{profileImageUrl}}">
+
+  <div class="col-5 item-image-holder">
+    <img class="profile-image" src="{{profileImageUrl}}">
   </div>
-  <div class="col">
-    <p>{{user.username}}</p>
-    <p>Bio: {{user.bio}}</p>
-    <p>Height: {{user.height}}</p>
-    <p>Size on top: {{user.sizeTop}}</p>
-    <p>Size on bottom: {{user.sizeBottom}}</p>
-    <p>{{user.numFollowers}} followers</p>
-    <button *ngIf="following === false" (click)="follow()">Follow</button>
-    <button *ngIf="following === true" (click)="unfollow()">Unfollow</button>
-   
+
+  <div class="col-7">
+    <p class="username">{{user.username}}</p>
+    <p class="bio">{{user.bio}}</p>
+    <p class="stats-header">Stats:</p>
+    <div class="d-flex justify-content-start item-save-holder">
+      <i class="fas fa-ruler-vertical"></i>
+      <p class="height">Height: {{user.heightFeet}}' </p>
+      <p class="height">{{user.heightInches}}"</p>
+    </div>
+    <div class="d-flex justify-content-start ">
+      <i class="fas fa-ruler-vertical"></i>
+      <p class="size">Size Top: {{user.sizeTop}}</p>
+    </div>
+    <div class="d-flex justify-content-start ">
+      <i class="fas fa-ruler-vertical"></i>
+      <p class="size">Size Bottom: {{user.sizeBottom}}</p>
+    </div>
+  </div>
 </div>
 
-<app-post-tile-list class="row" [posts]="posts"></app-post-tile-list>
+<div class="d-flex flex-row justify-content-around ">
+  
+
+    <p class="numPosts">{{numPosts}} posts</p>
+    <div class="d-flex justify-content-end numFollowers">
+      <p >{{user.numFollowers}} followers</p>
+      <div *ngIf="following === false" (click)="follow()"><i class="far fa-user"></i></div>
+      <div *ngIf="following === true" (click)="unfollow()"><i class="fas fa-user"></i></div>
+    </div>
+  </div>
+
+
+
+
+
+
+<app-post-tile-list [posts]="posts"></app-post-tile-list>

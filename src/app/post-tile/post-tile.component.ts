@@ -40,7 +40,7 @@ export class PostTileComponent implements OnInit {
 
     if (this.post.postInfo != null) {
       this.fullSummary = this.post.postInfo;
-      this.post.postInfo = this.truncatePipe.transform(this.post.postInfo, 30);
+      this.post.postInfo = this.truncatePipe.transform(this.post.postInfo, 100);
     }
     else {
       this.fullSummary = "";
@@ -49,7 +49,6 @@ export class PostTileComponent implements OnInit {
     
 
     this.liked = await this.postDataService.isLiked(this.post.postId);
-    this.numLikes = this.post.numLikes;
     this.user = this.post.applicationUser;
     this.profileImageUrl = "http://localhost:8080/vestimony/users/image/"+this.user.userId;
     this.postImageUrl= "http://localhost:8080/vestimony/posts/image/"+this.post.postId;

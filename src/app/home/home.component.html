@@ -1,40 +1,33 @@
 <!--page holder-->
-<div class="container">
 
-  <!--trending/following selection holder-->
-  <div class="row">
-    <div class="col-sm" align="center">
-      <button class="btn btn-outline-dark" (click)="showHomeView('following')">Following</button>
-      <button class="btn btn-outline-dark" (click)="showHomeView('trending')">Trending</button>
-      <button class="btn btn-outline-dark" (click)="showHomeView('topItems')">Top Rated</button>
-    </div>
+
+<!--trending/following selection holder-->
+<div class="row">
+  <div class="col-sm" align="center">
+    <button class="btn btn-outline-dark" (click)="showHomeView('following')">Following</button>
+    <button class="btn btn-outline-dark" (click)="showHomeView('trending')">Trending</button>
+    <button class="btn btn-outline-dark" (click)="showHomeView('topItems')">Top Rated</button>
   </div>
+</div>
 
-  <p>{{email}}</p>
+<!--following - show posts-->
+<div class="row" *ngIf="following">
+  <p> some following content</p>
+  <app-post-tile-list [posts]="posts"></app-post-tile-list>
+</div>
 
-  <!--following - show posts-->
-  <div class="row" *ngIf="following">
-    <div class="col-sm" align="center">
-      <p> some following content</p>
-      <app-post-tile-list [posts]="posts"></app-post-tile-list>
-    </div>
-  </div>
+<!--trending - show items-->
+<div class="row" *ngIf="trending">
+  <p> some trending content</p>
+  <app-post-tile-list [posts]="posts"></app-post-tile-list>
+</div>
 
-  <!--trending - show items-->
-  <div class="row" *ngIf="trending">
-    <div class="col-sm" align="center">
-      <p> some trending content</p>
-      <app-post-tile-list [posts]="posts"></app-post-tile-list>
-    </div>
-  </div>
+<!--trending - show items-->
+<div class="row" *ngIf="topItems">
 
-    <!--trending - show items-->
-    <div class="row" *ngIf="topItems">
-        <div class="col-sm" align="center">
-          <p> some top rated items</p>
-          <app-item-tile-list [items]="items"></app-item-tile-list>
-        </div>
-      </div>
+  <p> some top rated items</p>
+  <app-item-tile-list [items]="items"></app-item-tile-list>
+
+</div>
 
 <!--end of page holder-->
-</div>

@@ -7,7 +7,7 @@ export class TruncatePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     //limit is how long th etruncated text should be
-    const limit = args.length > 0 ? parseInt(args[0], 10) : 20;
+    const limit = args.length > 0 ? parseInt(args[0], 10) : 50;
     //the dots to show the truncation
     const trail = args.length > 1 ? args[1] : '...';
     //return substring based on limit or the value

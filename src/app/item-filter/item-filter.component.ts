@@ -58,11 +58,11 @@ export class ItemFilterComponent implements OnInit {
   async submitFilter() {
     const filteredBrands = this.brands1.filter(b => b.selected === true);
     const filteredBrand = filteredBrands.length > 0 ? filteredBrands[0] : null;
-    this.brand = filteredBrand != null ? filteredBrand.value : null;
+    this.brand = filteredBrand === null ? "" :filteredBrand.value;
 
     const filteredCats = this.categories1.filter(c => c.selected === true);
     const filteredCat = filteredCats.length > 0 ? filteredCats[0] : null;
-    this.category = filteredCat != null ? filteredCat.value : null;
+    this.category = filteredCat === null ? "" :filteredCat.value;
 
     this.searchName = this.searchName === null ? "" : this.searchName;
 

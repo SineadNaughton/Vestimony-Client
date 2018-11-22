@@ -1,22 +1,23 @@
 <div in-view (inview)="inview($event)">
- <!-- <a [routerLink]="['/items', item.itemId]"> -->
-   
-  <div class="row" *ngIf="item.isInView">
-    <img src={{imageUrl}} width="90%" height= "50%">
-    <p>{{item.name}}</p>
-    <p>{{item.brand}}</p>
-    <p>€{{item.price}}</p><br>
-    <p>{{item.rating}}</p>
+  <!-- <a [routerLink]="['/items', item.itemId]"> -->
 
-    <p>ID: {{item.itemId}}</p>
+  <div *ngIf="item.isInView">
+    <div class="item-tile-image-holder d-flex align-items-center flex-column">
+      <img class="item-tile-image" src={{imageUrl}}>
+    </div>
+    <div class="d-flex flex-row justify-content-start">
+      <p class="item-tile-brand">{{item.brand}}</p>
+    </div>
+    <div class="d-flex flex-row justify-content-start">
+        <p class="item-tile-name">{{ (item.name.length>20)? (item.name | slice:0:20)+'..':(item.name) }}</p>
+        
+    </div>
+    <div class="d-flex flex-row justify-content-start">
+      <p class="item-tile-price flex-grow-1">€{{item.price}}</p>
+     
+    </div>
 
-   <!-- 
-    <button *ngIf="saved === false" (click)="saveItem(item.itemId)">Save Item</button>
-    <button *ngIf="saved === true" (click)="unsaveItem(item.itemId)">Unsave Item</button>
-   -->
 
-    
   </div>
- 
-</div>
 
+</div>

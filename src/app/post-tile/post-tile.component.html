@@ -2,45 +2,36 @@
 
   <div *ngIf="post.isInView">
 
-    <div>
-      <a [routerLink]="['/posts', post.postId]">
 
-        <div class="post-image-holder row">
-          <img src="{{postImageUrl}}">
-        </div>
+
+    <a [routerLink]="['/posts', post.postId]">
+      <div class="post-image-holder row d-flex justify-content-center">
+        <img src="{{postImageUrl}}">
+      </div>
+    </a>
+
+    <div class="d-flex justify-content-start">
+      <div class="flex-grow-1">
+        <p class="post-info" (click)="showFullSummary()">{{post.postInfo}}</p>
+      </div>
+
+      <p class="numLikes">{{post.numLikes}} likes</p>
+      <div class="post-like">
+       <div class="heart-holder" *ngIf="liked === false"><i class="far fa-heart hearticon-outline" (click)="likePost(post.postId)"></i></div> 
+       <div class="heart-holder" *ngIf="liked === true"> <i  class="fas fa-heart hearticon" (click)="unlikePost(post.postId)"></i></div> 
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-start profile-link-holder">
+      <a [routerLink]="['/profiles', user.userId]" class="flex-grow-1">
+        <img class="profile-icon" src="{{profileImageUrl}}" />
+        <p class="profile-name">{{user.username}} </p>
       </a>
-
-
-
-
-      <div class="d-flex justify-content-start profile-link-holder">
-        <a [routerLink]="['/profiles', user.userId]">
-
-          <img class="profile-icon" src="{{profileImageUrl}}" width="20%" />
-
-        </a>
-
-        <p class="flex-grow-1"> {{user.username}} </p>
-
-
-        <p class="numLikes">{{post.numLikes}}</p>
-
-        <div class="post-like">
-          <div class="hearticon-holder" *ngIf="liked === false"> <i class="far fa-heart fa-2x" (click)="likePost(post.postId)"></i></div>
-          <div class="hearticon-holder" *ngIf="liked === true"><i class="fas fa-heart fa-2x" (click)="unlikePost(post.postId)"></i></div>
-        </div>
-      </div>
-
-      <div>
-
-
-        <p class="d-flex justify-content-start" (click)="showFullSummary()">{{post.postInfo}}</p>
-      </div>
-
-
 
     </div>
 
-
   </div>
+
+
+
 </div>

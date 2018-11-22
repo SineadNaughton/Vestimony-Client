@@ -1,4 +1,43 @@
-<p>Review: {{vestimonial.comments}}</p>
-<p>Size Bought: {{vestimonial.sizeBought}}</p>
-<p >Item Name:{{item.name}}</p>
-<p>Rating: {{vestimonial.rating}}</p>
+<div class="card">
+    <div class="row">
+    <div class="col-5 item-image-holder">
+        <img class="item-image" src="{{itemImageUrl}}" />
+        <p class="item-brand">{{item.brand}}</p>
+        <p class="item-price">€{{item.price}}</p>
+        <p class="item-name">Item Name:{{item.name}}</p>
+        <div class="d-flex justify-content-start item-link-holder">
+            <!--buy button holder-->
+            
+                <a href="{{item.url}}"><button class="vest-button"><i class="fas fa-shopping-cart "></i></button></a>
+            
+           
+                <div *ngIf="item.isSaved === false" (click)="saveItem(item)"><button class="vest-button"><i class="fas fa-tshirt"></i></button></div>
+                <div *ngIf="item.isSaved === true" (click)="unsaveItem(item)"><button class="vest-button"><i class="fas fa-tshirt saved-item"></i></button></div>
+
+            
+        </div>
+    </div>
+    <div class="col-7 ">
+        <h6 class="vest-header">Vestimonial</h6>
+
+        <div class="d-flex justify-content-start">
+            <i class="fas fa-ruler fa-1.5x"></i>
+            <p class="vest-info">Size Bought: {{vestimonial.sizeBought}}</p>
+        </div>
+        <div class="d-flex justify-content-start">
+            <i class="fas fa-ruler fa-1.5x"></i>
+            <p class="vest-info">Usual Size: {{vestimonial.usualSize}}</p>
+        </div>
+
+        <div class="d-flex justify-content-start ">
+            <i class="far fa-star fa-1.5x"></i>
+            <p class="vest-info">Rating: {{vestimonial.rating}}</p>
+        </div>
+
+        <div class="d-flex justify-content-start ">
+            <i class="far fa-comment"></i>
+            <p class="vest-info">Review: {{vestimonial.comments}}</p>
+        </div>
+    </div>
+</div>
+</div>

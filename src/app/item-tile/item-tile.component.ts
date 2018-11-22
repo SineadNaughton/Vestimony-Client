@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../services/models/item';
 import { ItemDataService } from '../services/vestimony-api/item-data.service';
+import { TruncatePipe } from '../pipes/truncate.pipe';
 
 
 @Component({
@@ -17,11 +18,13 @@ export class ItemTileComponent implements OnInit {
 
   imageUrl: string;
   savedResponse: any;
+  fullName: string;
+
   
   
 
 
-  constructor(private itemDataService: ItemDataService) { 
+  constructor(private itemDataService: ItemDataService, private truncatePipe: TruncatePipe) { 
    
   }
 
@@ -37,6 +40,14 @@ export class ItemTileComponent implements OnInit {
     this.imageUrl = "http://localhost:8080/vestimony/items/image/" + this.item.itemId;
     this.item.isSaved = await this.itemDataService.isSaved(this.item.itemId);
     //this.itemChange.emit(this.item);
+
+    if (this.item.name != null) {
+      this.fullName = this.item.name;
+      this.item.name = this.truncatePipe.transform(this.item.name, 22);
+    }
+    else {
+      this.fullName = "";
+    }
   }
 
   async saveItem(itemId: number) {

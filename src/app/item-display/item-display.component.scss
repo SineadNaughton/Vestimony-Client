@@ -1,0 +1,49 @@
+.item-image{
+    width: 100%; 
+}
+
+item-image-holder{
+    border: solid lightgrey 1px;
+}
+.item-name{
+    color: black;
+    margin-bottom: 4%;
+    font-size: .8em;
+}
+
+.item-brand{
+    color: black;
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+.item-price{
+    font-size: .8em;
+    font-weight: bold;
+    margin-bottom: 2%;
+    padding-top: 2%;
+}
+.item-size-adjust{
+    font-size: .8em;
+    margin-left: 3%;
+}
+
+.saved-item{
+    color: aquamarine;
+}
+
+.item-numsaved{
+    font-size: small;
+    color: black;
+    margin-left: 3%;
+    
+}
+
+.item-rating{
+    font-size: small;
+    color: black;
+    margin-left: 3%;
+}
+
+.item-link-holder{
+    margin-top:10%;
+}

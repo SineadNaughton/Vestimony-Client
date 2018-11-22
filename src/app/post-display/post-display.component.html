@@ -1,11 +1,31 @@
-<div class="row">
-    <img src="{{imageUrl}}" height="300" />
+<div class="d-flex justify-content-start profile-link-holder">
+    <a [routerLink]="['/profiles', user.userId]" class="flex-grow-1">
+      <img class="profile-icon" src="{{profileImageUrl}}" />
+      <p class="profile-name">{{user.username}} </p>
+    </a>
+  </div>
+
+<a [routerLink]="['/posts', post.postId]">
+  <div class="post-image-holder row d-flex justify-content-center">
+    <img src="{{postImageUrl}}">
+  </div>
+</a>
+
+<div class="d-flex justify-content-start">
+  <div class="flex-grow-1">
+    <p class="post-info" (click)="showFullSummary()">{{post.postInfo}}</p>
+  </div>
+
+  <p class="numLikes">{{post.numLikes}} likes</p>
+  <div class="post-like">
+   <div class="heart-holder" *ngIf="liked === false"><i class="far fa-heart hearticon-outline" (click)="likePost(post.postId)"></i></div> 
+   <div class="heart-holder" *ngIf="liked === true"> <i  class="fas fa-heart hearticon" (click)="unlikePost(post.postId)"></i></div> 
+  </div>
 </div>
-<div class="row">
-  <p>{{post.postInfo}}</p>
-  <p>{{user.username}}</p>
-</div>
-<app-vestimonial-tile   *ngFor="let vestimonial of vestimonials"
+
+
+
+
+<app-vestimonial-tile *ngFor="let vestimonial of vestimonials"  
 [vestimonial]="vestimonial">
 </app-vestimonial-tile>
-

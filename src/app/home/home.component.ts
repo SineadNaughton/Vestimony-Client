@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     
-    this.showHomeView("following");
+    this.showHomeView("trending");
      this.currentUser = await this.currentUserData.getCurrentUser();
      this.email = this.currentUser.email;
      
