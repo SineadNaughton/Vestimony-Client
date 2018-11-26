@@ -34,7 +34,6 @@ import { ProfileDisplayComponent } from './profile-display/profile-display.compo
 import { ProfileDataService } from './services/vestimony-api/profile-data.service';
 import { RegisterComponent } from './register/register.component';
 import { UserAccountComponent } from './user-account/user-account.component';
-import { UserAccountEditComponent } from './user-account-edit/user-account-edit.component';
 import { NgInviewModule } from 'angular-inport';
 import { ItemFilterComponent } from './item-filter/item-filter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -80,7 +79,6 @@ export function tokenGetter() {
     ProfileDisplayComponent,
     RegisterComponent,
     UserAccountComponent,
-    UserAccountEditComponent,
     ItemFilterComponent,
     PostCreationComponent,
     VestimonialAddComponent,

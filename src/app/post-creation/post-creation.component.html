@@ -1,26 +1,30 @@
 <div class="row">
 
   <form>
+    <p class="form-label">Enter caption</p>
     <input [(ngModel)]="post.postInfo" name="postInfo" type=text placeholder="Enter post caption" /><br>
 
-   
-
-
-
-
+    <p class="form-label">Chose an image</p>
     <input type="file" (change)="fileChangeEvent($event)" />
+    <div class="image-cropper-holder">
 
-    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
-      [resizeToWidth]="500" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
-      (loadImageFailed)="loadImageFailed()"></image-cropper>
+      <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+        [resizeToWidth]="700" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+        (loadImageFailed)="loadImageFailed()"></image-cropper>
 
-    <img [src]="croppedImage" />
-
-    <button *ngIf="theFile!=null && post.postInfo!=null" (click)="submit()">Submit</button>
+    </div>
+    <div class="image-cropper-holder">
+      <img class="cropped" [src]="croppedImage" />
+    </div>
+    <div  class="d-flex flex-row justify-content-center">
+      <p *ngIf="theFile!=null && post.postInfo!=null && resp===null" class="link" (click)="submit()">Confirm post details</p>
+      <a *ngIf="resp!=null" class="link" [routerLink]="['/vestimonial/add', returnedPost.postId]">Add new vestimonial</a>
+    <a *ngIf="resp!=null" class="link" [routerLink]="['/vestimonial/link', returnedPost.postId]">Link an existing vestimonial</a>
+    </div>
   </form>
 
-  <div *ngIf="resp!=null">
-    <a [routerLink]="['/vestimonial/add', returnedPost.postId]">Add new vestimonial</a>
-    <a [routerLink]="['/vestimonial/link', returnedPost.postId]">Link an existing vestimonial</a>
+  <div *ngIf="resp!=null" class="d-flex flex-row justify-content-around">
+    <a class="link" [routerLink]="['/vestimonial/add', returnedPost.postId]">Add new vestimonial</a>
+    <a class="link" [routerLink]="['/vestimonial/link', returnedPost.postId]">Link an existing vestimonial</a>
   </div>
 </div>

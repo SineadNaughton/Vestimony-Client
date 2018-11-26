@@ -30,20 +30,13 @@ export class PostCreationComponent implements OnInit {
 
   async submit(){
     this.returnedPost = await this.postDataService.createPost(this.post);
-    
-    
-
-
     this.postId = this.returnedPost.postId;
     this.saveImage();
-    
   }
 
   async saveImage(){
 //this.resp = await this.postDataService.createPostImage(this.selectedFile, this.postId);
-
     this.resp = await this.postDataService.createPostImage(this.theFile, this.postId);
-
   }
 
   imageChangedEvent: any = '';

@@ -26,6 +26,20 @@ export class CurrentUserDataService {
 
   }
 
+  async editAccount(user: ApplicationUser){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('access_token')
+    });
+
+
+    const currentUser = this.http.put("http://localhost:8080/vestimony/users/edit", user, { headers, responseType:'text' });
+
+    const userResponse = await currentUser.toPromise();
+
+    return userResponse;
+  }
+
 
   async setProfileImage(profileImage: File) {
     let fd: FormData = new FormData();

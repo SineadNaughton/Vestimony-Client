@@ -1,32 +1,227 @@
-<div class="row">
-    <div class="col">
-        <a routerLink='/account/edit'>Update Profile Details</a>
-       <img src="{{profileImageUrl}}" onerror="this.style.display='none'">
-      <input  type="file" (change)="onFileSelected($event)">
-    </div>
-    <div class="col">
-      <p>{{user.username}}</p>
-      <p>Bio: {{user.bio}}</p>
-      <p>Height: {{user.height}}</p>
-      <p>Size on top: {{user.sizeTop}}</p>
-      <p>Size on bottom: {{user.sizeBottom}}</p>
-      <p>{{user.numFollowers}} followers</p>
-         
+<div class="d-flex flex-row justify-content-end">
+  <p class="editLinkText" (click)="logout()">Logout</p>
 </div>
-  
-  
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
-        <li routerLinkActive="active"><a routerLink="/user">User</a></li>
-        <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
-      </ul>
+<div class="row">
 
-      <ul class="nav navbar-nav navbar-right">
-        <p class="navbar-text" *ngIf="isAdminUser">You are admin!</p>
-        <p class="navbar-text" *ngIf="isUser">You are user!</p>
-        <li><button class="btn navbar-btn" (click)="logout()">Logout</button></li>
-      </ul>
+  <div class="col-5 item-image-holder">
+    <img class="profile-image" src="{{profileImageUrl}}">
+
+
+    <div class="d-flex flex-row justify-content-start">
+      <i class="far fa-comment-alt"></i>
+      <div class="d-flex flex-column align-items-center">
+
+        <p class="numPosts">{{numPosts}} posts</p>
+      </div>
     </div>
-  </nav>
+
+    <div class="d-flex flex-row justify-content-start">
+      <div class="d-flex flex-column align-items-end">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+
+        <p class="numFollowers">{{user.numFollowers}} </p>
+        <p class="numFollowers"> followers</p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="col-7">
+    <p class="username">{{user.username}}</p>
+    <p class="bio">{{user.bio}}</p>
+    <p class="stats-header">Stats:</p>
+    <div class="d-flex justify-content-start item-save-holder">
+      <i class="fas fa-ruler-vertical"></i>
+      <p class="height">Height: {{user.heightFeet}}' </p>
+      <p class="height">{{user.heightInches}}"</p>
+    </div>
+    <div class="d-flex justify-content-start ">
+      <i class="fas fa-ruler-vertical"></i>
+      <p class="size">Size Top: {{user.sizeTop}}</p>
+    </div>
+    <div class="d-flex justify-content-start ">
+      <i class="fas fa-ruler-vertical"></i>
+      <p class="size">Size Bottom: {{user.sizeBottom}}</p>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="showButton!=false">
+  <div class="d-flex flex-row justify-content-center editLinkHolder border">
+
+    <div class="d-flex flex-column align-items-center">
+      <i class="fas fa-cog"></i>
+      <p (click)="editAccountDropdown()" class="editLinkText">Edit Account Details</p>
+    </div>
+
+
+    <div class="d-flex flex-column align-items-center">
+      <i class="fas fa-camera"></i>
+      <p class="editLinkText" (click)="editImageDropdown()">Edit Profile Image</p>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+<div *ngIf="editImage">
+  <form>
+    <i class="fas fa-file-upload"></i><input type="file" (change)="fileChangeEvent($event)" />
+
+
+    <div class="image-cropper-holder">
+      <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+        [resizeToWidth]="700" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+        (loadImageFailed)="loadImageFailed()"></image-cropper>
+    </div>
+
+    <div class="image-cropper-holder">
+      <img class="cropped" [src]="croppedImage" />
+    </div>
+    <div class="d-flex flex-row justify-content-start">
+      <i class="fas fa-ban"></i>
+      <p class="editLinkText" (click)="cancelImage()">Cancel</p>
+    </div>
+
+    <div *ngIf="theFile!=null">
+      <i class="fas fa-save"></i>
+      <p class="editLinkText" (click)="submit()">Submit</p>
+    </div>
+
+  </form>
+</div>
+
+
+
+
+
+<!--registration card holder-->
+<div *ngIf="edit" class="row">
+  <div class="col-sm" align="center">
+    <div class="card">
+
+
+
+      <div class="card-body">
+        <h5 class="card-title">Edit Details</h5>
+        <form class="form">
+
+
+          <div class="form-group">
+            <label for="">Bio</label>
+            <input [(ngModel)]="user.bio" name="bio" type="text" class="form-control required">
+          </div>
+
+          <div class="form-group">
+            <label for="">Height Feet</label>
+            <select name="heightFeet" [(ngModel)]="user.heightFeet">
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+              <option value=5>5</option>
+              <option value=6>6</option>
+              <option value=7>7</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="">Height Inches</label>
+            <select name="heightInches" [(ngModel)]="user.heightInches">
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+              <option value=5>5</option>
+              <option value=6>6</option>
+              <option value=7>7</option>
+              <option value=8>8</option>
+              <option value=9>9</option>
+              <option value=10>10</option>
+              <option value=11>11</option>
+              <option value=12>12</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="">Size Top</label>
+            <select name="sizeTop" [(ngModel)]="user.sizeTop">
+              <option value=4>4 uk</option>
+              <option value=6>6 uk</option>
+              <option value=8>8 uk</option>
+              <option value=10>10 uk</option>
+              <option value=12>12 uk</option>
+              <option value=14>14 uk</option>
+              <option value=16>16 uk</option>
+              <option value=18>18 uk</option>
+              <option value=20>20 uk</option>
+              <option value=22>22 uk</option>
+              <option value=24>24 uk</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="">Size Bottom </label>
+            <select name="sizeBottom" [(ngModel)]="user.sizeBottom">
+              <option value=4>4 uk</option>
+              <option value=6>6 uk</option>
+              <option value=8>8 uk</option>
+              <option value=10>10 uk</option>
+              <option value=12>12 uk</option>
+              <option value=14>14 uk</option>
+              <option value=16>16 uk</option>
+              <option value=18>18 uk</option>
+              <option value=20>20 uk</option>
+              <option value=22>22 uk</option>
+              <option value=24>24 uk</option>
+            </select>
+          </div>
+
+          <div class="d-flex flex-row justify-content-around">
+            <div class="flex-column">
+              <i class="fas fa-save"></i>
+              <p (click)="saveChanges()" class="editLinkText">Update Changes</p>
+            </div>
+            <div class="flex-column">
+              <i class="fas fa-ban"></i>
+              <p (click)="abondonChanges()" class="editLinkText">Cancel</p>
+            </div>
+          </div>
+
+
+          <p>{{resp}}</p>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--end of page holder-->
+
+
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
+      <li routerLinkActive="active"><a routerLink="/user">User</a></li>
+      <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <p class="navbar-text" *ngIf="isAdminUser">You are admin!</p>
+      <p class="navbar-text" *ngIf="isUser">You are user!</p>
+    </ul>
+  </div>
+</nav>

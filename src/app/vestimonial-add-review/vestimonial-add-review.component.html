@@ -1,58 +1,104 @@
-<form>
-  <div class="form-group">
-    Comments<input type=text [(ngModel)]="vestimonial.comments" name="comments"/>
-  </div>
-
-  <div class="form-group">
-    <label for="">Size Bought</label>
-    <select name="sizeBought" [(ngModel)]="vestimonial.sizeBought">
-        <option value=4>4 uk</option>
-        <option value=6>6 uk</option>
-        <option value=8>8 uk</option>
-        <option value=10>10 uk</option>
-        <option value=12>12 uk</option>
-        <option value=14>14 uk</option>
-        <option value=16>16 uk</option>
-        <option value=18>18 uk</option>
-        <option value=20>20 uk</option>
-        <option value=22>22 uk</option>
-        <option value=24>24 uk</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-      <label for="">Usual Size</label>
-      <select name="usualSize" [(ngModel)]="vestimonial.usualSize">
-          <option value=4>4 uk</option>
-          <option value=6>6 uk</option>
-          <option value=8>8 uk</option>
-          <option value=10>10 uk</option>
-          <option value=12>12 uk</option>
-          <option value=14>14 uk</option>
-          <option value=16>16 uk</option>
-          <option value=18>18 uk</option>
-          <option value=20>20 uk</option>
-          <option value=22>22 uk</option>
-          <option value=24>24 uk</option>
-      </select>
+<div class="row">
+    <div class="col-6 item-image-holder">
+        <img class="item-image" src="{{imageUrl}}" />
     </div>
+    <div class="col-6">
+        <div class="d-flex justify-content-start item-save-holder">
+            <p class="item-brand flex-grow-1">{{item.brand}}</p>
+            <p class="item-price">€{{item.price}}</p>
+        </div>
+        <p class="item-name">{{item.name}}</p>
 
-    <div class="form-group">
-        <label for="">Rating</label>
-        <select name="rating" [(ngModel)]="vestimonial.rating">
-            <option value=1>1 uk</option>
-            <option value=2>2 uk</option>
-            <option value=3>3 uk</option>
-            <option value=4>4 uk</option>
-            <option value=5>5 uk</option>
-        </select>
-      </div>
+        <div class="d-flex justify-content-start ">
+            <i class="far fa-star fa-1.5x"></i>
+            <p class="item-rating">{{item.rating}} Stars</p>
+        </div>
 
-      <button (click)="submit()" >Submit Vestimonial</button>
-      <button (click)="submitAndLinkAnother()" >Submit and Link Another Vestimonial</button>
-      <button (click)="submitAndCreateAnother()" >Submit and Create Another Vestimonial</button>
+        <div class="d-flex justify-content-start">
+            <i class="fas fa-ruler fa-1.5x"></i>
+            <p class="item-size-adjust"> Buy {{sizeNumber}} sizes {{direction}}</p>
+        </div>
 
-      response: {{resp}}
+    </div>
+</div>
 
-  
-</form>
+
+
+<div class="d-flex flex-row justify-content-center">
+    <div class="d-flex flex-row justify-content-center form-holder">
+
+        <form>
+            <div class="d-flex flex-row justify-content-center">
+                <p>Give Vestimonial</p>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Comments</label>
+                <input class="comment-input" type=text [(ngModel)]="vestimonial.comments" name="comments" />
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex flex-row justify-content-center">
+                    <label class="form-label">Size Bought</label>
+                    <select class="ml-auto" name="sizeBought" [(ngModel)]="vestimonial.sizeBought">
+                        <option value=4>4 uk</option>
+                        <option value=6>6 uk</option>
+                        <option value=8>8 uk</option>
+                        <option value=10>10 uk</option>
+                        <option value=12>12 uk</option>
+                        <option value=14>14 uk</option>
+                        <option value=16>16 uk</option>
+                        <option value=18>18 uk</option>
+                        <option value=20>20 uk</option>
+                        <option value=22>22 uk</option>
+                        <option value=24>24 uk</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex flex-row justify-content-center">
+                    <label class="form-label">Usual Size</label>
+                    <select class="ml-auto" name="usualSize" [(ngModel)]="vestimonial.usualSize">
+                        <option value=4>4 uk</option>
+                        <option value=6>6 uk</option>
+                        <option value=8>8 uk</option>
+                        <option value=10>10 uk</option>
+                        <option value=12>12 uk</option>
+                        <option value=14>14 uk</option>
+                        <option value=16>16 uk</option>
+                        <option value=18>18 uk</option>
+                        <option value=20>20 uk</option>
+                        <option value=22>22 uk</option>
+                        <option value=24>24 uk</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex flex-row justify-content-center">
+                    <label class="form-label">Rating</label>
+                    <select class="ml-auto" name="rating" [(ngModel)]="vestimonial.rating">
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=4>4</option>
+                        <option value=5>5</option>
+                    </select>
+                </div>
+            </div>
+            <div *ngIf="vestimonial.comments!=null && vestimonial.usualSize!=null && vestimonial.sizeBought!=null && vestimonial.rating!= null && showSubmitBtn === true"
+                class="d-flex flex-column justify-content-center">
+                <p class="link border" (click)="submit()">Submit Vestimonial</p>
+                <p class="link border" (click)="submitAndLinkAnother()">Submit and Link Another Vestimonial</p>
+                <p class="link border" (click)="submitAndCreateAnother()">Submit and Create Another Vestimonial</p>
+            </div>
+            <div  *ngIf="showLinkBtn === true">
+                <p class="link border" (click)="linkInstead()">Link Existing Vestimonial</p>
+            </div>
+
+
+
+
+        </form>
+    </div>
+</div>

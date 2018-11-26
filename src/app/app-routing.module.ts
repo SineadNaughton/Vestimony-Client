@@ -10,7 +10,6 @@ import { PostDisplayComponent } from './post-display/post-display.component';
 import { ProfileDisplayComponent } from './profile-display/profile-display.component';
 import { RegisterComponent } from './register/register.component';
 import { UserAccountComponent } from './user-account/user-account.component';
-import { UserAccountEditComponent } from './user-account-edit/user-account-edit.component';
 import { PostCreationComponent } from './post-creation/post-creation.component';
 import { VestimonialAddComponent } from './vestimonial-add/vestimonial-add.component';
 import { VestimonialAddReviewComponent } from './vestimonial-add-review/vestimonial-add-review.component';
@@ -33,7 +32,6 @@ const routes: Route[] = [
   { path: 'profiles/:id', component: ProfileDisplayComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'account', component: UserAccountComponent },
-  { path: 'account/edit', component: UserAccountEditComponent },
   { path: 'createpost', component: PostCreationComponent },
   { path: 'vestimonial/add/:id', component: VestimonialAddComponent},
    { path: 'vestimonial/add/review/:postId/:itemId', component: VestimonialAddReviewComponent },
