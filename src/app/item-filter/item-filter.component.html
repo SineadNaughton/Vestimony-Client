@@ -1,83 +1,51 @@
-<div class="row">
-    <form>
-        <div class="form-group">
-            <div>
-                <label>Search
-                    <input [(ngModel)]="searchName" name="search" placeholder="Enter product name" type=text>
-                </label>
-            </div>
-        </div>
-
-        {{brands1 | json}}
-
-        <div class="form-group">
-            <div *ngFor="let brand of brands1; let i = index ; ">
-                <img src="/assets/img/{{brand.logo}}" width="15%" (click)="onSelectBrand(brand)" />
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div *ngFor="let category of categories1; let i = index ; ">
-                <img src="/assets/img/{{category.logo}}" width="15%" (click)="onSelectCat(category)" />
-            </div>
-        </div>
-
-
-        <!--  {{brands | json}}
-        <div class="form-group">
-            <div *ngFor="let brand of brands; ">
-                <label>
-                    <input type="checkbox" name="{{brand.name}}" checked="{{brand.checked}}" [(ngModel)]="brand.checked" />
-                    {{brand.name}}
-                </label>
-            </div>
-        </div> -->
-
-        <!--   {{categories | json}}
-      <div class="form-group">
-        <label for="categories">Options:</label>
-        <div *ngFor="let category of categories; let i = index ; ">
-            <label>
-                <input type="checkbox"
-                
-                       name="{{category.name}}"
-                       checked="{{category.checked}}"
-                       [(ngModel)]="category.checked"/>
-                {{category.name}} 
-                {{index}}
+<form>
+    <div class="form-group">
+        <div>
+            <label class="form-label">Search
+                <input [(ngModel)]="searchName" name="search" placeholder="Enter product name" type=text>
             </label>
         </div>
-    </div> -->
-
-        <button (click)="submitFilter()">Get My Items</button>
-
-    </form>
-
-    <!--<form>
-        <form-group>
-                <select *ngFor="let colour of colours;">
-                        <option [value]={{colour}}>{{colour}}}</option>
-                      </select>
-        </form-group>
-    </form>-->
-
-    <form>
-        <select>
-            <option (click)="sortNewest()">Newest</option>
-            <option (click)="sortPriceDesc()">Price high-low</option>
-            <option (click)="sortPriceAsc()">Price low-high</option>
-        </select>
-    </form>
-
-
-
-    <div *ngIf="addVestimonial">
-        <app-item-add-vestimonial-list [items]="items" [postId]="postId"></app-item-add-vestimonial-list>
     </div>
-    <div *ngIf="!addVestimonial">
-        <app-item-tile-list [items]="items"></app-item-tile-list>
+
+    <div class="form-group">
+        <p class="form-label">Filter by brand: <span *ngIf="brandSelection!=null">{{brandSelection.name}}</span></p>
+        <div class="d-flex flex-row justify-content-start align-items-center holder">
+            <div class="logo-holder" *ngFor="let brand of brands1; let i = index ;">
+                <img class="logo align-self-center" src="/assets/img/{{brand.logo}}" (click)="onSelectBrand(brand)" />
+            </div>
+        </div>
     </div>
 
 
+    <div class="form-group">
+        <p class="form-label">Filter by category: <span *ngIf="catSelection!=null">{{catSelection.name}}</span></p>
+        <div class="d-flex flex-row justify-content-start align-items-center holder">
+            <div class="logo-holder" *ngFor="let category of categories1; let i = index ; ">
+                <img class="align-self-center logo" src="/assets/img/item-category/{{category.logo}}" (click)="onSelectCat(category)" />
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+        <button class="result-button" (click)="submitFilter()">Get My Items</button>
+    </div>
 
+</form>
+
+<form class="d-flex flex-row justify-content-end">
+    <select class="sort form-label">
+        <option (click)="sortNewest()">Newest</option>
+        <option (click)="sortPriceDesc()">Price high-low</option>
+        <option (click)="sortPriceAsc()">Price low-high</option>
+    </select>
+</form>
+
+
+
+<div *ngIf="addVestimonial">
+    <p class="list-info">{{itemListinfo}}</p>
+    <app-item-add-vestimonial-list [items]="items" [postId]="postId"></app-item-add-vestimonial-list>
+</div>
+<div *ngIf="!addVestimonial">
+    <p class="list-info">{{itemListinfo}}</p>
+    <app-item-tile-list [items]="items"></app-item-tile-list>
 </div>

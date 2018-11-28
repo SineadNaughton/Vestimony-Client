@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   public email: string;
   items: Item[] = [];
   posts: Post[] = [];
+  
 
 
 

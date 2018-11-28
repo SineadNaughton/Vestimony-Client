@@ -3,6 +3,7 @@ import { ItemDataService } from '../services/vestimony-api/item-data.service';
 import { Item } from '../services/models/item';
 import { ItemBrand } from '../services/models/ItemBrand';
 import { ItemCategory } from '../services/models/ItemCategory';
+import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
 
 @Component({
   selector: 'app-item-filter',
@@ -15,43 +16,82 @@ export class ItemFilterComponent implements OnInit {
   category: string;
   items: Item[] = [];
   index: number;
+  itemListinfo: string;
+  brandSelection:ItemBrand;
+  catSelection: ItemCategory;
   
   topshop: ItemBrand = new ItemBrand('Topshop', 'topshop', "topshop-1-logo-png-transparent.png", false);
   asos: ItemBrand = new ItemBrand('asos', 'asos', "asos-png-10-student-discount-480.png", false);
+  newlook: ItemBrand = new ItemBrand('New Look', 'new look', "new-look_0.png", false);
+  dorothyperkins: ItemBrand = new ItemBrand('Dorothy Perkins', 'dorothy perkins', "dorothy-perkins-logo.jpg", false)
   @Input() addVestimonial: boolean;
   @Input() postId: number;
 
   jeans: ItemCategory = new ItemCategory('Jeans', 'jeans', "jeans.jpg", false);
-  outerwear: ItemCategory = new ItemCategory('Outerwear', 'coat', "Coat.png", false);
-  top: ItemCategory = new ItemCategory('Top', 'top', "top.jpg", false);
+  outerwear: ItemCategory = new ItemCategory('Outerwear', 'coat', "coat.jpg", false);
+  top: ItemCategory = new ItemCategory('Tops', 'top', "top.jpg", false);
+  dress: ItemCategory = new ItemCategory('Dresses', 'dress', "dress.jpg", false);
+  knitwear: ItemCategory = new ItemCategory('Knitwear', 'knitwear', "knitwear.jpg", false);
+  skirt: ItemCategory = new ItemCategory('Skirts', 'skirt', "skirt.jpg", false);
+  trouser: ItemCategory = new ItemCategory('Trousers', 'trouser', "trouser.jpg", false);
+  bag: ItemCategory = new ItemCategory('Bags', 'bag', "bag.jpg", false);
+  shoe: ItemCategory = new ItemCategory('Shoes', 'shoe', "heel.jpeg", false);
+  jumpsuit: ItemCategory = new ItemCategory('Jumpsuits and Playsuits', 'jumpsuit', "jumpsuit.jpg", false);
+  accessory: ItemCategory = new ItemCategory('Accessories', 'accessory', "hat.jpg", false);
 
   brands1: ItemBrand[] = [
     this.topshop,
-    this.asos
+    this.asos,
+    this.newlook,
+    this.dorothyperkins,
+    this.asos,
+    this.topshop,
+    this.asos,
   ]
   categories1: ItemCategory[] = [
     this.jeans,
     this.outerwear,
-    this.top
+    this.top,
+    this.dress,
+    this.knitwear,
+    this.skirt,
+    this.trouser,
+    this.jumpsuit,
+    this.bag,
+    this.shoe,
+    this.accessory
   ]
 
   constructor(private itemDataService: ItemDataService) {}
 
   async ngOnInit() {
     this.items = await this.itemDataService.getNewest();
+    this.itemListinfo = "Newly Added"
 
   }
 
   onSelectBrand(itemBrand: ItemBrand) {    
-    const selection = itemBrand;
-    this.brands1.forEach(b => b.selected = false);
-    selection.selected = true;
+    this.brandSelection = itemBrand;
+    if(this.brandSelection.selected===true){
+      this.brandSelection.selected = false;
+      this.brandSelection.name="";
+    }
+    else{
+      this.brands1.forEach(b => b.selected = false);
+      this.brandSelection.selected = true;
+    }
   }
 
   onSelectCat(itemCat: ItemCategory) {
-    const selection = itemCat;
-    this.categories1.forEach(b => b.selected = false);
-    selection.selected = true;
+    this.catSelection = itemCat;
+    if(this.catSelection.selected===true){
+      this.catSelection.selected = false;
+      this.catSelection.name="";
+    }
+    else{
+      this.categories1.forEach(b => b.selected = false);
+    this.catSelection.selected = true;
+    }
   }
 
 
@@ -67,6 +107,8 @@ export class ItemFilterComponent implements OnInit {
     this.searchName = this.searchName === null ? "" : this.searchName;
 
     this.items = await this.itemDataService.getFilteredItemData(this.brand, this.category, this.searchName);
+    this.itemListinfo = "Results"
+   
   }
 
   ngDoCheck() {

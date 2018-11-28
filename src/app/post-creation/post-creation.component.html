@@ -17,14 +17,11 @@
       <img class="cropped" [src]="croppedImage" />
     </div>
     <div  class="d-flex flex-row justify-content-center">
-      <p *ngIf="theFile!=null && post.postInfo!=null && resp===null" class="link" (click)="submit()">Confirm post details</p>
-      <a *ngIf="resp!=null" class="link" [routerLink]="['/vestimonial/add', returnedPost.postId]">Add new vestimonial</a>
-    <a *ngIf="resp!=null" class="link" [routerLink]="['/vestimonial/link', returnedPost.postId]">Link an existing vestimonial</a>
+      <button *ngIf="theFile!=null && post.postInfo!=null && resp===null" class="button-active" (click)="submit()">Confirm post details</button>
+      <button *ngIf="resp!=null" class="button-active" [routerLink]="['/vestimonial/add', returnedPost.postId]">Add new vestimonial</button>
+    <button *ngIf="resp!=null" class="button-active" [routerLink]="['/vestimonial/link', returnedPost.postId]">Link existing vestimonial</button>
     </div>
   </form>
 
-  <div *ngIf="resp!=null" class="d-flex flex-row justify-content-around">
-    <a class="link" [routerLink]="['/vestimonial/add', returnedPost.postId]">Add new vestimonial</a>
-    <a class="link" [routerLink]="['/vestimonial/link', returnedPost.postId]">Link an existing vestimonial</a>
-  </div>
+  
 </div>
