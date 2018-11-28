@@ -7,6 +7,7 @@ import { VestimonialDataService } from '../services/vestimony-api/vestimonial-da
 
 
 
+
 @Component({
   selector: 'app-vestimonial-link',
   templateUrl: './vestimonial-link.component.html',
@@ -15,13 +16,19 @@ import { VestimonialDataService } from '../services/vestimony-api/vestimonial-da
 export class VestimonialLinkComponent implements OnInit {
   postId: Number;
   vestimonials: Vestimonial[] = [];
+  linking: boolean;
+  linkChosen: boolean;
 
   constructor(private route: ActivatedRoute, private vestimonialDataService: VestimonialDataService) { }
 
   async ngOnInit() {
+    this.linking =true;
     this.postId = this.route.snapshot.params.id;
     this.vestimonials = await this.vestimonialDataService.getUsersVestimonial();
+    this.linkChosen =false;
 
   }
+
+
 
 }

@@ -7,9 +7,7 @@ export class AuthUserService {
   private _accessToken: string;
   private _isAdmin: boolean;
 
-  constructor(
-    private _jwtHelper: JwtHelperService
-  ) { }
+  constructor(private _jwtHelper: JwtHelperService) { }
 
   storeToken(accessToken: string) {    
     const decodedToken = this._jwtHelper.decodeToken(accessToken);

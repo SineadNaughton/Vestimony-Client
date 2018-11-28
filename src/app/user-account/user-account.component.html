@@ -1,34 +1,29 @@
+<!--log out link-->
 <div class="d-flex flex-row justify-content-end">
-  <p class="editLinkText" (click)="logout()">Logout</p>
+  <p class="form-label" (click)="logout()">Logout</p>
 </div>
-<div class="row">
 
+<!--user info-->
+<div class="row " id="account-holder">
   <div class="col-5 item-image-holder">
     <img class="profile-image" src="{{profileImageUrl}}">
-
-
     <div class="d-flex flex-row justify-content-start">
       <i class="far fa-comment-alt"></i>
       <div class="d-flex flex-column align-items-center">
-
-        <p class="numPosts">{{numPosts}} posts</p>
+        <p class="numFollowers">{{numPosts}}</p>
+        <p class="numFollowers"> posts</p>
       </div>
     </div>
-
     <div class="d-flex flex-row justify-content-start">
       <div class="d-flex flex-column align-items-end">
         <i class="fas fa-users"></i>
       </div>
       <div class="d-flex flex-column align-items-center">
-
         <p class="numFollowers">{{user.numFollowers}} </p>
         <p class="numFollowers"> followers</p>
       </div>
     </div>
-
   </div>
-
-
 
   <div class="col-7">
     <p class="username">{{user.username}}</p>
@@ -51,26 +46,21 @@
   </div>
 </div>
 
+<!--links to drop down edit profile image or edit account (links not shown if either is already dropped down)-->
 <div *ngIf="showButton!=false">
-  <div class="d-flex flex-row justify-content-center editLinkHolder border">
-
-    <div class="d-flex flex-column align-items-center">
-      <i class="fas fa-cog"></i>
-      <p (click)="editAccountDropdown()" class="editLinkText">Edit Account Details</p>
-    </div>
-
-
-    <div class="d-flex flex-column align-items-center">
-      <i class="fas fa-camera"></i>
-      <p class="editLinkText" (click)="editImageDropdown()">Edit Profile Image</p>
-    </div>
-
-
+  <div class="d-flex flex-row justify-content-center ">
+    <button (click)="editAccountDropdown()" class="button-active flex-fill"><i class="fas fa-cog"></i> Edit Account
+      Details</button>
+  </div>
+  <div class="d-flex flex-row justify-content-center ">
+    <button class="button-active flex-fill" (click)="editImageDropdown()"><i class="fas fa-camera"></i> Edit Profile
+      Image</button>
   </div>
 </div>
 
 
 
+<!--edit profile image-->
 <div *ngIf="editImage">
   <form>
     <i class="fas fa-file-upload"></i><input type="file" (change)="fileChangeEvent($event)" />
@@ -86,13 +76,11 @@
       <img class="cropped" [src]="croppedImage" />
     </div>
     <div class="d-flex flex-row justify-content-start">
-      <i class="fas fa-ban"></i>
-      <p class="editLinkText" (click)="cancelImage()">Cancel</p>
+      <button class="button-active" (click)="cancelImage()"><i class="fas fa-ban"></i> Cancel</button>
     </div>
 
     <div *ngIf="theFile!=null">
-      <i class="fas fa-save"></i>
-      <p class="editLinkText" (click)="submit()">Submit</p>
+      <button class="button-active" (click)="submit()"><i class="fas fa-save"></i> Submit</button>
     </div>
 
   </form>
@@ -102,7 +90,7 @@
 
 
 
-<!--registration card holder-->
+<!--edit account card holder-->
 <div *ngIf="edit" class="row">
   <div class="col-sm" align="center">
     <div class="card">
@@ -115,12 +103,12 @@
 
 
           <div class="form-group">
-            <label for="">Bio</label>
+            <label class="form-label">Bio</label>
             <input [(ngModel)]="user.bio" name="bio" type="text" class="form-control required">
           </div>
 
           <div class="form-group">
-            <label for="">Height Feet</label>
+            <label class="form-label">Height Feet</label>
             <select name="heightFeet" [(ngModel)]="user.heightFeet">
               <option value=2>2</option>
               <option value=3>3</option>
@@ -133,7 +121,7 @@
 
 
           <div class="form-group">
-            <label for="">Height Inches</label>
+            <label class="form-label">Height Inches</label>
             <select name="heightInches" [(ngModel)]="user.heightInches">
               <option value=1>1</option>
               <option value=2>2</option>
@@ -151,7 +139,7 @@
           </div>
 
           <div class="form-group">
-            <label for="">Size Top</label>
+            <label class="form-label">Size Top</label>
             <select name="sizeTop" [(ngModel)]="user.sizeTop">
               <option value=4>4 uk</option>
               <option value=6>6 uk</option>
@@ -168,7 +156,7 @@
           </div>
 
           <div class="form-group">
-            <label for="">Size Bottom </label>
+            <label class="form-label">Size Bottom </label>
             <select name="sizeBottom" [(ngModel)]="user.sizeBottom">
               <option value=4>4 uk</option>
               <option value=6>6 uk</option>
@@ -186,19 +174,12 @@
 
           <div class="d-flex flex-row justify-content-around">
             <div class="flex-column">
-              <i class="fas fa-save"></i>
-              <p (click)="saveChanges()" class="editLinkText">Update Changes</p>
+              <button (click)="saveChanges()" class="button-active"><i class="fas fa-save"></i> Save Changes</button>
             </div>
             <div class="flex-column">
-              <i class="fas fa-ban"></i>
-              <p (click)="abondonChanges()" class="editLinkText">Cancel</p>
+              <button (click)="abondonChanges()" class="button-active"><i class="fas fa-ban"></i> Cancel</button>
             </div>
           </div>
-
-
-          <p>{{resp}}</p>
-
-
         </form>
       </div>
     </div>
@@ -207,21 +188,4 @@
 <!--end of page holder-->
 
 
-
-
-
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav">
-      <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
-      <li routerLinkActive="active"><a routerLink="/user">User</a></li>
-      <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
-    </ul>
-
-    <ul class="nav navbar-nav navbar-right">
-      <p class="navbar-text" *ngIf="isAdminUser">You are admin!</p>
-      <p class="navbar-text" *ngIf="isUser">You are user!</p>
-    </ul>
-  </div>
-</nav>
+<app-post-tile-list [onProfile]="onProfile" [posts]="posts"></app-post-tile-list>

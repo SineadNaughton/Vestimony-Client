@@ -25,6 +25,12 @@ export class VestimonialDataService {
     return vestimonialResponse;
   }
 
+  async getItemVestimonials(itemId: number){
+    const vestimonialRequest = this.http.get<Vestimonial[]>("http://localhost:8080/vestimony/vestimonials/items/"+itemId, { headers : this.headers});
+    const vestimonialResponse = await vestimonialRequest.toPromise();
+    return vestimonialResponse;
+  }
+
  
 
   async linkVestimonial(vestimonialId: number, postId: number){

@@ -1,11 +1,14 @@
 <div class="card">
     <div class="row">
     <div class="col-5 item-image-holder">
-        <img class="item-image" src="{{itemImageUrl}}" />
-        <p class="item-brand">{{item.brand}}</p>
-        <p class="item-price">€{{item.price}}</p>
-        <p class="item-name">Item Name:{{item.name}}</p>
-        <div class="d-flex justify-content-start item-link-holder">
+        <img class="vestimonial-item-image" src="{{itemImageUrl}}" />
+        <p class="item-brand vest-item-info">{{item.brand}}</p>
+        <p class="item-price vest-item-info">€{{item.price}}</p>
+        <p class="item-name vest-item-info">{{item.name}}</p>
+
+
+
+        <div *ngIf="linking!=true" class="d-flex justify-content-start item-link-holder">
             <!--buy button holder-->
             
                 <a href="{{item.url}}"><button class="vest-button"><i class="fas fa-shopping-cart "></i></button></a>
@@ -37,6 +40,12 @@
         <div class="d-flex justify-content-start ">
             <i class="far fa-comment"></i>
             <p class="vest-info">Review: {{vestimonial.comments}}</p>
+        </div>
+
+        <div *ngIf="linking===true" class="d-flex justify-content-center item-link-holder">
+                <a [routerLink]="['/vestimonial/link/confirm/', postId, vestimonial.vestimonialId]">
+            <button class="button-active" >Link Vestimonial</button>
+            </a>
         </div>
     </div>
 </div>

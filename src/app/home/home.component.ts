@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
 
   following: boolean;
   trending: boolean;
-  topItems: boolean;
   currentUser: ApplicationUser;
   public email: string;
   items: Item[] = [];
@@ -40,25 +39,14 @@ export class HomeComponent implements OnInit {
     if (viewType==="following"){
       this.following = true;
       this.trending = false;
-      this.topItems= false;
       this.posts =  await this.postDataService.getPostData();
 
     }
     else if (viewType==="trending"){
       this.following = false;
       this.trending = true;
-      this.topItems= false;
       this.posts =  await this.postDataService.getTrending();
     }
-    else if (viewType==="topItems"){
-      this.topItems= true;
-      this.following = false;
-      this.trending = false;
-      this.items = await this.itemDataService.getTopRated();
-    }
-
-
-
   }
 
 }

@@ -27,7 +27,6 @@ import { ItemTileComponent } from './item-tile/item-tile.component';
 import { ItemTileListComponent } from './item-tile-list/item-tile-list.component';
 import { UserSavedLikedComponent } from './user-saved-liked/user-saved-liked.component';
 import { ItemDisplayComponent } from './item-display/item-display.component';
-import { ItemInfoBlockComponent } from './item-info-block/item-info-block.component';
 import { PostDisplayComponent } from './post-display/post-display.component';
 import { VestimonialTileComponent } from './vestimonial-tile/vestimonial-tile.component';
 import { ProfileDisplayComponent } from './profile-display/profile-display.component';
@@ -73,7 +72,6 @@ export function tokenGetter() {
     SearchComponent,
     UserSavedLikedComponent,
     ItemDisplayComponent,
-    ItemInfoBlockComponent,
     PostDisplayComponent,
     VestimonialTileComponent,
     ProfileDisplayComponent,

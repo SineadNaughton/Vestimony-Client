@@ -10,6 +10,7 @@ import { PostDataService } from '../services/vestimony-api/post-data.service';
 export class PostTileListComponent  {
   
 @Input() posts: Post[];
+@Input() onProfile: boolean;
 
   constructor() { }
 

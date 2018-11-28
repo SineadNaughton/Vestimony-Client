@@ -1,6 +1,6 @@
 <div *ngIf="posts!=null">
   <div *ngFor="let post of posts; let i = index;">
-    <app-post-tile [post]="post" [index]="i" >
+    <app-post-tile [post]="post" [index]="i" [onProfile]="onProfile" >
     </app-post-tile>
 
   </div>

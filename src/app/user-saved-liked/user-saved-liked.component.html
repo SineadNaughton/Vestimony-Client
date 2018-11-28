@@ -1,29 +1,15 @@
-<!--page holder-->
-<div class="container">
+<!--trending/following selection holder-->
+<div class="d-flex flex-row justify-content-center align-items-center selection-holder">
+  <button class="button flex-fill" [ngClass]="{'button-active': liked}" (click)="showView('liked')">Liked Posts</button>
+  <button class="button flex-fill" [ngClass]="{'button-active': saved}" (click)="showView('saved')">Saved Items</button>
+</div>
 
-  <!--trending/following selection holder-->
-  <div class="d-flex flex-row justify-content-center align-items-center selection-holder">
-    <div class="col-sm" align="center">
-        <button class="button" [ngClass]="{'button-active': liked}" (click)="showView('liked')">Liked Posts</button>
-      <button class="button" [ngClass]="{'button-active': saved}" (click)="showView('saved')">Saved Items</button>
-    
-    </div>
-  </div>
+<!--show saved items-->
+<div class="row" *ngIf="saved">
+  <app-item-tile-list [items]="items"></app-item-tile-list>
+</div>
 
-  <!--following - show saved items-->
-  <div class="row" *ngIf="saved">
-    <div class="col-sm" align="center">
-      <app-item-tile-list [items]="items"></app-item-tile-list>
-
-    </div>
-  </div>
-
-  <!--trending - show liked posts-->
-  <div class="row" *ngIf="liked">
-    <div class="col-sm" align="center">
-      <app-post-tile-list [posts]="posts"></app-post-tile-list>
-    </div>
-  </div>
-
-  <!--end of page holder-->
+<!--show liked posts-->
+<div class="row" *ngIf="liked">
+  <app-post-tile-list [posts]="posts"></app-post-tile-list>
 </div>

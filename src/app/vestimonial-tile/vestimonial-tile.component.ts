@@ -11,6 +11,9 @@ import { ItemDataService } from '../services/vestimony-api/item-data.service';
 })
 export class VestimonialTileComponent implements OnInit {
   @Input() vestimonial: Vestimonial = new Vestimonial();
+  @Input() linking: boolean;
+  @Input() postId: number;
+
   item: Item = new Item();
   user: ApplicationUser = new ApplicationUser()
   itemImageUrl:string;

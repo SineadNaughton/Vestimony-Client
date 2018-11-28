@@ -4,6 +4,7 @@ import { Vestimonial } from '../services/models/vestimonial';
 import { VestimonialDataService } from '../services/vestimony-api/vestimonial-data.service';
 import { ItemDataService } from '../services/vestimony-api/item-data.service';
 import { Item } from '../services/models/item';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-vestimonial-add-review',
@@ -20,7 +21,7 @@ export class VestimonialAddReviewComponent implements OnInit {
   showSubmitBtn: boolean;
   showLinkBtn:boolean;
 
-  constructor(private route: ActivatedRoute, private vestimonialDataService: VestimonialDataService, private router: Router, private itemDataService: ItemDataService) { }
+  constructor(private location: Location, private route: ActivatedRoute, private vestimonialDataService: VestimonialDataService, private router: Router, private itemDataService: ItemDataService) { }
 
   async ngOnInit() {
 
@@ -70,6 +71,10 @@ export class VestimonialAddReviewComponent implements OnInit {
 
   linkInstead(){
     this.router.navigate(['/vestimonial/link', this.postId]);
+  }
+
+  backClicked() {
+    this.location.back();
   }
 
 }

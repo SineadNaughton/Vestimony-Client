@@ -6,35 +6,36 @@
     <div class="col-sm" align="center">
       <div class="card">
         <div class="card-body">
-          <a routerLink='/login'>Have an account? Sign in</a>
-          <h5 class="card-title">Sign in</h5>
+          <a class="form-label" routerLink='/login'>Have an account? Sign in</a>
+          <h5 class="card-title">Register</h5>
           <form class="form">
 
             <div class="form-group">
-              <label for="">Username</label>
+              <label class="form-label">Username</label>
               <input [(ngModel)]="user.username" name="username" type="text" class="form-control required">
             </div>
 
             <div class="form-group">
-              <label for="">Password</label>
+              <label class="form-label">Password</label>
               <input [(ngModel)]="user.password" name="password" type="password" class="form-control required">
             </div>
 
             <div class="form-group">
-              <label for="">Email</label>
+              <label class="form-label">Email</label>
               <input [(ngModel)]="user.email" name="email" type="email" class="form-control required">
             </div>
 
-            <button (click)="showRegForm()">Continue to Registration</button>
+            <button *ngIf="isCollapsed" class="button-active" (click)="showRegForm()">Continue to Registration</button>
+           
             <div *ngIf="!isCollapsed">
 
               <div class="form-group">
-                <label for="">Bio</label>
+                <label class="form-label">Bio</label>
                 <input [(ngModel)]="user.bio" name="bio" type="text" class="form-control required">
               </div>
 
               <div class="form-group">
-                <label for="">Height Feet</label>
+                <label class="form-label">Height Feet</label>
                 <select name="heightFeet" [(ngModel)]="user.heightFeet">
                   <option value=2>2</option>
                   <option value=3>3</option>
@@ -47,7 +48,7 @@
 
 
               <div class="form-group">
-                <label for="">Height Inches</label>
+                <label class="form-label">Height Inches</label>
                 <select name="heightInches" [(ngModel)]="user.heightInches">
                   <option value=1>1</option>
                   <option value=2>2</option>
@@ -65,7 +66,7 @@
               </div>
 
               <div class="form-group">
-                <label for="">Size Top</label>
+                <label class="form-label">Size Top</label>
                 <select name="sizeTop" [(ngModel)]="user.sizeTop">
                   <option value=4>4 uk</option>
                   <option value=6>6 uk</option>
@@ -82,7 +83,7 @@
               </div>
 
               <div class="form-group">
-                <label for="">Size Bottom </label>
+                <label class="form-label">Size Bottom </label>
                 <select name="sizeBottom" [(ngModel)]="user.sizeBottom">
                   <option value=4>4 uk</option>
                   <option value=6>6 uk</option>
@@ -97,7 +98,7 @@
                   <option value=24>24 uk</option>
                 </select>
               </div>
-              <a (click)="register()" class="btn btn-primary">Register</a>
+              <a  (click)="register()" ><button class="button-active">Register</button></a>
               <p>{{resp}}</p>
             </div>
             

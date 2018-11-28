@@ -15,14 +15,14 @@
         <p class="post-info" (click)="showFullSummary()">{{post.postInfo}}</p>
       </div>
 
-      <p class="numLikes">{{post.numLikes}} likes</p>
+      <p class="numLikes">{{numLikes}} likes</p>
       <div class="post-like">
        <div class="heart-holder" *ngIf="liked === false"><i class="far fa-heart hearticon-outline" (click)="likePost(post.postId)"></i></div> 
        <div class="heart-holder" *ngIf="liked === true"> <i  class="fas fa-heart hearticon" (click)="unlikePost(post.postId)"></i></div> 
       </div>
     </div>
 
-    <div class="d-flex justify-content-start profile-link-holder">
+    <div *ngIf="onProfile!=true"class="d-flex justify-content-start profile-link-holder">
       <a [routerLink]="['/profiles', user.userId]" class="flex-grow-1">
         <img class="profile-icon" src="{{profileImageUrl}}" />
         <p class="profile-name">{{user.username}} </p>

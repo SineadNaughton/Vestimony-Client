@@ -27,21 +27,255 @@ a:active {
     background-color: white;
     border: solid lightgray 1px;
     color: lightgrey;
+    margin-bottom: 2%;
 }
 
 .button-active{
     background-color: #ffb3b3;
     color: white;
     border: solid lightgray 1px;
+    margin-bottom: 2%;
 }
+
+.item-link-button{
+    border: solid lightgrey 1px;
+    color: #ffb3b3;
+    background-color: white;
+    margin-bottom: 2%;
+}
+
+
 
 button:focus{
     background-color: #ffb3b3;
     color: white;
     border: solid lightgray 1px;
     outline: none;
+    margin-bottom: 2%;
 }
 
-.selection-holder{
-    border-bottom: solid lightgray 1px;
+
+//post display styles
+
+.post-info{
+    font-size: small;
+    float: left;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: 5%;
+    text-align: left;
 }
+
+.hearticon{
+    color: #ffb3b3;
+    margin-top: 50%;
+    margin-right: 40%;
+    padding-right: 10%;
+}
+
+.hearticon-outline{
+  color: black;
+  margin-top: 50%;
+  margin-right: 50%;
+  padding-right: 10%
+}
+
+.numLikes{
+    margin:2%;
+    font-size: small;
+    float: left;
+    width: 15%;
+    text-align: right;
+  }
+
+  .post-image{
+    width: 100%;
+    display: flex;   
+}
+
+.post-image-holder{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: grey;
+    justify-content: center;
+    margin: 0%;
+}
+
+.post-image-holder img{
+    width: 100%;
+    display: flex;   
+}
+
+//profile icon
+.profile-icon{
+    float: left;
+    border-radius: 50%;
+    width: 10%;
+    margin-right: 3%;
+    margin-left: 3%;
+    border: #ffb3b3 solid 1px; 
+}
+
+.profile-name{
+  float: left;
+  margin-top: 1%;
+  color:black;
+  font-weight: bold;
+  font-size: small;
+}
+
+
+//item styles
+
+.item-display-holder{
+    margin-bottom: 10%;
+}
+.saved-item{
+    color: #ffb3b3;
+}
+
+.item-image{
+    width: 100%; 
+}
+
+item-image-holder{
+    border: solid lightgrey 1px;
+}
+.item-name{
+    color: black;
+    margin-bottom: 4%;
+    font-size: .8em;
+}
+
+.item-brand{
+    color: black;
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+.item-price{
+    font-size: .8em;
+    font-weight: bold;
+    margin-bottom: 2%;
+    padding-top: 2%;
+}
+.item-size-adjust{
+    font-size: .8em;
+    margin-left: 3%;
+}
+
+.item-list-rating{
+    font-size: small;
+    color: black;
+    font-weight: 500;
+}
+
+.item-list-numsaved{
+    font-size: small;
+    color: black;
+    margin-right: 4%;
+    float: right;
+}
+
+.item-numsaved{
+    font-size: small;
+    color: black;
+    margin-left: 3%;  
+}
+
+.item-rating{
+    font-size: small;
+    color: black;
+    margin-left: 3%;
+}
+
+.item-link-holder{
+    margin-top:10%;
+}
+
+//vestimonial tile styles
+.vest-info{
+    font-size: .8em;
+    margin-left: 3%;
+}
+.vest-header{
+    margin-top: 4%;
+}
+.vest-button{
+    margin: 30%;
+}
+
+.vestimonial-item-image{
+    margin: 5%;
+    width: 70%; 
+    border: solid lightgray 1px;
+}
+
+.vest-item-info{
+    margin-left: 5%;
+}
+
+//profile
+.profile-image{
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.username{
+    color: black;
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+.size{
+    font-size: small;
+    color: black;
+    margin-left: 3%;
+}
+
+.height{
+    font-size: small;
+    color: black;
+    margin-left: 3%;
+}
+
+.bio{
+    font-size: .8em;
+}
+
+.numPosts, .numFollowers{
+    font-size: small;
+    color: darkgray;
+    margin-left: 3%;
+
+}
+.numFollowers{
+   margin-bottom: 0%;
+}
+
+.stats-header{
+    font-size: .8em;
+    font-weight: bold;
+    margin-bottom: 2%;
+}
+stat-container{
+    border: solid black 1px;
+}
+
+//image editing
+.image-cropper-holder{
+    width: 90%;
+    align-content: center;
+}
+
+.cropped{
+    width: 50%;
+}
+
+//forms
+.form-label{
+    font-size: small;
+    color: darkgray;
+    margin: 2%;
+    margin-bottom: 0%;
+}
+//button

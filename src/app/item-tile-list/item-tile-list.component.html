@@ -1,5 +1,5 @@
 <div class="container">
-  
+
   <div class="row">
     <div class="col-6" *ngFor="let item of items; let i = index;">
       <a [routerLink]="['/items', item.itemId]">
@@ -9,10 +9,13 @@
 
       <div *ngIf="item.isInView === true" class="d-flex justify-content-start item-save-holder">
         <div class="flex-grow-1">
-            <p class="item-tile-rating">rating: {{item.rating}}</p>
+          <div class="d-flex justify-content-start">
+            <i *ngIf="item.rating!=0" class="far fa-star"></i>
+            <p class="item-list-rating">{{item.rating!=0 ? item.rating : "no rating"}}</p>
+          </div>
         </div>
         <div class="flex-grow-1">
-          <p class="item-numsaved">{{item.numSaved}} saves</p>
+          <p class="item-list-numsaved">{{item.numSaved}} saves</p>
         </div>
         <div>
           <div *ngIf="item.isSaved === false" (click)="saveItem(item)"><i class="fas fa-tshirt"></i></div>

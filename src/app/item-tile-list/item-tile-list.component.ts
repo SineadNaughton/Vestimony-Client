@@ -24,11 +24,13 @@ export class ItemTileListComponent implements OnInit {
   async saveItem(item: Item) {
     this.savedResponse = await this.itemDataService.saveItem(item.itemId);
     item.isSaved = true;
+    item.numSaved ++;
   }
 
   async unsaveItem(item: Item) {
     this.savedResponse = await this.itemDataService.unsaveItem(item.itemId);
     item.isSaved = false;
+    item.numSaved --;
   }
 
   

@@ -1,7 +1,7 @@
+
+<div class="row" ><a style="float: right" class="form-label" [routerLink]="['/vestimonial/add', postId]">Actually, add a new vestimonial <i class="fas fa-arrow-right"></i></a></div>
 <div class="row" *ngFor="let vestimonial of vestimonials;">
-  <a [routerLink]="['/vestimonial/link/confirm/', postId, vestimonial.vestimonialId]">
-    <app-vestimonial-tile [vestimonial]="vestimonial">
-    </app-vestimonial-tile>
-  </a>
+    <app-vestimonial-tile [vestimonial]="vestimonial" [linking]="linking" [postId]="postId">
+    </app-vestimonial-tile> 
 </div>
 

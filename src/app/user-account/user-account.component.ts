@@ -3,6 +3,9 @@ import { ApplicationUser } from '../services/models/application-user';
 import { CurrentUserDataService } from '../services/vestimony-api/current-user-data.service';
 import { Router } from '@angular/router';
 import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component';
+import { Post } from '../services/models/post';
+import { PostDataService } from '../services/vestimony-api/post-data.service';
+import { AuthUserService } from '../services/auth/auth-user.service';
 
 @Component({
   selector: 'app-user-account',
@@ -20,14 +23,19 @@ export class UserAccountComponent implements OnInit {
   theFile: File;
   editImage: boolean;
   showButton: boolean;
+  posts: Post[] = [];
+  numPosts: number;
+  onProfile: boolean =true;
 
-  constructor(private currentUserDataService: CurrentUserDataService, private router: Router) { }
+  constructor(private currentUserDataService: CurrentUserDataService, private router: Router, private postDataService: PostDataService, private authUserService: AuthUserService) { }
 
   async ngOnInit() {
     this.user = await this.currentUserDataService.getCurrentUser();
     this.userId = this.user.userId;
     this.profileImageUrl = "http://localhost:8080/vestimony/users/image/" + this.user.userId;
+    this.posts = await this.postDataService.getPostDataForProfile(this.userId);
     this.showButton=true;
+    this.numPosts = this.posts.length;
   }
 
   editAccountDropdown(){
@@ -104,5 +112,10 @@ export class UserAccountComponent implements OnInit {
       cancelImage(){
         this.editImage=false;
         this.showButton=true;
+      }
+
+      logout(){
+          this.authUserService.destroyAcessToken();
+          this.router.navigate(['/login']);
       }
 }

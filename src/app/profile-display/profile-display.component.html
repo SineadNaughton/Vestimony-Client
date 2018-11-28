@@ -1,3 +1,5 @@
+<i (click)="backClicked()" class="fas fa-arrow-left"></i>
+
 <div class="row">
 
   <div class="col-5 item-image-holder">
@@ -40,4 +42,4 @@
 
 
 
-<app-post-tile-list [posts]="posts"></app-post-tile-list>
+<app-post-tile-list [posts]="posts" [onProfile]="onProfile"></app-post-tile-list>

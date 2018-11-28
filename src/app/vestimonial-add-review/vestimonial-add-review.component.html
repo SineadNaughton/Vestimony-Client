@@ -1,3 +1,5 @@
+
+<i (click)="backClicked()" class="fas fa-arrow-left"></i>
 <div class="row">
     <div class="col-6 item-image-holder">
         <img class="item-image" src="{{imageUrl}}" />
@@ -88,12 +90,12 @@
             </div>
             <div *ngIf="vestimonial.comments!=null && vestimonial.usualSize!=null && vestimonial.sizeBought!=null && vestimonial.rating!= null && showSubmitBtn === true"
                 class="d-flex flex-column justify-content-center">
-                <p class="link border button-active" (click)="submit()">Submit Vestimonial</p>
-                <p class="link border button-active" (click)="submitAndLinkAnother()">Submit and Link Another Vestimonial</p>
-                <p class="link button-active" (click)="submitAndCreateAnother()">Submit and Create Another Vestimonial</p>
+                <button class="button-active" (click)="submit()">Submit Vestimonial</button>
+                <button class="button-active" (click)="submitAndLinkAnother()">Link Another Vestimonial</button>
+                <button class="button-active" (click)="submitAndCreateAnother()">Create Another Vestimonial</button>
             </div>
             <div  *ngIf="showLinkBtn === true">
-                <p class="link border" (click)="linkInstead()">Link Existing Vestimonial</p>
+                <button class="button-active" (click)="linkInstead()">Link Existing Vestimonial</button>
             </div>
 
 

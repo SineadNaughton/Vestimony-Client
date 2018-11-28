@@ -14,31 +14,31 @@ export class ItemTileComponent implements OnInit {
   @Input() item: Item;
   @Output() itemChange = new EventEmitter<Item>();
   @Input() index: number;
-  
+
 
   imageUrl: string;
   savedResponse: any;
   fullName: string;
 
-  
-  
 
 
-  constructor(private itemDataService: ItemDataService, private truncatePipe: TruncatePipe) { 
-   
+
+
+  constructor(private itemDataService: ItemDataService, private truncatePipe: TruncatePipe) {
+
   }
 
   async ngOnInit() {
 
-    if(this.index < 4){
-      this.item.isInView=true;
+    if (this.index < 4) {
+      this.item.isInView = true;
     }
-    else{
+    else {
       this.item.isInView = false;
     }
-    
+
     this.imageUrl = "http://localhost:8080/vestimony/items/image/" + this.item.itemId;
-    this.item.isSaved = await this.itemDataService.isSaved(this.item.itemId);
+    
     //this.itemChange.emit(this.item);
 
     if (this.item.name != null) {
@@ -62,8 +62,11 @@ export class ItemTileComponent implements OnInit {
     this.itemChange.emit(this.item);
   }
 
-  inview(event){
+  async inview(event) {
     this.item.isInView = this.item.isInView || !event.isOutsideView;
+    if (this.item.isInView === true) {
+      this.item.isSaved = await this.itemDataService.isSaved(this.item.itemId);
+    }
   }
 
 }

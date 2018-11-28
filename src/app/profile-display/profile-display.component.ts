@@ -4,6 +4,7 @@ import { ApplicationUser } from '../services/models/application-user';
 import { ProfileDataService } from '../services/vestimony-api/profile-data.service';
 import { Post } from '../services/models/post';
 import { PostDataService } from '../services/vestimony-api/post-data.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-profile-display',
@@ -20,9 +21,10 @@ export class ProfileDisplayComponent implements OnInit {
   posts: Post[] = [];
   numPosts: number;
   profileDisplay: boolean = true;
+  onProfile: boolean =true;
 
 
-  constructor(private profileDataService: ProfileDataService, private route: ActivatedRoute, private postDataService: PostDataService) { }
+  constructor(private location: Location, private profileDataService: ProfileDataService, private route: ActivatedRoute, private postDataService: PostDataService) { }
 
   async ngOnInit() {
     this.userId = this.route.snapshot.params.id;
@@ -43,6 +45,9 @@ export class ProfileDisplayComponent implements OnInit {
     this.following = false;
   }
 
+  backClicked() {
+    this.location.back();
+  }
   
 
 }

@@ -1,6 +1,4 @@
-.page-holder{
-    width: 100%;
-}
+//styles for filter options
 .logo{
     width: 100%;
 }
@@ -15,23 +13,15 @@
 }
 
 .holder{
-    //min-width: 100%;
-   // min-height: 40px;
     flex-wrap: nowrap;
-  overflow-x: auto;
-  border-top: solid lightgray 1px;
- // border-bottom: solid lightgray 1px;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+    overflow-x: auto;
+    border-top: solid lightgray 1px;
+    &::-webkit-scrollbar {
+       display: none;
+    }
 }
 
-  .form-label{
-    font-size: small;
-    color: darkgray;
-    margin: 2%;
-    margin-bottom: 0%;
-}
+//displays what user is looking at
 
 .list-info{
     text-align: center;
@@ -42,10 +32,4 @@
 .sort{
     margin: 3%;
     width: 25%;
-}
-.result-button{
-    margin-bottom:5%;
-    background-color: #ffb3b3;
-    border: solid lightgray 1px;
-    color: white;
 }

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Post } from '../services/models/post';
 import { Vestimonial } from '../services/models/vestimonial';
 import { ApplicationUser } from '../services/models/application-user';
-import { Item } from '../services/models/item';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-post-display',
@@ -22,7 +22,7 @@ export class PostDisplayComponent implements OnInit {
   liked: boolean;
   likedResponse:string;
 
-  constructor(private postDataService: PostDataService, private route: ActivatedRoute) { }
+  constructor(private postDataService: PostDataService, private route: ActivatedRoute, private location: Location) { }
 
   async ngOnInit() {
     this.postId = this.route.snapshot.params.id;
@@ -47,5 +47,9 @@ export class PostDisplayComponent implements OnInit {
     this.liked = false;
     console.log(this.liked);
   }
+  backClicked() {
+    this.location.back();
+  }
+  
 
 }

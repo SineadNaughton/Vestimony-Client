@@ -2,11 +2,9 @@
 
 
 <!--trending/following selection holder-->
-<div class="d-flex flex-row justify-content-center align-items-center selection-holder">
-    <button class="button" [ngClass]="{'button-active': trending}" (click)="showHomeView('trending')">Trending</button>
-    <button class="button" [ngClass]="{'button-active': following}" (click)="showHomeView('following')">Following</button>
-    <button class="button" [ngClass]="{'button-active': topItems}" (click)="showHomeView('topItems')">Top Rated</button>
- 
+<div class="d-flex flex-row justify-content-center align-items-center">
+    <button class="button flex-fill" [ngClass]="{'button-active': trending}" (click)="showHomeView('trending')">Trending</button>
+    <button class="button flex-fill" [ngClass]="{'button-active': following}" (click)="showHomeView('following')">Following</button>
 </div>
 
 <!--following - show posts-->
@@ -19,9 +17,5 @@
   <app-post-tile-list [posts]="posts"></app-post-tile-list>
 </div>
 
-<!--trending - show items-->
-<div class="row" *ngIf="topItems">
-  <app-item-tile-list [items]="items"></app-item-tile-list>
-</div>
 
 <!--end of page holder-->

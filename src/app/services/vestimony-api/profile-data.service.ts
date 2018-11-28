@@ -49,8 +49,8 @@ async unfollow(userId: number){
 }
 
 //REGISTER
-async register(user: ApplicationUser){
-  const profileRequest = this.http.post("http://localhost:8080/vestimony/users/signup", user, { headers : this.headers, responseType: 'text' });
+async register(user: ApplicationUser){  
+  const profileRequest = this.http.post("http://localhost:8080/vestimony/users/signup", user, { headers: { 'Content-Type': 'application/json' }, responseType: 'text' });
   const profileResponse = await profileRequest.toPromise();
   return profileResponse;
 }

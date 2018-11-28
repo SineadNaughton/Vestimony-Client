@@ -22,8 +22,10 @@ export class ItemFilterComponent implements OnInit {
   
   topshop: ItemBrand = new ItemBrand('Topshop', 'topshop', "topshop-1-logo-png-transparent.png", false);
   asos: ItemBrand = new ItemBrand('asos', 'asos', "asos-png-10-student-discount-480.png", false);
-  newlook: ItemBrand = new ItemBrand('New Look', 'new look', "new-look_0.png", false);
-  dorothyperkins: ItemBrand = new ItemBrand('Dorothy Perkins', 'dorothy perkins', "dorothy-perkins-logo.jpg", false)
+  newLook: ItemBrand = new ItemBrand('New Look', 'new look', "new-look_0.png", false);
+  dorothyPerkins: ItemBrand = new ItemBrand('Dorothy Perkins', 'dorothy perkins', "dorothy-perkins-logo.jpg", false)
+  missSelfridge: ItemBrand = new ItemBrand('Miss Selfridge', 'miss selfridge', "miss-selfridge.png", false)
+
   @Input() addVestimonial: boolean;
   @Input() postId: number;
 
@@ -42,9 +44,9 @@ export class ItemFilterComponent implements OnInit {
   brands1: ItemBrand[] = [
     this.topshop,
     this.asos,
-    this.newlook,
-    this.dorothyperkins,
-    this.asos,
+    this.newLook,
+    this.dorothyPerkins,
+    this.missSelfridge,
     this.topshop,
     this.asos,
   ]
