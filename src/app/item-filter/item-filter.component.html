@@ -32,10 +32,11 @@
 </form>
 
 <form class="d-flex flex-row justify-content-end">
-    <select class="sort form-label">
-        <option (click)="sortNewest()">Newest</option>
-        <option (click)="sortPriceDesc()">Price high-low</option>
-        <option (click)="sortPriceAsc()">Price low-high</option>
+    <select class="sort form-label" (change)="sortChange($event)">
+        <option value="newest">Newest</option>
+        <option value="rating">Rating</option>                
+        <option value="price-asc">Price low-high</option>
+        <option value="price-desc">Price high-low</option>
     </select>
 </form>
 

@@ -77,5 +77,9 @@ export class ItemDisplayComponent implements OnInit {
     this.location.back();
   }
 
+  linkToBuy(){
+    this.itemDataService.linkToBuyThroughItem(this.item.itemId);
+  }
+
 
 }

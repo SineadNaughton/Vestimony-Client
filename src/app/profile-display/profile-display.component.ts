@@ -38,11 +38,13 @@ export class ProfileDisplayComponent implements OnInit {
   async follow() {
     this.response = await this.profileDataService.follow(this.userId);
     this.following = true;
+    this.user.numFollowers++;
   }
 
   async unfollow() {
     this.response = await this.profileDataService.unfollow(this.userId);
     this.following = false;
+    this.user.numFollowers--;
   }
 
   backClicked() {

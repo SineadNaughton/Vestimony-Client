@@ -44,17 +44,6 @@ a:active {
     margin-bottom: 2%;
 }
 
-
-
-button:focus{
-    background-color: #ffb3b3;
-    color: white;
-    border: solid lightgray 1px;
-    outline: none;
-    margin-bottom: 2%;
-}
-
-
 //post display styles
 
 .post-info{
@@ -260,6 +249,11 @@ item-image-holder{
 stat-container{
     border: solid black 1px;
 }
+
+.following{
+    color: #ffb3b3; 
+}
+
 
 //image editing
 .image-cropper-holder{

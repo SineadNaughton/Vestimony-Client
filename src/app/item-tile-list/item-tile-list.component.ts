@@ -12,7 +12,7 @@ import { Item } from '../services/models/item';
 export class ItemTileListComponent implements OnInit {
  @Input() items: Item[];
  saved: boolean;
- savedResponse: any;
+ savedResponse: string;
 
   constructor(private itemDataService: ItemDataService) { }
 

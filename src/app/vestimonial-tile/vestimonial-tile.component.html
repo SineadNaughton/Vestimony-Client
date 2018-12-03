@@ -1,7 +1,7 @@
 <div class="card">
     <div class="row">
     <div class="col-5 item-image-holder">
-        <img class="vestimonial-item-image" src="{{itemImageUrl}}" />
+        <a [routerLink]="['/items/', item.itemId]"> <img class="vestimonial-item-image" src="{{itemImageUrl}}" /></a>
         <p class="item-brand vest-item-info">{{item.brand}}</p>
         <p class="item-price vest-item-info">€{{item.price}}</p>
         <p class="item-name vest-item-info">{{item.name}}</p>
@@ -11,7 +11,7 @@
         <div *ngIf="linking!=true" class="d-flex justify-content-start item-link-holder">
             <!--buy button holder-->
             
-                <a href="{{item.url}}"><button class="vest-button"><i class="fas fa-shopping-cart "></i></button></a>
+                <a href="{{item.url}}" target="_blank"><button (click)="linkToBuy()" class="vest-button"><i class="fas fa-shopping-cart "></i></button></a>
             
            
                 <div *ngIf="item.isSaved === false" (click)="saveItem(item)"><button class="vest-button"><i class="fas fa-tshirt"></i></button></div>

@@ -39,4 +39,8 @@ export class VestimonialTileComponent implements OnInit {
     item.isSaved = false;
   }
 
+  linkToBuy(){
+    this.itemDataService.linkToBuyThroughVestimonial(this.item.itemId, this.user.userId);
+  }
+
 }

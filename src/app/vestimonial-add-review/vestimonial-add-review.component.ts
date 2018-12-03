@@ -36,12 +36,13 @@ export class VestimonialAddReviewComponent implements OnInit {
   async submit() {
     this.resp = await this.vestimonialDataService.createVestimonial(this.vestimonial, this.postId, this.itemId);
     if (this.resp === "OK") {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/posts', this.postId]);
     }
-    else if(this.resp === "exists"){
+    else {
       this.showSubmitBtn = false;
       this.showLinkBtn = true;
     }
+
   }
 
   async submitAndLinkAnother() {

@@ -17,9 +17,9 @@ export class ItemFilterComponent implements OnInit {
   items: Item[] = [];
   index: number;
   itemListinfo: string;
-  brandSelection:ItemBrand;
+  brandSelection: ItemBrand;
   catSelection: ItemCategory;
-  
+
   topshop: ItemBrand = new ItemBrand('Topshop', 'topshop', "topshop-1-logo-png-transparent.png", false);
   asos: ItemBrand = new ItemBrand('asos', 'asos', "asos-png-10-student-discount-480.png", false);
   newLook: ItemBrand = new ItemBrand('New Look', 'new look', "new-look_0.png", false);
@@ -64,7 +64,7 @@ export class ItemFilterComponent implements OnInit {
     this.accessory
   ]
 
-  constructor(private itemDataService: ItemDataService) {}
+  constructor(private itemDataService: ItemDataService) { }
 
   async ngOnInit() {
     this.items = await this.itemDataService.getNewest();
@@ -72,13 +72,13 @@ export class ItemFilterComponent implements OnInit {
 
   }
 
-  onSelectBrand(itemBrand: ItemBrand) {    
+  onSelectBrand(itemBrand: ItemBrand) {
     this.brandSelection = itemBrand;
-    if(this.brandSelection.selected===true){
+    if (this.brandSelection.selected === true) {
       this.brandSelection.selected = false;
-      this.brandSelection.name="";
+      this.brandSelection.name = "";
     }
-    else{
+    else {
       this.brands1.forEach(b => b.selected = false);
       this.brandSelection.selected = true;
     }
@@ -86,13 +86,13 @@ export class ItemFilterComponent implements OnInit {
 
   onSelectCat(itemCat: ItemCategory) {
     this.catSelection = itemCat;
-    if(this.catSelection.selected===true){
+    if (this.catSelection.selected === true) {
       this.catSelection.selected = false;
-      this.catSelection.name="";
+      this.catSelection.name = "";
     }
-    else{
+    else {
       this.categories1.forEach(b => b.selected = false);
-    this.catSelection.selected = true;
+      this.catSelection.selected = true;
     }
   }
 
@@ -100,47 +100,90 @@ export class ItemFilterComponent implements OnInit {
   async submitFilter() {
     const filteredBrands = this.brands1.filter(b => b.selected === true);
     const filteredBrand = filteredBrands.length > 0 ? filteredBrands[0] : null;
-    this.brand = filteredBrand === null ? "" :filteredBrand.value;
+    this.brand = filteredBrand === null ? "" : filteredBrand.value;
 
     const filteredCats = this.categories1.filter(c => c.selected === true);
     const filteredCat = filteredCats.length > 0 ? filteredCats[0] : null;
-    this.category = filteredCat === null ? "" :filteredCat.value;
+    this.category = filteredCat === null ? "" : filteredCat.value;
 
     this.searchName = this.searchName === null ? "" : this.searchName;
 
     this.items = await this.itemDataService.getFilteredItemData(this.brand, this.category, this.searchName);
     this.itemListinfo = "Results"
-   
+
   }
 
   ngDoCheck() {
 
   }
 
-  sortPriceDesc() {
-    this.items = this.items.sort((a, b): number => {
-      if (a.price < b.price) return -1;
-      if (a.price > b.price) return 1;
-      return 0;
-    })
-    this.ngDoCheck();
+  sortChange(event) {
+    switch (event.target.value) {
+      case 'rating':
+        console.log(event.target.value);
+        this.sortRating();
+        break;
+      case 'newest':
+        console.log(event.target.value);
+        this.sortNewest();
+        break;
+      case 'price-asc':
+        console.log(event.target.value);
+        this.sortPriceAsc();
+        break;
+      case 'price-desc':
+        console.log(event.target.value);
+        this.sortPriceDesc();
+        break;
+    }
   }
 
-  sortPriceAsc() {
-    this.items = this.items.sort((a, b): number => {
+  sortPriceDesc() {
+    this.items.sort((a, b): number => {
       if (a.price > b.price) return -1;
       if (a.price < b.price) return 1;
       return 0;
-    })
+    });
+
+    this.configureForIsInView();
+  }
+
+  sortPriceAsc() {
+    this.items.sort((a, b): number => {
+      if (a.price < b.price) return -1;
+      if (a.price > b.price) return 1;
+      return 0;
+    });
+
+    this.configureForIsInView();
   }
 
   sortNewest() {
-    this.items = this.items.sort((a, b): number => {
-      if (a.createdDateTime < b.createdDateTime) return -1;
-      if (a.createdDateTime > b.createdDateTime) return 1;
+    this.items.sort((a, b): number => {
+      if (a.createdDateTime > b.createdDateTime) return -1;
+      if (a.createdDateTime < b.createdDateTime) return 1;
       return 0;
-    })
+    });
+
+    this.configureForIsInView();
   }
 
+  sortRating() {
+    this.items.sort((a, b): number => {
+      if (a.rating > b.rating) return -1;
+      if (a.rating < b.rating) return 1;
+      return 0;
+    });
+    this.configureForIsInView();
+  }
 
+  configureForIsInView() {
+    if (this.items.length > 0) {
+      this.items.forEach(function (item, index) {
+        if (index < 4) {
+          item.isInView = true;
+        };
+      });
+    }
+  }
 }

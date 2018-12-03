@@ -13,6 +13,11 @@ export class ItemDataService {
     'Authorization': localStorage.getItem('access_token')
   });
 
+  private readonly headersPlainText = new HttpHeaders({
+    'Content-Type': 'text/plain',
+    'Authorization': localStorage.getItem('access_token')
+  });
+
   constructor(private http: HttpClient) { }
 
   async getFilteredItemData(brand: string, category:string, name: string){
@@ -40,25 +45,25 @@ export class ItemDataService {
   }
 
   async getSavedItems() {
-    const savedItemsRequest = this.http.get<Item[]>("http://localhost:8080/vestimony/users/saveditems", { headers : this.headers });
+    const savedItemsRequest = this.http.get<Item[]>("http://localhost:8080/vestimony/saveditems", { headers : this.headers });
     const savedItemsResponse = await savedItemsRequest.toPromise();
     return savedItemsResponse;
   }
 
   async  isSaved(itemId: number) {
-    const isSavedRequest = this.http.get<boolean>("http://localhost:8080/vestimony/users/issaved/" + itemId, { headers : this.headers });
+    const isSavedRequest = this.http.get<boolean>("http://localhost:8080/vestimony/saveditems/issaved/" + itemId, { headers : this.headers });
     const isSavedResponse = await isSavedRequest.toPromise();
     return isSavedResponse;
   }
 
   async saveItem(itemId: number) {
-    const saveRequest = this.http.get("http://localhost:8080/vestimony/users/saveitem/" + itemId, { headers : this.headers, responseType: 'text' });
+    const saveRequest = this.http.post("http://localhost:8080/vestimony/saveditems/" + itemId, {}, { headers: this.headers, responseType: 'text' as 'text' });
     const saveResponse = await saveRequest.toPromise();
-    return saveResponse;
+    return saveResponse.toString();
   }
 
   async unsaveItem(itemId: number) {
-    const unsaveRequest = this.http.get("http://localhost:8080/vestimony/users/unsaveitem/" + itemId, { headers : this.headers, responseType: 'text' });
+    const unsaveRequest = this.http.delete("http://localhost:8080/vestimony/saveditems/" + itemId, { headers : this.headers, responseType: 'text' });
     const unsaveResponse = await unsaveRequest.toPromise();
     return unsaveResponse;
   }
@@ -67,6 +72,16 @@ export class ItemDataService {
     const itemRequest = this.http.get<Item[]>("http://localhost:8080/vestimony/items/toprated", { headers : this.headers });
     const itemResponse = await itemRequest.toPromise();
     return itemResponse;
+  }
+
+  
+  async linkToBuyThroughVestimonial(itemId: number, userId: number){
+    this.http.post("http://localhost:8080/vestimony/items/linktobuy/"+itemId+ "?userId="+"userId", { headers : this.headers });
+  }
+
+  async linkToBuyThroughItem(itemId: number){
+    const itemRequest = this.http.post("http://localhost:8080/vestimony/items/linktobuy/"+itemId, { headers : this.headers });
+   
   }
 
   

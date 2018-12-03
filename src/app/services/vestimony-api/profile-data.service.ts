@@ -43,14 +43,14 @@ async follow(userId: number){
 
 //unfollow
 async unfollow(userId: number){
-  const profileRequest = this.http.get("http://localhost:8080/vestimony/follow/unfollow/"+userId, { headers : this.headers, responseType: 'text' });
+  const profileRequest = this.http.delete("http://localhost:8080/vestimony/follow/"+userId, { headers : this.headers, responseType: 'text' });
   const profileResponse = await profileRequest.toPromise();
   return profileResponse;
 }
 
 //REGISTER
 async register(user: ApplicationUser){  
-  const profileRequest = this.http.post("http://localhost:8080/vestimony/users/signup", user, { headers: { 'Content-Type': 'application/json' }, responseType: 'text' });
+  const profileRequest = this.http.post("http://localhost:8080/vestimony/users", user, { headers: { 'Content-Type': 'application/json' }, responseType: 'text' });
   const profileResponse = await profileRequest.toPromise();
   return profileResponse;
 }

@@ -21,21 +21,28 @@
     <!--link buttons-->
     <div class="d-flex justify-content-start">
       <i class="fas fa-ruler fa-1.5x"></i>
-      <p class="item-size-adjust"> Buy {{item.sizeAdjustment}} sizes {{direction}}</p>
+      <p class="item-size-adjust"> {{posts.length > 0 ? "Buy "+ item.sizeAdjustment +" sizes " + direction : "no
+        sizing info"}}</p>
     </div>
 
     <div class="d-flex justify-content-start ">
-      <div *ngIf="item.isSaved === false"><i (click)="saveItem(item)" class="fas fa-tshirt fa-1.5x "></i></div>
+      <div *ngIf="item.isSaved === false"><i (click)="saveItem(item)" class="fas fa-tshirt"></i></div>
       <div *ngIf="item.isSaved === true"><i (click)="unsaveItem(item)" class="fas fa-tshirt saved-item"></i></div>
       <p class="item-numsaved">{{item.numSaved}} saves</p>
     </div>
 
     <div class="d-flex flex-row justify-content-center">
-      <a class="flex-fill" href="{{item.url}}"><button class="item-link-button" style="width: 100%"><i class="fas fa-shopping-cart">
+      <a (click)="linkToBuy()" class="flex-fill" href="{{item.url}}" target="_blank"><button class="item-link-button"
+          style="width: 100%"><i class="fas fa-shopping-cart">
             Go to store</i></button></a>
     </div>
+
+
     <div class="d-flex flex-row justify-content-center">
-      <button class="item-link-button flex-fill" style="width: 100%"><i class="far fa-plus-square"></i> Vestimonial</button>
+      <button *ngIf="item.isSaved === false"  (click)="saveItem(item)" class="item-link-button flex-fill" style="width: 100%"><i class="far fa-plus-square"></i>
+        Save Item</button>
+      <button *ngIf="item.isSaved === true" (click)="unsaveItem(item)" class="item-link-button flex-fill" style="width: 100%">
+        Item Saved</button>
     </div>
   </div>
 </div>
@@ -56,7 +63,7 @@
 <!--show vestimonials-->
 <div *ngIf="vestimonialView">
   <div class="row" *ngFor="let vestimonial of vestimonials;">
-    
+
     <app-vestimonial-tile [vestimonial]="vestimonial">
     </app-vestimonial-tile>
   </div>

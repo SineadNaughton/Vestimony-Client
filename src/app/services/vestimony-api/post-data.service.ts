@@ -51,7 +51,7 @@ export class PostDataService {
 
   //GET POSTS FOR A PROFILE
   async getPostDataForProfile(userId: number) {
-    const postsRequest = this.http.get<Post[]>("http://localhost:8080/vestimony/posts/" + userId + "/posts", { headers: this.headers });
+    const postsRequest = this.http.get<Post[]>("http://localhost:8080/vestimony/posts/users/" + userId, { headers: this.headers });
     const postsResponse = await postsRequest.toPromise();
     return postsResponse;
   }
@@ -66,26 +66,26 @@ export class PostDataService {
 
   //LIKE A POST
   async likePost(postId: number) {
-    const likePostRequest = this.http.get("http://localhost:8080/vestimony/posts/" + postId + "/like", { headers: this.headers, responseType: 'text' });
+    const likePostRequest = this.http.post<string>("http://localhost:8080/vestimony/posts/liked/" + postId, { headers: this.headers, responseType: 'text' });
     const likePostsResponse = await likePostRequest.toPromise();
     return likePostsResponse;
   }
 
 
   async unlikePost(postId: number) {
-    const unlikePostRequest = this.http.get("http://localhost:8080/vestimony/posts/" + postId + "/unlike", { headers: this.headers, responseType: 'text' });
+    const unlikePostRequest = this.http.delete("http://localhost:8080/vestimony/posts/liked/" + postId, { headers: this.headers, responseType: 'text' });
     const unlikePostsResponse = await unlikePostRequest.toPromise();
     return unlikePostsResponse;
   }
 
   async isLiked(postId: number) {
-    const isLikedRequest = this.http.get<boolean>("http://localhost:8080/vestimony/posts/" + postId + "/isliked", { headers: this.headers });
+    const isLikedRequest = this.http.get<boolean>("http://localhost:8080/vestimony/posts/liked/" + postId + "/isliked", { headers: this.headers });
     const isLikedResponse = await isLikedRequest.toPromise();
     return isLikedResponse;
   }
 
   async getLikedPosts() {
-    const getLikedPostsRequest = this.http.get<Post[]>("http://localhost:8080/vestimony/users/likedposts", { headers: this.headers });
+    const getLikedPostsRequest = this.http.get<Post[]>("http://localhost:8080/vestimony/posts/liked", { headers: this.headers });
     const getLikedPostsResponse = await getLikedPostsRequest.toPromise();
     return getLikedPostsResponse;
   }

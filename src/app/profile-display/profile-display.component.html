@@ -1,4 +1,8 @@
-<i (click)="backClicked()" class="fas fa-arrow-left"></i>
+<div class="d-flex flex-row justify-content-start ">
+  <i (click)="backClicked()" class="fas fa-arrow-left flex-grow-1"></i>
+  <button class="item-link-button" *ngIf="following === false" (click)="follow()">Follow</button>
+  <button class="item-link-button" *ngIf="following === true" (click)="unfollow()">Following</button>
+</div>
 
 <div class="row">
 
@@ -26,16 +30,20 @@
   </div>
 </div>
 
-<div class="d-flex flex-row justify-content-around stat-container">
-  
 
-    <p class="numPosts">{{numPosts}} posts</p>
-    <div class="d-flex justify-content-center numFollowers">
-      <p >{{user.numFollowers}} followers</p>
-      <div *ngIf="following === false" (click)="follow()"><i class="far fa-user"></i></div>
-      <div *ngIf="following === true" (click)="unfollow()"><i class="fas fa-user"></i></div>
-    </div>
+
+<div class="d-flex flex-row justify-content-around ">
+  <div class="d-flex justify-content-end ">
+    <p>{{user.numFollowers}} followers</p>
+    <div><i class="far fa-user"></i></div>
   </div>
+  
+  <div class="d-flex justify-content-end">
+    <p>{{numPosts}} posts</p>
+    <i class="far fa-comment-alt"></i>
+  </div>
+</div>
+
 
 
 
