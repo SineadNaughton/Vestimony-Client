@@ -15,7 +15,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { PostTileComponent } from './post-tile/post-tile.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 
-//his
+
 import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { AuthUserService } from './services/auth/auth-user.service';
 import { AuthTokenService } from './services/auth/auth-token.service';
@@ -45,6 +45,9 @@ import { VestimonialLinkComponent } from './vestimonial-link/vestimonial-link.co
 import { VestimonialLinkConfirmComponent } from './vestimonial-link-confirm/vestimonial-link-confirm.component';
 import { PostTileListComponent } from './post-tile-list/post-tile-list.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { ProfileSearchComponent } from './profile-search/profile-search.component';
+import { ProfileTileComponent } from './profile-tile/profile-tile.component';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 
 
@@ -53,7 +56,6 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 
-//his
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -84,7 +86,9 @@ export function tokenGetter() {
     VestimonialAddReviewComponent,
     VestimonialLinkComponent,
     VestimonialLinkConfirmComponent,
-    PostTileListComponent
+    PostTileListComponent,
+    ProfileSearchComponent,
+    ProfileTileComponent
 
    
     
@@ -104,7 +108,8 @@ export function tokenGetter() {
     }),
     NgInviewModule,
     BrowserAnimationsModule, 
-    ImageCropperModule 
+    ImageCropperModule,
+    FlashMessagesModule.forRoot(),
   ],
   providers: [
     TruncatePipe,

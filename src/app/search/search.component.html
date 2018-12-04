@@ -1,3 +1,11 @@
+<div class="d-flex flex-row justify-content-center align-items-center">
+    <button class="button flex-fill" [ngClass]="{'button-active': itemView}" (click)="showView('items')">Search Items</button>
+    <button class="button flex-fill" [ngClass]="{'button-active': profileView}" (click)="showView('profiles')">Search Profiles</button>
+</div>
 
-<app-item-filter></app-item-filter>
-
+<div *ngIf="itemView">
+    <app-item-filter></app-item-filter>
+</div>
+<div *ngIf="profileView">
+   <app-profile-search></app-profile-search> 
+</div>

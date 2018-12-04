@@ -5,6 +5,7 @@ import { VestimonialDataService } from '../services/vestimony-api/vestimonial-da
 import { ItemDataService } from '../services/vestimony-api/item-data.service';
 import { Item } from '../services/models/item';
 import { Location } from '@angular/common';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-vestimonial-add-review',
@@ -21,7 +22,12 @@ export class VestimonialAddReviewComponent implements OnInit {
   showSubmitBtn: boolean;
   showLinkBtn:boolean;
 
-  constructor(private location: Location, private route: ActivatedRoute, private vestimonialDataService: VestimonialDataService, private router: Router, private itemDataService: ItemDataService) { }
+  constructor(private location: Location, 
+    private route: ActivatedRoute, 
+    private vestimonialDataService: VestimonialDataService, 
+    private router: Router, 
+    private itemDataService: ItemDataService,
+    private flashMessagesService: FlashMessagesService) { }
 
   async ngOnInit() {
 
@@ -39,6 +45,7 @@ export class VestimonialAddReviewComponent implements OnInit {
       this.router.navigate(['/posts', this.postId]);
     }
     else {
+      this.flashMessagesService.show("You already have a vestimonial for this item, please link it", {cssClass:"alert alert-danger", timeout: 30000 });
       this.showSubmitBtn = false;
       this.showLinkBtn = true;
     }
@@ -51,7 +58,8 @@ export class VestimonialAddReviewComponent implements OnInit {
     if (this.resp === "OK") {
       this.router.navigate(['/vestimonial/link', this.postId]);
     }
-    else if(this.resp === "exists"){
+    else{
+      this.flashMessagesService.show("You already have a vestimonial for this item, please link it", {cssClass:"alert alert-danger", timeout: 30000 });
       this.showSubmitBtn = false;
       this.showLinkBtn = true;
     }
@@ -64,7 +72,8 @@ export class VestimonialAddReviewComponent implements OnInit {
     if (this.resp === "OK") {
       this.router.navigate(['/vestimonial/add', this.postId]);
     }
-    else if(this.resp === "exists"){
+    else {
+      this.flashMessagesService.show("You already have a vestimonial for this item, please link it", {cssClass:"alert alert-danger", timeout: 30000 });
       this.showSubmitBtn = false;
       this.showLinkBtn = true;
     }

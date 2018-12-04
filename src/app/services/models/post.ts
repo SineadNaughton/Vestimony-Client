@@ -10,6 +10,7 @@ export class Post {
     vestimonials: Vestimonial[];
     likes: ApplicationUser[];
     isInView: boolean;
+    userId: number;
     
 
  

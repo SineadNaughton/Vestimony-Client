@@ -3,8 +3,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TruncatePipe } from '../pipes/truncate.pipe';
 import { Post } from '../services/models/post';
 import { PostDataService } from '../services/vestimony-api/post-data.service';
-import { post } from 'selenium-webdriver/http';
 import { ApplicationUser } from '../services/models/application-user';
+import { ProfileDataService } from '../services/vestimony-api/profile-data.service';
 
 @Component({
   selector: 'app-post-tile',
@@ -27,7 +27,7 @@ export class PostTileComponent implements OnInit {
 
 
 
-  constructor(private truncatePipe: TruncatePipe, private postDataService: PostDataService) { }
+  constructor(private truncatePipe: TruncatePipe, private postDataService: PostDataService, private profileDataService: ProfileDataService) { }
 
   async ngOnInit() {
 
@@ -46,7 +46,7 @@ export class PostTileComponent implements OnInit {
       this.fullSummary = "";
     }
 
-    this.user = this.post.applicationUser;
+    this.user = await this.profileDataService.getProfile(this.post.userId);
     this.profileImageUrl = "http://localhost:8080/vestimony/users/image/"+this.user.userId;
     this.postImageUrl= "http://localhost:8080/vestimony/posts/image/"+this.post.postId;
 

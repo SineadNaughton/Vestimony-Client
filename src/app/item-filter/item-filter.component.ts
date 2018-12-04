@@ -4,6 +4,8 @@ import { Item } from '../services/models/item';
 import { ItemBrand } from '../services/models/ItemBrand';
 import { ItemCategory } from '../services/models/ItemCategory';
 import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
+import { ApplicationUser } from '../services/models/application-user';
+import { ProfileDataService } from '../services/vestimony-api/profile-data.service';
 
 @Component({
   selector: 'app-item-filter',
@@ -19,6 +21,7 @@ export class ItemFilterComponent implements OnInit {
   itemListinfo: string;
   brandSelection: ItemBrand;
   catSelection: ItemCategory;
+
 
   topshop: ItemBrand = new ItemBrand('Topshop', 'topshop', "topshop-1-logo-png-transparent.png", false);
   asos: ItemBrand = new ItemBrand('asos', 'asos', "asos-png-10-student-discount-480.png", false);
@@ -186,4 +189,6 @@ export class ItemFilterComponent implements OnInit {
       });
     }
   }
+
+ 
 }

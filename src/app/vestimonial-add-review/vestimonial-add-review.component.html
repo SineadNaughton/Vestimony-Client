@@ -121,13 +121,14 @@
             </div>
             <div *ngIf="vestimonial.comments!=null && vestimonial.usualSize!=null && vestimonial.sizeBought!=null && vestimonial.rating!= null && showSubmitBtn === true"
                 class="d-flex flex-column justify-content-center">
-                <button class="button-active" (click)="submit()">Submit Vestimonial</button>
-                <button class="button-active" (click)="submitAndLinkAnother()">Link Another Vestimonial</button>
-                <button class="button-active" (click)="submitAndCreateAnother()">Create Another Vestimonial</button>
+                <button class="button-active" (click)="submit()">Submit Vestimonial and Complete Post</button>
+                <button class="button-active" (click)="submitAndLinkAnother()">Submit and Link Another Vestimonial</button>
+                <button class="button-active" (click)="submitAndCreateAnother()">Submit and Create Another Vestimonial</button>
             </div>
             <div *ngIf="showLinkBtn === true">
                 <button class="button-active" (click)="linkInstead()">Link Existing Vestimonial</button>
             </div>
+            <flash-messages></flash-messages>
 
 
 

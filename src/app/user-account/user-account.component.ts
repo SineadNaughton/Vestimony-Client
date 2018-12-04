@@ -80,6 +80,7 @@ export class UserAccountComponent implements OnInit {
         this.resp = await this.currentUserDataService.setProfileImage(this.theFile);
         this.editImage=false;
         this.showButton=true;
+        this.profileImageUrl = "http://localhost:8080/vestimony/users/image/" + this.user.userId;
       }
 
       imageChangedEvent: any = '';

@@ -66,7 +66,7 @@ export class PostDataService {
 
   //LIKE A POST
   async likePost(postId: number) {
-    const likePostRequest = this.http.post<string>("http://localhost:8080/vestimony/posts/liked/" + postId, { headers: this.headers, responseType: 'text' });
+    const likePostRequest = this.http.post("http://localhost:8080/vestimony/posts/liked/" + postId, {}, { headers: this.headers, responseType: 'text' });
     const likePostsResponse = await likePostRequest.toPromise();
     return likePostsResponse;
   }

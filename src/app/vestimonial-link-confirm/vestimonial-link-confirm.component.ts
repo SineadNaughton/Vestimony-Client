@@ -4,6 +4,7 @@ import { Vestimonial } from '../services/models/vestimonial';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from '../services/models/item';
 import { Location } from '@angular/common';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 
@@ -20,10 +21,16 @@ export class VestimonialLinkConfirmComponent implements OnInit {
   vestimonial: Vestimonial = new Vestimonial();
   item: Item = new Item();
   itemImageUrl: string;
+  showSubmitBtn: boolean;
   
-  constructor(private route: ActivatedRoute, private vestimonialDataService: VestimonialDataService, private router: Router, private location: Location) { }
+  constructor(private route: ActivatedRoute, 
+    private vestimonialDataService: VestimonialDataService, 
+    private router: Router, 
+    private location: Location,
+    private flashMessagesService: FlashMessagesService) { }
 
  async ngOnInit() {
+  this.showSubmitBtn=false;
   this.postId = this.route.snapshot.params.postId;
     //this.postId = this.route.parent.snapshot.params.id;
     this.vestimonialId = this.route.snapshot.params.vestimonialId;
@@ -35,7 +42,14 @@ export class VestimonialLinkConfirmComponent implements OnInit {
 
   async submit(){
     this.resp = await this.vestimonialDataService.linkVestimonial(this.vestimonialId, this.postId);
-    this.router.navigate(['/home']);
+    if(this.resp === "Sucessfully linked"){
+      this.router.navigate(['/posts', this.postId]);
+    }
+    else{
+      this.showSubmitBtn=true;
+      this.flashMessagesService.show("This vestimonial is already linked", {cssClass:"alert alert-danger", timeout: 30000 });
+      
+    }
   }
 
   async submitAndLinkAnother(){
@@ -48,6 +62,10 @@ export class VestimonialLinkConfirmComponent implements OnInit {
     this.resp = await this.vestimonialDataService.linkVestimonial(this.vestimonialId, this.postId);
     //redirect to list of items
     this.router.navigate(['/vestimonial/add', this.postId]);
+  }
+
+  finish(){
+    this.router.navigate(['/posts', this.postId]);
   }
 
   backClicked() {

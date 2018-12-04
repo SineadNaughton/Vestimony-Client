@@ -20,8 +20,8 @@ export class ProfileDataService {
     return profileResponse;
   }
 
-  async getAllProfiles(){
-    const profileRequest = this.http.get<ApplicationUser[]>("http://localhost:8080/vestimony/users/profiles", { headers : this.headers });
+  async getProfileSearch(username: string){
+    const profileRequest = this.http.get<ApplicationUser[]>("http://localhost:8080/vestimony/users/profiles/search/"+username, { headers : this.headers });
     const profileResponse = await profileRequest.toPromise();
     return profileResponse;
   }
@@ -50,7 +50,8 @@ async unfollow(userId: number){
 
 //REGISTER
 async register(user: ApplicationUser){  
-  const profileRequest = this.http.post("http://localhost:8080/vestimony/users", user, { headers: { 'Content-Type': 'application/json' }, responseType: 'text' });
+  const profileRequest = this.http.post("http://localhost:8080/vestimony/users", user, 
+  { headers: { 'Content-Type': 'application/json' }, responseType: 'text' });
   const profileResponse = await profileRequest.toPromise();
   return profileResponse;
 }

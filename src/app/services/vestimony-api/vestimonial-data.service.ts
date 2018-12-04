@@ -34,7 +34,7 @@ export class VestimonialDataService {
  
 
   async linkVestimonial(vestimonialId: number, postId: number){
-    const vestimonialRequest = this.http.post<string>("http://localhost:8080/vestimony/vestimonials/"+vestimonialId+"/link/"+postId, { headers : this.headers, responseType: 'text' });
+    const vestimonialRequest = this.http.post("http://localhost:8080/vestimony/vestimonials/"+vestimonialId+"/link/"+postId, {}, { headers : this.headers, responseType: 'text' });
     const vestimonialResponse = await vestimonialRequest.toPromise();
     return vestimonialResponse;
   }

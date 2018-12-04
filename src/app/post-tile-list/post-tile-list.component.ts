@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../services/models/post';
-import { PostDataService } from '../services/vestimony-api/post-data.service';
+
 
 @Component({
   selector: 'app-post-tile-list',

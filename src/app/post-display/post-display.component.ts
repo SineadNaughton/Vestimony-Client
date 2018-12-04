@@ -5,6 +5,7 @@ import { Post } from '../services/models/post';
 import { Vestimonial } from '../services/models/vestimonial';
 import { ApplicationUser } from '../services/models/application-user';
 import { Location } from '@angular/common';
+import { ProfileDataService } from '../services/vestimony-api/profile-data.service';
 
 @Component({
   selector: 'app-post-display',
@@ -22,12 +23,12 @@ export class PostDisplayComponent implements OnInit {
   liked: boolean;
   likedResponse:string;
 
-  constructor(private postDataService: PostDataService, private route: ActivatedRoute, private location: Location) { }
+  constructor(private postDataService: PostDataService, private route: ActivatedRoute, private location: Location, private profileDataService: ProfileDataService) { }
 
   async ngOnInit() {
     this.postId = this.route.snapshot.params.id;
     this.post = await this.postDataService.getPost(this.postId);
-    this.user = this.post.applicationUser;
+    this.user = await this.profileDataService.getProfile(this.post.userId);
     this.profileImageUrl = "http://localhost:8080/vestimony/users/image/"+this.user.userId;
     this.postImageUrl = "http://localhost:8080/vestimony/posts/image/" + this.postId;
     this.vestimonials = this.post.vestimonials;

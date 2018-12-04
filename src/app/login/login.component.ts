@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
   public authRequestBody: AuthRequestBody = new AuthRequestBody();
 
 
-  constructor(private authTokenService: AuthTokenService, 
+  constructor(private authTokenService: AuthTokenService,
     private authUserService: AuthUserService,
     private router: Router,
-    
-    ) {
+
+  ) {
 
   }
 
@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
   }
 
   async loginUser() {
-    const authToken = await this.authTokenService.getAuthToken(this.authRequestBody.username, this.authRequestBody.password);
+    const authToken = await this.authTokenService.getAuthToken
+      (this.authRequestBody.username, this.authRequestBody.password);
     this.authUserService.storeToken(authToken);
     this.router.navigate(['/home']);
   }
