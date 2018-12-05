@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { AuthConstant } from './auth.constant';
 import { AuthRequestBody } from './auth.request-body';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
@@ -19,7 +19,7 @@ export class AuthTokenService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     //start a request to the authentication endpoint, with our body and headers
-    const authRequest = this._httpClient.post(AuthConstant.URL_FOR_AUTHENTICATION,
+    const authRequest = this._httpClient.post(AuthConstant.URL_FOR_AUTHENTICATION(isDevMode()),
       authRequestBody, { headers, observe: 'response' });
     //retriefve the re "await" and "toPromise()"
     const authResponse = await authRequest.toPromise();
