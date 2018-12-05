@@ -6,6 +6,7 @@ import { Vestimonial } from '../services/models/vestimonial';
 import { ApplicationUser } from '../services/models/application-user';
 import { Location } from '@angular/common';
 import { ProfileDataService } from '../services/vestimony-api/profile-data.service';
+import { VestimonyApiConfig } from '../services/vestimony-api/vestimony-api-config';
 
 @Component({
   selector: 'app-post-display',
@@ -29,8 +30,8 @@ export class PostDisplayComponent implements OnInit {
     this.postId = this.route.snapshot.params.id;
     this.post = await this.postDataService.getPost(this.postId);
     this.user = await this.profileDataService.getProfile(this.post.userId);
-    this.profileImageUrl = "http://localhost:8080/vestimony/users/image/"+this.user.userId;
-    this.postImageUrl = "http://localhost:8080/vestimony/posts/image/" + this.postId;
+    this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/"+this.user.userId;
+    this.postImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/posts/image/" + this.postId;
     this.vestimonials = this.post.vestimonials;
     this.userName = this.user.username;
     this.liked = await this.postDataService.isLiked(this.post.postId);

@@ -1,6 +1,4 @@
 <div in-view (inview)="inview($event)">
-  <!-- <a [routerLink]="['/items', item.itemId]"> -->
-
   <div *ngIf="item.isInView">
     <a [routerLink]="['/items', item.itemId]">
       <div class="item-tile-image-holder d-flex align-items-center flex-column">

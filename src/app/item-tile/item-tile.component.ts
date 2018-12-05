@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../services/models/item';
 import { ItemDataService } from '../services/vestimony-api/item-data.service';
 import { TruncatePipe } from '../pipes/truncate.pipe';
+import { VestimonyApiConfig } from '../services/vestimony-api/vestimony-api-config';
 
 
 @Component({
@@ -39,7 +40,7 @@ export class ItemTileComponent implements OnInit {
       this.item.isInView = false;
     }
 
-    this.imageUrl = "http://localhost:8080/vestimony/items/image/" + this.item.itemId;
+    this.imageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/items/image/" + this.item.itemId;
     
     //this.itemChange.emit(this.item);
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApplicationUser } from '../services/models/application-user';
+import { VestimonyApiConfig } from '../services/vestimony-api/vestimony-api-config';
 
 @Component({
   selector: 'app-profile-tile',
@@ -15,7 +16,7 @@ export class ProfileTileComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.user.userId;
-    this.profileImageUrl = "http://localhost:8080/vestimony/users/image/"+this.userId;
+    this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/"+this.userId;
   
   }
 

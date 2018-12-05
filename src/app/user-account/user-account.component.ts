@@ -6,6 +6,7 @@ import { ImageCroppedEvent } from 'ngx-image-cropper/src/image-cropper.component
 import { Post } from '../services/models/post';
 import { PostDataService } from '../services/vestimony-api/post-data.service';
 import { AuthUserService } from '../services/auth/auth-user.service';
+import { VestimonyApiConfig } from '../services/vestimony-api/vestimony-api-config';
 
 @Component({
   selector: 'app-user-account',
@@ -32,7 +33,7 @@ export class UserAccountComponent implements OnInit {
   async ngOnInit() {
     this.user = await this.currentUserDataService.getCurrentUser();
     this.userId = this.user.userId;
-    this.profileImageUrl = "http://localhost:8080/vestimony/users/image/" + this.user.userId;
+    this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/" + this.user.userId;
     this.posts = await this.postDataService.getPostDataForProfile(this.userId);
     this.showButton=true;
     this.numPosts = this.posts.length;
@@ -80,7 +81,7 @@ export class UserAccountComponent implements OnInit {
         this.resp = await this.currentUserDataService.setProfileImage(this.theFile);
         this.editImage=false;
         this.showButton=true;
-        this.profileImageUrl = "http://localhost:8080/vestimony/users/image/" + this.user.userId;
+        this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/" + this.user.userId;
       }
 
       imageChangedEvent: any = '';

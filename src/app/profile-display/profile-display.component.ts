@@ -5,6 +5,7 @@ import { ProfileDataService } from '../services/vestimony-api/profile-data.servi
 import { Post } from '../services/models/post';
 import { PostDataService } from '../services/vestimony-api/post-data.service';
 import { Location } from '@angular/common';
+import { VestimonyApiConfig } from '../services/vestimony-api/vestimony-api-config';
 
 @Component({
   selector: 'app-profile-display',
@@ -30,7 +31,7 @@ export class ProfileDisplayComponent implements OnInit {
     this.userId = this.route.snapshot.params.id;
     this.user = await this.profileDataService.getProfile(this.userId);
     this.posts = await this.postDataService.getPostDataForProfile(this.userId);
-    this.profileImageUrl = "http://localhost:8080/vestimony/users/image/" + this.userId;
+    this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/" + this.userId;
     this.following = await this.profileDataService.isFollowing(this.userId);
     this.numPosts = this.posts.length;
   }

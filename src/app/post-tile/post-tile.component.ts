@@ -5,6 +5,7 @@ import { Post } from '../services/models/post';
 import { PostDataService } from '../services/vestimony-api/post-data.service';
 import { ApplicationUser } from '../services/models/application-user';
 import { ProfileDataService } from '../services/vestimony-api/profile-data.service';
+import { VestimonyApiConfig } from '../services/vestimony-api/vestimony-api-config';
 
 @Component({
   selector: 'app-post-tile',
@@ -47,8 +48,8 @@ export class PostTileComponent implements OnInit {
     }
 
     this.user = await this.profileDataService.getProfile(this.post.userId);
-    this.profileImageUrl = "http://localhost:8080/vestimony/users/image/"+this.user.userId;
-    this.postImageUrl= "http://localhost:8080/vestimony/posts/image/"+this.post.postId;
+    this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/"+this.user.userId;
+    this.postImageUrl= VestimonyApiConfig.BASE_URL + "/vestimony/posts/image/"+this.post.postId;
 
   }
 

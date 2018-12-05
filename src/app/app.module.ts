@@ -87,10 +87,6 @@ export function tokenGetter() {
     PostTileListComponent,
     ProfileSearchComponent,
     ProfileTileComponent
-
-   
-    
-   
   ],
   imports: [
     BrowserModule,
@@ -101,7 +97,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:8080']
+        whitelistedDomains: ['localhost:8080', 'vestimony-app.herokuapp.com']
       }
     }),
     NgInviewModule,

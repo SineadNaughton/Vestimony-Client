@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from '../services/models/item';
 import { Location } from '@angular/common';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { VestimonyApiConfig } from '../services/vestimony-api/vestimony-api-config';
 
 
 
@@ -37,7 +38,7 @@ export class VestimonialLinkConfirmComponent implements OnInit {
     //const vestResp = await this.vestimonialDataService.getVestimonial(this.vestimonialId);
     this.vestimonial = await this.vestimonialDataService.getVestimonial(this.vestimonialId);
     this.item = this.vestimonial.item;
-    this.itemImageUrl = "http://localhost:8080/vestimony/items/image/" + this.item.itemId;
+    this.itemImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/items/image/" + this.item.itemId;
   }
 
   async submit(){

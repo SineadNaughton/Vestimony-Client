@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ApplicationUser } from '../models/application-user';
+import { VestimonyApiConfig } from './vestimony-api-config';
 
 
 @Injectable({
@@ -18,7 +19,7 @@ export class CurrentUserDataService {
     });
 
 
-    const currentUser = this.http.get<ApplicationUser>("http://localhost:8080/vestimony/users/currentuser", { headers });
+    const currentUser = this.http.get<ApplicationUser>(VestimonyApiConfig.BASE_URL + "/vestimony/users/currentuser", { headers });
 
     const userResponse = await currentUser.toPromise();
 
@@ -33,7 +34,7 @@ export class CurrentUserDataService {
     });
 
 
-    const currentUser = this.http.put("http://localhost:8080/vestimony/users/edit", user, { headers, responseType:'text' });
+    const currentUser = this.http.put(VestimonyApiConfig.BASE_URL + "/vestimony/users/edit", user, { headers, responseType:'text' });
 
     const userResponse = await currentUser.toPromise();
 
@@ -48,7 +49,7 @@ export class CurrentUserDataService {
     const headers = new HttpHeaders()
       .set('Authorization', localStorage.getItem('access_token'));
 
-    const currentUser = this.http.post("http://localhost:8080/vestimony/users/image", fd, { headers, responseType: 'text' });
+    const currentUser = this.http.post(VestimonyApiConfig.BASE_URL + "/vestimony/users/image", fd, { headers, responseType: 'text' });
 
     const userResponse = await currentUser.toPromise();
 

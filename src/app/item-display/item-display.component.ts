@@ -8,6 +8,7 @@ import { VestimonialDataService } from '../services/vestimony-api/vestimonial-da
 import { Vestimonial } from '../services/models/vestimonial';
 import { Location } from '@angular/common';
 import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
+import { VestimonyApiConfig } from '../services/vestimony-api/vestimony-api-config';
 
 @Component({
   selector: 'app-item-display',
@@ -34,7 +35,7 @@ export class ItemDisplayComponent implements OnInit {
     this.item = await this.itemDataService.getItem(this.itemId);
     this.item.isSaved = await this.itemDataService.isSaved(this.item.itemId);
     this.posts = await this.postDataService.getPostsForItem(this.itemId);
-    this.imageUrl = "http://localhost:8080/vestimony/items/image/" + this.itemId;
+    this.imageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/items/image/" + this.itemId;
     this.showView("postView");
 
     if(this.item.sizeAdjustment < 0){
