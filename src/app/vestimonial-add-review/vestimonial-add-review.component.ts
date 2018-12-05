@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, isDevMode } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Vestimonial } from '../services/models/vestimonial';
 import { VestimonialDataService } from '../services/vestimony-api/vestimonial-data.service';
@@ -36,8 +36,7 @@ export class VestimonialAddReviewComponent implements OnInit {
     this.postId = this.route.snapshot.params.postId;
     this.itemId = this.route.snapshot.params.itemId;
     this.item = await this.itemDataService.getItem(this.itemId);
-    this.imageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/items/image/" + this.itemId;
-
+    this.imageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/items/image/" + this.itemId;
   }
 
   async submit() {

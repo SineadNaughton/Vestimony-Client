@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemDataService } from '../services/vestimony-api/item-data.service';
 import { Item } from '../services/models/item';
@@ -35,7 +35,7 @@ export class ItemDisplayComponent implements OnInit {
     this.item = await this.itemDataService.getItem(this.itemId);
     this.item.isSaved = await this.itemDataService.isSaved(this.item.itemId);
     this.posts = await this.postDataService.getPostsForItem(this.itemId);
-    this.imageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/items/image/" + this.itemId;
+    this.imageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/items/image/" + this.itemId;
     this.showView("postView");
 
     if(this.item.sizeAdjustment < 0){

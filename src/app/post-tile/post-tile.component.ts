@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, isDevMode } from '@angular/core';
 
 import { TruncatePipe } from '../pipes/truncate.pipe';
 import { Post } from '../services/models/post';
@@ -48,8 +48,8 @@ export class PostTileComponent implements OnInit {
     }
 
     this.user = await this.profileDataService.getProfile(this.post.userId);
-    this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/"+this.user.userId;
-    this.postImageUrl= VestimonyApiConfig.BASE_URL + "/vestimony/posts/image/"+this.post.postId;
+    this.profileImageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/users/image/"+this.user.userId;
+    this.postImageUrl= VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/posts/image/"+this.post.postId;
 
   }
 

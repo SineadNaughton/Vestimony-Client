@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, isDevMode } from '@angular/core';
 import { Item } from '../services/models/item';
 import { ItemDataService } from '../services/vestimony-api/item-data.service';
 import { TruncatePipe } from '../pipes/truncate.pipe';
@@ -40,7 +40,7 @@ export class ItemTileComponent implements OnInit {
       this.item.isInView = false;
     }
 
-    this.imageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/items/image/" + this.item.itemId;
+    this.imageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/items/image/" + this.item.itemId;
     
     //this.itemChange.emit(this.item);
 

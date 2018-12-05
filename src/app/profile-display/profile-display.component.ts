@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApplicationUser } from '../services/models/application-user';
 import { ProfileDataService } from '../services/vestimony-api/profile-data.service';
@@ -31,7 +31,7 @@ export class ProfileDisplayComponent implements OnInit {
     this.userId = this.route.snapshot.params.id;
     this.user = await this.profileDataService.getProfile(this.userId);
     this.posts = await this.postDataService.getPostDataForProfile(this.userId);
-    this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/" + this.userId;
+    this.profileImageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/users/image/" + this.userId;
     this.following = await this.profileDataService.isFollowing(this.userId);
     this.numPosts = this.posts.length;
   }

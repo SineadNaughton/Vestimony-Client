@@ -1,5 +1,3 @@
-import { isDevMode } from "@angular/core";
-
 export class VestimonyApiConfig {
-    public static readonly BASE_URL = isDevMode() ? 'http://localhost:8080' : 'https://vestimony-api.herokuapp.com';
+    public static BASE_URL = (isDevMode) => isDevMode ? 'http://localhost:8080' : 'https://vestimony-api.herokuapp.com';
 }

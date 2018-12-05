@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, isDevMode } from '@angular/core';
 import { Vestimonial } from '../services/models/vestimonial';
 import { Item } from '../services/models/item';
 import { ApplicationUser } from '../services/models/application-user';
@@ -26,7 +26,7 @@ export class VestimonialTileComponent implements OnInit {
  async ngOnInit() {
     this.item = this.vestimonial.item;
     this.user = this.vestimonial.applicaitonUser;
-    this.itemImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/items/image/" + this.item.itemId;
+    this.itemImageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/items/image/" + this.item.itemId;
     this.item.isSaved = await this.itemDataService.isSaved(this.item.itemId);
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, isDevMode } from '@angular/core';
 import { VestimonialDataService } from '../services/vestimony-api/vestimonial-data.service';
 import { Vestimonial } from '../services/models/vestimonial';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -38,7 +38,7 @@ export class VestimonialLinkConfirmComponent implements OnInit {
     //const vestResp = await this.vestimonialDataService.getVestimonial(this.vestimonialId);
     this.vestimonial = await this.vestimonialDataService.getVestimonial(this.vestimonialId);
     this.item = this.vestimonial.item;
-    this.itemImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/items/image/" + this.item.itemId;
+    this.itemImageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/items/image/" + this.item.itemId;
   }
 
   async submit(){

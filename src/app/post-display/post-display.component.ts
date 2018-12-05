@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, isDevMode } from '@angular/core';
 import { PostDataService } from '../services/vestimony-api/post-data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Post } from '../services/models/post';
@@ -30,8 +30,8 @@ export class PostDisplayComponent implements OnInit {
     this.postId = this.route.snapshot.params.id;
     this.post = await this.postDataService.getPost(this.postId);
     this.user = await this.profileDataService.getProfile(this.post.userId);
-    this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/"+this.user.userId;
-    this.postImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/posts/image/" + this.postId;
+    this.profileImageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/users/image/"+this.user.userId;
+    this.postImageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/posts/image/" + this.postId;
     this.vestimonials = this.post.vestimonials;
     this.userName = this.user.username;
     this.liked = await this.postDataService.isLiked(this.post.postId);

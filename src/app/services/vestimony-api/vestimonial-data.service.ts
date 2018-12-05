@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, isDevMode } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Vestimonial } from '../models/vestimonial';
 import { VestimonyApiConfig } from './vestimony-api-config';
@@ -15,19 +15,19 @@ export class VestimonialDataService {
   constructor(private http: HttpClient) { }
 
   async createVestimonial(vestimonial: Vestimonial, postId: number, itemId: number){
-    const vestimonialRequest = this.http.post(VestimonyApiConfig.BASE_URL + "/vestimony/vestimonials/"+postId+"/"+itemId, vestimonial,{ headers : this.headers, responseType: 'text' });
+    const vestimonialRequest = this.http.post(VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/vestimonials/"+postId+"/"+itemId, vestimonial,{ headers : this.headers, responseType: 'text' });
     const vestimonialResponse = await vestimonialRequest.toPromise();
     return vestimonialResponse;
   }
 
   async getUsersVestimonial(){
-    const vestimonialRequest = this.http.get<Vestimonial[]>(VestimonyApiConfig.BASE_URL + "/vestimony/vestimonials/currentuser", { headers : this.headers});
+    const vestimonialRequest = this.http.get<Vestimonial[]>(VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/vestimonials/currentuser", { headers : this.headers});
     const vestimonialResponse = await vestimonialRequest.toPromise();
     return vestimonialResponse;
   }
 
   async getItemVestimonials(itemId: number){
-    const vestimonialRequest = this.http.get<Vestimonial[]>(VestimonyApiConfig.BASE_URL + "/vestimony/vestimonials/items/"+itemId, { headers : this.headers});
+    const vestimonialRequest = this.http.get<Vestimonial[]>(VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/vestimonials/items/"+itemId, { headers : this.headers});
     const vestimonialResponse = await vestimonialRequest.toPromise();
     return vestimonialResponse;
   }
@@ -35,13 +35,13 @@ export class VestimonialDataService {
  
 
   async linkVestimonial(vestimonialId: number, postId: number){
-    const vestimonialRequest = this.http.post(VestimonyApiConfig.BASE_URL + "/vestimony/vestimonials/"+vestimonialId+"/link/"+postId, {}, { headers : this.headers, responseType: 'text' });
+    const vestimonialRequest = this.http.post(VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/vestimonials/"+vestimonialId+"/link/"+postId, {}, { headers : this.headers, responseType: 'text' });
     const vestimonialResponse = await vestimonialRequest.toPromise();
     return vestimonialResponse;
   }
 
   async getVestimonial(vestimonialId: number){
-    const vestimonialRequest = this.http.get<Vestimonial>(VestimonyApiConfig.BASE_URL + "/vestimony/vestimonials/"+vestimonialId, { headers : this.headers });
+    const vestimonialRequest = this.http.get<Vestimonial>(VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/vestimonials/"+vestimonialId, { headers : this.headers });
     const vestimonialResponse = await vestimonialRequest.toPromise();
     return vestimonialResponse;
   }

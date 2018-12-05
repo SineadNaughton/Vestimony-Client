@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, isDevMode } from '@angular/core';
 import { ApplicationUser } from '../services/models/application-user';
 import { VestimonyApiConfig } from '../services/vestimony-api/vestimony-api-config';
 
@@ -16,7 +16,7 @@ export class ProfileTileComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.user.userId;
-    this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/"+this.userId;
+    this.profileImageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/users/image/"+this.userId;
   
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import { ApplicationUser } from '../services/models/application-user';
 import { CurrentUserDataService } from '../services/vestimony-api/current-user-data.service';
 import { Router } from '@angular/router';
@@ -33,7 +33,7 @@ export class UserAccountComponent implements OnInit {
   async ngOnInit() {
     this.user = await this.currentUserDataService.getCurrentUser();
     this.userId = this.user.userId;
-    this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/" + this.user.userId;
+    this.profileImageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/users/image/" + this.user.userId;
     this.posts = await this.postDataService.getPostDataForProfile(this.userId);
     this.showButton=true;
     this.numPosts = this.posts.length;
@@ -81,7 +81,7 @@ export class UserAccountComponent implements OnInit {
         this.resp = await this.currentUserDataService.setProfileImage(this.theFile);
         this.editImage=false;
         this.showButton=true;
-        this.profileImageUrl = VestimonyApiConfig.BASE_URL + "/vestimony/users/image/" + this.user.userId;
+        this.profileImageUrl = VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/users/image/" + this.user.userId;
       }
 
       imageChangedEvent: any = '';
