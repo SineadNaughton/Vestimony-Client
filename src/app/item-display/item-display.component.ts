@@ -7,6 +7,7 @@ import { Post } from '../services/models/post';
 import { VestimonialDataService } from '../services/vestimony-api/vestimonial-data.service';
 import { Vestimonial } from '../services/models/vestimonial';
 import { Location } from '@angular/common';
+import { THROW_IF_NOT_FOUND } from '@angular/core/src/di/injector';
 
 @Component({
   selector: 'app-item-display',
@@ -22,7 +23,7 @@ export class ItemDisplayComponent implements OnInit {
   saved: boolean;
   savedResponse: any;
   sizeNumber: number;
-  direction: string = "";
+  adjustment: string = "";
   vestimonialView: boolean;
   postView: boolean;
 
@@ -38,10 +39,23 @@ export class ItemDisplayComponent implements OnInit {
 
     if(this.item.sizeAdjustment < 0){
       this.item.sizeAdjustment = this.item.sizeAdjustment * -1;
-      this.direction = "smaller";
+      if(this.item.sizeAdjustment > 1){
+        this.adjustment = "Buy "+this.item.sizeAdjustment+" sizes smaller";
+      }
+      else{
+        this.adjustment = "Buy "+this.item.sizeAdjustment+" size smaller";
+      }
+    }
+    else if(this.item.sizeAdjustment === 0){
+      this.adjustment = "Buy true size";
     }
     else{
-      this.direction ="bigger";
+      if(this.item.sizeAdjustment > 1){
+        this.adjustment = "Buy "+this.item.sizeAdjustment+" sizes bigger";
+      }
+      else{
+        this.adjustment = "Buy "+this.item.sizeAdjustment+" size bigger";
+      }
     }
 
 

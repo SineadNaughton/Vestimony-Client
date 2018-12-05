@@ -38,7 +38,6 @@ import { ItemFilterComponent } from './item-filter/item-filter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostCreationComponent } from './post-creation/post-creation.component';
 import { VestimonialAddComponent } from './vestimonial-add/vestimonial-add.component';
-import { ItemAddVestimonialListComponent } from './item-add-vestimonial-list/item-add-vestimonial-list.component';
 import { VestimonialAddReviewComponent } from './vestimonial-add-review/vestimonial-add-review.component';
 import { VestimonialDataService } from './services/vestimony-api/vestimonial-data.service';
 import { VestimonialLinkComponent } from './vestimonial-link/vestimonial-link.component';
@@ -82,7 +81,6 @@ export function tokenGetter() {
     ItemFilterComponent,
     PostCreationComponent,
     VestimonialAddComponent,
-    ItemAddVestimonialListComponent,
     VestimonialAddReviewComponent,
     VestimonialLinkComponent,
     VestimonialLinkConfirmComponent,

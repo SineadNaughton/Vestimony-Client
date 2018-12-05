@@ -14,6 +14,8 @@ export class ItemTileComponent implements OnInit {
   @Input() item: Item;
   @Output() itemChange = new EventEmitter<Item>();
   @Input() index: number;
+  @Input() addVestimonial: boolean;
+  @Input() postId: number;
 
 
   imageUrl: string;
@@ -53,13 +55,15 @@ export class ItemTileComponent implements OnInit {
   async saveItem(itemId: number) {
     this.savedResponse = await this.itemDataService.saveItem(this.item.itemId);
     this.item.isSaved = true;
-    this.itemChange.emit(this.item);
+    //this.itemChange.emit(this.item);
+    this.item.numSaved ++;
   }
 
   async unsaveItem(itemId: number) {
     this.savedResponse = await this.itemDataService.unsaveItem(this.item.itemId);
     this.item.isSaved = false;
-    this.itemChange.emit(this.item);
+    //this.itemChange.emit(this.item);
+    this.item.numSaved --;
   }
 
   async inview(event) {

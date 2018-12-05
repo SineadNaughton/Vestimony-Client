@@ -19,12 +19,4 @@ export class AppComponent {
     this.userService.destroyAcessToken();
     this.router.navigate(['/']);
   }
-
-  get isAdminUser() {
-    return this.userService.isAdminUser();
-  }
-
-  get isUser() {
-    return this.userService.isUser();
-  }
 }

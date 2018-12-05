@@ -15,7 +15,6 @@ postId: Number;
 
   ngOnInit() {
     this.postId = this.route.snapshot.params.id;
-
   }
 
 }

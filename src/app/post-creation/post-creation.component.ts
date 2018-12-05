@@ -16,7 +16,7 @@ export class PostCreationComponent implements OnInit {
   resp: string = null;
   postId: number;
   theFile: File;
-  
+
   constructor(private postDataService: PostDataService, private router: Router) { }
 
   ngOnInit() {
@@ -24,46 +24,43 @@ export class PostCreationComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
-    //this.saveFile();
-    //localStorage.('file', this.selectedFile);
   }
 
-  async submit(){
+  async submit() {
     this.returnedPost = await this.postDataService.createPost(this.post);
     this.postId = this.returnedPost.postId;
     this.saveImage();
   }
 
-  async saveImage(){
-//this.resp = await this.postDataService.createPostImage(this.selectedFile, this.postId);
+  async saveImage() {
     this.resp = await this.postDataService.createPostImage(this.theFile, this.postId);
   }
 
   imageChangedEvent: any = '';
-croppedImage: any = '';
+  croppedImage: any = '';
 
-fileChangeEvent(event: any): void {
+  fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
-}
-async imageCropped(event: ImageCroppedEvent) {
+  }
+  async imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
     this.theFile = this.blobToFile(event.file, 'file.png')
-}
-imageLoaded() {
+  }
+
+  public blobToFile = (theBlob: Blob, fileName: string): File => {
+    var b: any = theBlob;
+    //A Blob() is almost a File() - it's just missing the two properties added below
+    b.lastModifiedDate = new Date();
+    b.name = fileName;
+    //Cast to a File() type
+    return <File>theBlob;
+  }
+
+  imageLoaded() {
     // show cropper
-}
-loadImageFailed() {
+  }
+  loadImageFailed() {
     // show message
-}
-
-public blobToFile = (theBlob: Blob, fileName:string): File => {
-  var b: any = theBlob;
-  //A Blob() is almost a File() - it's just missing the two properties below which we will add
-  b.lastModifiedDate = new Date();
-  b.name = fileName;
-
-  //Cast to a File() type
-  return <File>theBlob;
-}
+  }
 
 }

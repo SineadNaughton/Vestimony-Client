@@ -101,6 +101,7 @@ export class ItemFilterComponent implements OnInit {
 
 
   async submitFilter() {
+    //checks for entries and uses an empty string if there is none
     const filteredBrands = this.brands1.filter(b => b.selected === true);
     const filteredBrand = filteredBrands.length > 0 ? filteredBrands[0] : null;
     this.brand = filteredBrand === null ? "" : filteredBrand.value;
@@ -110,10 +111,9 @@ export class ItemFilterComponent implements OnInit {
     this.category = filteredCat === null ? "" : filteredCat.value;
 
     this.searchName = this.searchName === null ? "" : this.searchName;
-
+    //send info to item data service to retrieve data
     this.items = await this.itemDataService.getFilteredItemData(this.brand, this.category, this.searchName);
     this.itemListinfo = "Results"
-
   }
 
   ngDoCheck() {

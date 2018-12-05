@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor(private currentUserData: CurrentUserDataService, private itemDataService: ItemDataService, private postDataService: PostDataService) { }
+  constructor(private postDataService: PostDataService) { }
 
   async ngOnInit() {
     
@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit {
       this.following = true;
       this.trending = false;
       this.posts =  await this.postDataService.getPostData();
-
     }
     else if (viewType==="trending"){
       this.following = false;

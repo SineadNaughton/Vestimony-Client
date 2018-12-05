@@ -11,27 +11,15 @@ import { Item } from '../services/models/item';
 })
 export class ItemTileListComponent implements OnInit {
  @Input() items: Item[];
- saved: boolean;
- savedResponse: string;
+ @Input() addVestimonial: boolean;
+ @Input() postId: number;
 
-  constructor(private itemDataService: ItemDataService) { }
+
+  constructor() { }
 
   async ngOnInit() {
-  //  this.items = await this.itemDataService.getItemData();
-  
   }
 
-  async saveItem(item: Item) {
-    this.savedResponse = await this.itemDataService.saveItem(item.itemId);
-    item.isSaved = true;
-    item.numSaved ++;
-  }
-
-  async unsaveItem(item: Item) {
-    this.savedResponse = await this.itemDataService.unsaveItem(item.itemId);
-    item.isSaved = false;
-    item.numSaved --;
-  }
 
   
  

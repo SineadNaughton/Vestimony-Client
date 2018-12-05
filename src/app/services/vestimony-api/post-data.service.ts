@@ -24,10 +24,8 @@ export class PostDataService {
 
   //CREATE POST IMAGE
   async createPostImage(file: File, postId: number) {
-
     let fd: FormData = new FormData();
     fd.append('file', file);
-
     const imgheaders = new HttpHeaders()
       .set('Authorization', localStorage.getItem('access_token'));
     const postRequest = this.http.post("http://localhost:8080/vestimony/posts/image/"+postId, fd, { headers: imgheaders, responseType:'text' });

@@ -45,7 +45,7 @@
 
     <div *ngIf="addVestimonial">
         <p class="list-info">{{itemListinfo}}</p>
-        <app-item-add-vestimonial-list [items]="items" [postId]="postId"></app-item-add-vestimonial-list>
+        <app-item-tile-list [addVestimonial]="addVestimonial" [items]="items" [postId]="postId"></app-item-tile-list>
     </div>
     <div *ngIf="!addVestimonial">
         <p class="list-info">{{itemListinfo}}</p>
