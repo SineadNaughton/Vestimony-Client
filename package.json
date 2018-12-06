@@ -1,8 +1,8 @@
 {
   "name": "vestimony-angular-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
-    "postinstall": "ng build",
+    "postinstall": "ng build --prod",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
