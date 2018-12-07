@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   constructor(private authTokenService: AuthTokenService,
     private authUserService: AuthUserService,
     private router: Router,
-
   ) {
 
   }
@@ -34,8 +33,4 @@ export class LoginComponent implements OnInit {
     this.authUserService.storeToken(authToken);
     this.router.navigate(['/home']);
   }
-
-
-
-
 }

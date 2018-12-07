@@ -10,7 +10,7 @@ export class ProfileDataService {
 
   private readonly headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': localStorage.getItem('access_token')
+    'Authorization': VestimonyApiConfig.AccessToken
   });
 
   constructor(private http: HttpClient) { }

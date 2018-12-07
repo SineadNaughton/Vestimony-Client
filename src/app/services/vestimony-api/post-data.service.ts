@@ -11,7 +11,7 @@ export class PostDataService {
 
   private readonly headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': localStorage.getItem('access_token')
+    'Authorization': VestimonyApiConfig.AccessToken
   });
 
   constructor(private http: HttpClient) { }
@@ -28,7 +28,7 @@ export class PostDataService {
     let fd: FormData = new FormData();
     fd.append('file', file);
     const imgheaders = new HttpHeaders()
-      .set('Authorization', localStorage.getItem('access_token'));
+      .set('Authorization', VestimonyApiConfig.AccessToken);
     const postRequest = this.http.post(VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/posts/image/"+postId, fd, { headers: imgheaders, responseType:'text' });
     const postResponse = await postRequest.toPromise();
     return postResponse;

@@ -15,7 +15,7 @@ export class CurrentUserDataService {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('access_token')
+      'Authorization': VestimonyApiConfig.AccessToken
     });
 
 
@@ -30,7 +30,7 @@ export class CurrentUserDataService {
   async editAccount(user: ApplicationUser){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('access_token')
+      'Authorization': VestimonyApiConfig.AccessToken
     });
 
 
@@ -47,7 +47,7 @@ export class CurrentUserDataService {
     fd.append('file', profileImage);
 
     const headers = new HttpHeaders()
-      .set('Authorization', localStorage.getItem('access_token'));
+      .set('Authorization', VestimonyApiConfig.AccessToken);
 
     const currentUser = this.http.post(VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/users/image", fd, { headers, responseType: 'text' });
 

@@ -11,12 +11,12 @@ export class ItemDataService {
 
   private readonly headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': localStorage.getItem('access_token')
+    'Authorization': VestimonyApiConfig.AccessToken
   });
 
   private readonly headersPlainText = new HttpHeaders({
     'Content-Type': 'text/plain',
-    'Authorization': localStorage.getItem('access_token')
+    'Authorization': VestimonyApiConfig.AccessToken
   });
 
   constructor(private http: HttpClient) { }

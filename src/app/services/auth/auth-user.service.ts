@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthConstant } from './auth.constant';
+import { VestimonyApiConfig } from '../vestimony-api/vestimony-api-config';
 
 @Injectable()
 export class AuthUserService {
@@ -13,6 +14,7 @@ export class AuthUserService {
     const decodedToken = this._jwtHelper.decodeToken(accessToken);
     this._accessToken = accessToken;
     localStorage.setItem(AuthConstant.TOKEN_NAME, accessToken);
+    VestimonyApiConfig.AccessToken = accessToken;
   }
 
   destroyAcessToken() {

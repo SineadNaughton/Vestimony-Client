@@ -9,7 +9,7 @@ import { VestimonyApiConfig } from './vestimony-api-config';
 export class VestimonialDataService {
   private readonly headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': localStorage.getItem('access_token')
+    'Authorization': VestimonyApiConfig.AccessToken
   });
   
   constructor(private http: HttpClient) { }
