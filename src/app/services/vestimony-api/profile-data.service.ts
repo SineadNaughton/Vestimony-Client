@@ -2,6 +2,7 @@ import { Injectable, isDevMode } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ApplicationUser } from '../models/application-user';
 import { VestimonyApiConfig } from './vestimony-api-config';
+import { AuthConstant } from '../auth/auth.constant';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ProfileDataService {
 
   private readonly headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': VestimonyApiConfig.AccessToken
+    'Authorization': localStorage.getItem(AuthConstant.TOKEN_NAME)
   });
 
   constructor(private http: HttpClient) { }

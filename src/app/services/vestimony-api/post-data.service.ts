@@ -2,6 +2,7 @@ import { Injectable, isDevMode } from '@angular/core';
 import { Post } from '../models/post';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { VestimonyApiConfig } from './vestimony-api-config';
+import { AuthConstant } from '../auth/auth.constant';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class PostDataService {
 
   private readonly headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': VestimonyApiConfig.AccessToken
+    'Authorization': localStorage.getItem(AuthConstant.TOKEN_NAME)
   });
 
   constructor(private http: HttpClient) { }
@@ -28,7 +29,7 @@ export class PostDataService {
     let fd: FormData = new FormData();
     fd.append('file', file);
     const imgheaders = new HttpHeaders()
-      .set('Authorization', VestimonyApiConfig.AccessToken);
+      .set('Authorization', localStorage.getItem(AuthConstant.TOKEN_NAME));
     const postRequest = this.http.post(VestimonyApiConfig.BASE_URL(isDevMode()) + "/vestimony/posts/image/"+postId, fd, { headers: imgheaders, responseType:'text' });
     const postResponse = await postRequest.toPromise();
     return postResponse;

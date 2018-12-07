@@ -13,12 +13,12 @@ export class AuthUserService {
   storeToken(accessToken: string) {    
     const decodedToken = this._jwtHelper.decodeToken(accessToken);
     this._accessToken = accessToken;
-    localStorage.setItem(AuthConstant.TOKEN_NAME, accessToken);
-    VestimonyApiConfig.AccessToken = accessToken;
+    localStorage.clear();    
+    localStorage.setItem(AuthConstant.TOKEN_NAME, accessToken);    
   }
 
   destroyAcessToken() {
-    this._accessToken = null;
+    this._accessToken = null;    
     localStorage.removeItem(AuthConstant.TOKEN_NAME);
   }
 

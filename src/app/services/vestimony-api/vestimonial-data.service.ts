@@ -2,6 +2,7 @@ import { Injectable, isDevMode } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Vestimonial } from '../models/vestimonial';
 import { VestimonyApiConfig } from './vestimony-api-config';
+import { AuthConstant } from '../auth/auth.constant';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { VestimonyApiConfig } from './vestimony-api-config';
 export class VestimonialDataService {
   private readonly headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': VestimonyApiConfig.AccessToken
+    'Authorization': localStorage.getItem(AuthConstant.TOKEN_NAME)
   });
   
   constructor(private http: HttpClient) { }
