@@ -18,6 +18,7 @@ export class AuthTokenService {
     //set the content type header to application/json so the endpoint can understand the body we send
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
+            
     //start a request to the authentication endpoint, with our body and headers
     const authRequest = this._httpClient.post(AuthConstant.URL_FOR_AUTHENTICATION(isDevMode()),
       authRequestBody, { headers, observe: 'response' });
