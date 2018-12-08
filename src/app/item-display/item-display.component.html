@@ -14,7 +14,7 @@
     <div class="d-flex justify-content-start ">
       <i class="far fa-star fa-1.5x"></i>
 
-      <p class="item-rating">{{item.rating!=0 ? item.rating+" Stars" : "no rating"}}</p>
+      <p class="item-rating">{{item.rating!=0 ? (item.rating | number:'1.0-1') +" Stars" : "no rating"}}</p>
     </div>
 
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthUserService } from './services/auth/auth-user.service';
+import { AuthConstant } from './services/auth/auth.constant';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,16 @@ export class AppComponent {
     private userService: AuthUserService
   ) { }
 
-  logout() {
-    this.userService.destroyAcessToken();
-    this.router.navigate(['/']);
+  onInit(){
   }
+  //check if a user is signed in (if there is an auth token) to see if nav should be displayed
+  isSignedIn(){
+    if(localStorage.getItem(AuthConstant.TOKEN_NAME) != null){
+     return true;
+    }
+    else{
+      return false;
+    }
+  }
+
 }

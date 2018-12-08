@@ -20,7 +20,7 @@
     <div class="flex-grow-1">
       <div class="d-flex justify-content-start">
         <i *ngIf="item.rating!=0" class="far fa-star"></i>
-        <p class="item-list-rating">{{item.rating!=0 ? item.rating : "no rating"}}</p>
+        <p class="item-list-rating">{{item.rating!=0 ? (item.rating | number:'1.0-1') : "no rating"}}</p>
       </div>
     </div>
     <div class="flex-grow-1">

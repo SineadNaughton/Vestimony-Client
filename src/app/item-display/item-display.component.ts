@@ -41,10 +41,10 @@ export class ItemDisplayComponent implements OnInit {
     if(this.item.sizeAdjustment < 0){
       this.item.sizeAdjustment = this.item.sizeAdjustment * -1;
       if(this.item.sizeAdjustment > 1){
-        this.adjustment = "Buy "+this.item.sizeAdjustment+" sizes smaller";
+        this.adjustment = "Buy "+this.item.sizeAdjustment.toPrecision(1) +" sizes smaller";
       }
       else{
-        this.adjustment = "Buy "+this.item.sizeAdjustment+" size smaller";
+        this.adjustment = "Buy "+this.item.sizeAdjustment.toPrecision(1) +" size smaller";
       }
     }
     else if(this.item.sizeAdjustment === 0){
@@ -52,10 +52,10 @@ export class ItemDisplayComponent implements OnInit {
     }
     else{
       if(this.item.sizeAdjustment > 1){
-        this.adjustment = "Buy "+this.item.sizeAdjustment+" sizes bigger";
+        this.adjustment = "Buy "+this.item.sizeAdjustment.toPrecision(1) +" sizes bigger";
       }
       else{
-        this.adjustment = "Buy "+this.item.sizeAdjustment+" size bigger";
+        this.adjustment = "Buy "+this.item.sizeAdjustment.toPrecision(1) +" size bigger";
       }
     }
 
